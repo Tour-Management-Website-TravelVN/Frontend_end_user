@@ -67,7 +67,8 @@
                     <a href="#" data-bs-toggle="modal" data-bs-target="#register" class="header-unauth"><small
                             class="me-3 text-light"><i class="fa fa-user me-2"></i>Đăng
                             ký</small></a>
-                    <div class="modal fade" id="register" aria-modal="true">
+                    <!-- <div class="modal fade" id="register" aria-modal="true"> -->
+                    <div class="modal fade" id="register">
                         <div class="modal-dialog modal-lg modal-dialog-centered">
                             <div class="modal-content">
                                 <div class="modal-body">
@@ -153,8 +154,9 @@
                     <a href="#"><small class="me-3 text-light header-unauth" data-bs-toggle="modal"
                             data-bs-target="#login"><i class="fa fa-sign-in-alt me-2"></i>Đăng
                             nhập</small></a>
-
-                    <div class="modal fade" id="login" aria-modal="true">
+                    
+                    <div class="modal fade" id="login">
+                    <!-- <div class="modal fade" id="login" aria-modal="true"> -->
                         <div class="modal-dialog modal-lg modal-dialog-centered">
                             <div class="modal-content">
                                 <div class="modal-body">
@@ -270,7 +272,7 @@
                 </ol>
                 <div class="carousel-inner" role="listbox">
                     <div class="carousel-item active">
-                        <img src="img/carousel-2.jpg" class="img-fluid" alt="Image">
+                        <img src="img/carousel-02.jpg" class="img-fluid" alt="Image">
                         <div class="carousel-caption">
                             <div class="p-3" style="max-width: 900px;">
                                 <h4 class="text-white text-uppercase fw-bold mb-4" style="letter-spacing: 3px;">Khám phá
@@ -289,7 +291,7 @@
                         </div>
                     </div>
                     <div class="carousel-item">
-                        <img src="img/carousel-1.jpg" class="img-fluid" alt="Image">
+                        <img src="img/carousel-01.jpg" class="img-fluid" alt="Image">
                         <div class="carousel-caption">
                             <div class="p-3" style="max-width: 900px;">
                                 <h4 class="text-white text-uppercase fw-bold mb-4" style="letter-spacing: 3px;">Khám phá
@@ -308,7 +310,7 @@
                         </div>
                     </div>
                     <div class="carousel-item">
-                        <img src="img/carousel-3.jpg" class="img-fluid" alt="Image">
+                        <img src="img/carousel-03.jpg" class="img-fluid" alt="Image">
                         <div class="carousel-caption">
                             <div class="p-3" style="max-width: 900px;">
                                 <h4 class="text-white text-uppercase fw-bold mb-4" style="letter-spacing: 3px;">Khám phá
@@ -351,7 +353,7 @@
     <!-- Navbar & Hero End -->
 
     <!-- About Start -->
-    <div class="container-fluid about py-5">
+    <!-- <div class="container-fluid about py-5">
         <div class="container py-5">
             <div class="row g-5 align-items-center">
                 <div class="col-lg-5">
@@ -395,11 +397,11 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> -->
     <!-- About End -->
 
     <!-- Services Start -->
-    <div class="container-fluid bg-light service py-5">
+    <!-- <div class="container-fluid bg-light service py-5">
         <div class="container py-5">
             <div class="mx-auto text-center mb-5" style="max-width: 900px;">
                 <h5 class="section-title px-3">Các dịch vụ</h5>
@@ -541,7 +543,7 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> -->
     <!-- Services End -->
 
     <!-- Destination Start -->
@@ -2270,6 +2272,7 @@
                     'Content-Type': 'application/json'
                 },
                 body: JSON.stringify(
+                    {}
                     // { "token": localStorage.getItem("token") }
                 )
             })
@@ -2300,6 +2303,7 @@
 
             fetch('http://localhost:8080/auth/token', {
                 method: 'POST',
+                credentials:'include',
                 headers: {
                     'Content-Type': 'application/json'
                 },
@@ -2310,7 +2314,7 @@
                 .then(response => response.json())
                 .then(data => {
                     if (data.code == 0) {
-
+                        /*
                         document.getElementById("login").addEventListener("hidden.bs.modal", function () {
                             document.activeElement.blur(); // Bỏ focus khỏi phần tử đang focus
                         });
@@ -2321,7 +2325,7 @@
                         document.querySelectorAll('.header-unauth').forEach(element => {
                             element.classList.add("d-none");
                         });
-
+                        */
                         header_auth.classList.remove("d-none");
 
                         document.getElementById('fullname').textContent = data.result.fullname;
