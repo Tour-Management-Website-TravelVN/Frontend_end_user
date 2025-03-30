@@ -22,6 +22,36 @@
     });
 
 
+    //Festival carousel
+    $(".festival-carousel").owlCarousel({
+        autoplay: true,
+        smartSpeed: 600,
+        center: true,
+        dots: true,
+        loop: true,
+        margin: 5,
+        nav : false,
+        // navText : [
+        //     '<i class="bi bi-arrow-left"></i>',
+        //     '<i class="bi bi-arrow-right"></i>'
+        // ],
+        responsiveClass: true,
+        responsive: {
+            0:{
+                items:1
+            },
+            768:{
+                items:4
+            },
+            992:{
+                items:5
+            },
+            1200:{
+                items:6
+            }
+        }
+    });
+
     // International Tour carousel
     $(".InternationalTour-carousel").owlCarousel({
         autoplay: true,

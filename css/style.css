@@ -465,7 +465,7 @@
     bottom: -100%;
     left: 0;
     z-index: 3;
-    transition: 0.5s;
+    transition: 0.3s;
 }
 
 .destination .tab-class .tab-content .tab-pane .destination-img .search-icon {
