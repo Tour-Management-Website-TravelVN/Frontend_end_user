@@ -52,6 +52,37 @@
         }
     });
 
+    //Small img carousel
+    $(".sm-img-carousel").owlCarousel({
+        autoplay: true,
+        smartSpeed: 600,
+        center: true,
+        dots: true,
+        loop: true,
+        margin: 5,
+        nav : false,
+        autoplayTimeout: 3000,
+        navText : [
+            '<i class="bi bi-arrow-left"></i>',
+            '<i class="bi bi-arrow-right"></i>'
+        ],
+        responsiveClass: false,
+        responsive: {
+            0:{
+                items:2
+            },
+            768:{
+                items:3
+            },
+            992:{
+                items:4
+            },
+            1200:{
+                items:5
+            }
+        }
+    });
+
     // International Tour carousel
     $(".InternationalTour-carousel").owlCarousel({
         autoplay: true,
