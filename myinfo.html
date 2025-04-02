@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="utf-8">
-    <title>TravelVN - Trang chủ</title>
+    <title>TravelVN - Thông tin cá nhân</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta content="" name="keywords">
     <meta content="" name="description">
@@ -32,6 +32,9 @@
 
     <!-- Logo -->
     <link rel="icon" href="img/logo_tour_no_text.svg">
+
+    <script src="lib/lightbox/js/jquery-3.7.1.min.js"></script>
+    <script src="js/main2.js"></script>
 </head>
 
 <body>
@@ -45,26 +48,33 @@
     </div>
     <!-- Spinner End -->
 
+    <!-- Alert Start -->
+    <div class="alert alert-success alert-dismissible mb-0 d-none">
+        <button type="button" class="btn-close me-4" data-bs-dismiss="alert"></button>
+        <strong>Success!</strong> Indicates a successful or positive action.
+    </div>
+    <!-- Alert End -->
+    
     <!-- Topbar Start -->
-    <div class="container-fluid bg-primary px-5 d-lg-block">
+    <div class="container-fluid bg-primary px-5 d-none d-lg-block">
         <div class="row gx-0">
-            <div class="col-lg-8 text-center text-lg-start mb-2 mb-lg-0 d-none d-lg-block">
+            <div class="col-lg-8 text-center text-lg-start mb-2 mb-lg-0">
                 <div class="d-inline-flex align-items-center" style="height: 45px;">
-                    <a class="btn btn-sm btn-outline-light btn-sm-square rounded-circle me-2" href=""><i
+                    <a class="btn btn-sm btn-outline-light btn-sm-square rounded-circle me-2" href="#"><i
                             class="fab fa-twitter fw-normal"></i></a>
-                    <a class="btn btn-sm btn-outline-light btn-sm-square rounded-circle me-2" href=""><i
+                    <a class="btn btn-sm btn-outline-light btn-sm-square rounded-circle me-2" href="#"><i
                             class="fab fa-facebook-f fw-normal"></i></a>
-                    <a class="btn btn-sm btn-outline-light btn-sm-square rounded-circle me-2" href=""><i
+                    <a class="btn btn-sm btn-outline-light btn-sm-square rounded-circle me-2" href="#"><i
                             class="fab fa-linkedin-in fw-normal"></i></a>
-                    <a class="btn btn-sm btn-outline-light btn-sm-square rounded-circle me-2" href=""><i
+                    <a class="btn btn-sm btn-outline-light btn-sm-square rounded-circle me-2" href="#"><i
                             class="fab fa-instagram fw-normal"></i></a>
-                    <a class="btn btn-sm btn-outline-light btn-sm-square rounded-circle" href=""><i
+                    <a class="btn btn-sm btn-outline-light btn-sm-square rounded-circle" href="#"><i
                             class="fab fa-youtube fw-normal"></i></a>
                 </div>
             </div>
-            <div class="col-lg-4 text-end text-lg-end ms-4 ms-lg-0">
+            <div class="col-lg-4 text-center text-lg-end">
                 <div class="d-inline-flex align-items-center" style="height: 45px;">
-                    <a href="#" data-bs-toggle="modal" data-bs-target="#register" class="header-unauth"><small
+                    <a href="#" data-bs-toggle="modal" data-bs-target="#register" class="header-unauth d-none"><small
                             class="me-3 text-light"><i class="fa fa-user me-2"></i>Đăng
                             ký</small></a>
                     <!-- <div class="modal fade" id="register" aria-modal="true"> -->
@@ -122,18 +132,18 @@
                                                 </div>
 
                                                 <!-- <label for="fullname" class="fst-italic letter-spacing-1 label-log">Họ và tên</label><br/>
-                                                    <input type="text" name="fullname" id="fullname" class="w-100 rounded-3 py-2 ps-3 bg-light border-0"><br/>
-                                                    <label for="email" class="fst-italic letter-spacing-1 mt-2 pt-1 label-log">Email</label><br/>
-                                                    <input type="email" name="email" id="email" class="w-100 rounded-3 py-1 ps-2 border-0 bg-dark"><br/>
-                                                    <label for="dob" class="fst-italic letter-spacing-1 mt-2 pt-1 label-log">Ngày sinh</label><br/>
-                                                    <input type="date" name="dob" id="dob" class="w-100 rounded-3 py-1 ps-2"><br/>
-                                                    <label for="gender" class="fst-italic letter-spacing-1 mt-2 pt-1 label-log">Giới tính</label><br/>
-                                                    <input type="radio" name="gender" id="male" checked><span class="text-dark fs-6 ps-1">Nam</span>
-                                                    <input type="radio" name="gender" id="female" class="ms-3"><span class="text-dark fs-6 ps-1">Nữ</span><br/>
-                                                    <label for="username" class="fst-italic letter-spacing-1 mt-2 pt-1 label-log">Tên đăng nhập</label><br/>
-                                                    <input type="text" name="username" id="username" class="w-100 rounded-3 py-1 ps-2"><br/>
-                                                    <label for="password" class="fst-italic letter-spacing-1 mt-2 pt-1 ps-2 label-log">Mật khẩu</label><br/>
-                                                    <input type="password" name="password" id="password" class="w-100 rounded-3 py-1"><br/><br/> -->
+                                                <input type="text" name="fullname" id="fullname" class="w-100 rounded-3 py-2 ps-3 bg-light border-0"><br/>
+                                                <label for="email" class="fst-italic letter-spacing-1 mt-2 pt-1 label-log">Email</label><br/>
+                                                <input type="email" name="email" id="email" class="w-100 rounded-3 py-1 ps-2 border-0 bg-dark"><br/>
+                                                <label for="dob" class="fst-italic letter-spacing-1 mt-2 pt-1 label-log">Ngày sinh</label><br/>
+                                                <input type="date" name="dob" id="dob" class="w-100 rounded-3 py-1 ps-2"><br/>
+                                                <label for="gender" class="fst-italic letter-spacing-1 mt-2 pt-1 label-log">Giới tính</label><br/>
+                                                <input type="radio" name="gender" id="male" checked><span class="text-dark fs-6 ps-1">Nam</span>
+                                                <input type="radio" name="gender" id="female" class="ms-3"><span class="text-dark fs-6 ps-1">Nữ</span><br/>
+                                                <label for="username" class="fst-italic letter-spacing-1 mt-2 pt-1 label-log">Tên đăng nhập</label><br/>
+                                                <input type="text" name="username" id="username" class="w-100 rounded-3 py-1 ps-2"><br/>
+                                                <label for="password" class="fst-italic letter-spacing-1 mt-2 pt-1 ps-2 label-log">Mật khẩu</label><br/>
+                                                <input type="password" name="password" id="password" class="w-100 rounded-3 py-1"><br/><br/> -->
 
                                                 <div class="d-grid mt-3">
                                                     <button type="button" class="btn btn-primary btn-block w-50 mx-auto"
@@ -151,7 +161,7 @@
                         </div>
                     </div>
 
-                    <a href="#"><small class="me-3 text-light header-unauth" data-bs-toggle="modal"
+                    <a href="#"><small class="me-3 text-light header-unauth d-none" data-bs-toggle="modal"
                             data-bs-target="#login"><i class="fa fa-sign-in-alt me-2"></i>Đăng
                             nhập</small></a>
 
@@ -193,30 +203,19 @@
                             </div>
                         </div>
                     </div>
-
-                    <div class="dropdown d-none" id="header-auth">
-                        <a href="#" class="dropdown-toggle text-light" id="fullname" data-bs-toggle="dropdown"><small><i
-                                    class="bi bi-person-fill fs-5 me-2"></i>Tên người dùng</small></a>
-                        <div class="dropdown-menu dropdown-menu-end rounded">
-                            <a href="#" class="dropdown-item"><i class="fas fa-user-alt me-2"></i>Thông tin cá nhân</a>
-                            <!-- <a href="#" class="dropdown-item"><i class="fas fa-cog me-2"></i>Quản lý tài khoản</a> -->
-                            <a href="#" class="dropdown-item"><i class="bi bi-airplane-engines-fill me-2"></i>Các tour
+                    <div class="dropdown header-auth">
+                        <a href="#" class="dropdown-toggle text-light" data-bs-toggle="dropdown"><small id="fullname"><i
+                                    class="fa fa-home me-2"></i>Bảng điều khiển</small></a>
+                        <div class="dropdown-menu rounded">
+                            <a href="myinfo.html" class="dropdown-item"><i class="fas fa-user-alt me-2"></i>Thông tin cá
+                                nhân</a>
+                            <a href="mytour.html" class="dropdown-item"><i
+                                    class="bi bi-airplane-engines-fill me-2"></i>Các tour
                                 của bạn</a>
                             <a href="#" class="dropdown-item" id="btnLogout"><i class="fas fa-power-off me-2"></i>Đăng
                                 xuất</a>
                         </div>
                     </div>
-
-                    <!-- <div class="dropdown">
-                            <a href="#" class="dropdown-toggle text-light" data-bs-toggle="dropdown"><small><i class="fa fa-home me-2"></i>Bảng điều khiển</small></a>
-                            <div class="dropdown-menu rounded">
-                                <a href="#" class="dropdown-item"><i class="fas fa-user-alt me-2"></i>Hồ sơ của tôi</a>
-                                <a href="#" class="dropdown-item"><i class="fas fa-comment-alt me-2"></i>Hộp thư đến</a>
-                                <a href="#" class="dropdown-item"><i class="fas fa-bell me-2"></i>Thông báo</a>
-                                <a href="#" class="dropdown-item"><i class="fas fa-cog me-2"></i>Quản lý tài khoản</a>
-                                <a href="#" class="dropdown-item"><i class="fas fa-power-off me-2"></i>Đăng xuất</a>
-                            </div>
-                        </div> -->
                 </div>
             </div>
         </div>
@@ -244,7 +243,7 @@
                     <a href="services.html" class="nav-item nav-link">Dịch vụ</a>
                     <a href="contact.html" class="nav-item nav-link">Liên hệ</a>
                 </div>
-                <a href="" class="btn btn-primary rounded-pill py-2 px-4 ms-lg-4">Đặt ngay</a>
+                <a href="foundtourlist.html" class="btn btn-primary rounded-pill py-2 px-4 ms-lg-4">Đặt ngay</a>
             </div>
         </nav>
     </div>
@@ -252,35 +251,76 @@
     <!-- Info start -->
     <div class="container-fluid increase-margin-top">
         <div class="container">
-            <h1 class="text-center text-primary fw-bold mb-2">Kiều Đức Thịnh</h1>
+            <h1 class="text-center text-primary fw-bold mb-2 mt-5">Kiều Đức Thịnh</h1>
             <div class="row gap-0">
                 <div class="col-lg-6 col-12">
-                    <table class="table table-borderless text-primary fw-bold">
-                        <colgroup>
-                            <col style="width: 30%;">
-                            <col style="width: 70%;">
-                        </colgroup>
-                        <tr>
-                            <td class="align-middle heading5">Tên đăng nhập:</td>
-                            <td class="align-middle heading4">kdthinh04</td>
-                        </tr>
-                        <tr>
-                            <td class="align-middle heading5">Ngày sinh:</td>
-                            <td class="align-middle heading4">23/12/2004</td>
-                        </tr>
-                        <tr>
-                            <td class="align-middle heading5">Giới tính:</td>
-                            <td class="align-middle heading4">Nam</td>
-                        </tr>
-                        <tr>
-                            <td class="align-middle heading5">Quốc tịch:</td>
-                            <td class="align-middle heading4">Việt Nam</td>
-                        </tr>
-                        <tr class="d-lg-none d-xl-none">
-                            <td class="align-middle heading5">Địa chỉ:</td>
-                            <td class="align-middle heading4">298 Bắc Từ Liêm, Hà Nội</td>
-                        </tr>
-                    </table>
+
+                    <form action="" class="needs-validated">
+                        <table class="table table-borderless text-primary fw-bold">
+                            <colgroup>
+                                <col style="width: 30%;">
+                                <col style="width: 70%;">
+                            </colgroup>
+                            <tr>
+                                <td class="align-middle heading5">Tên đăng nhập:</td>
+                                <td class="align-middle heading4">
+                                    <span class="customer-info">kdthinh04</span>
+                                    <div class="d-none c-update">
+                                        <input type="text" id="c-username" class="form-control" placeholder="kdthinh04"
+                                            readonly>
+                                    </div>
+
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="align-middle heading5">Ngày sinh:</td>
+                                <td class="align-middle heading4">
+                                    <span class="customer-info">23/12/2004</span>
+                                    <div class="d-none c-update">
+                                        <input type="date" id="c-dob" class="form-control" placeholder="01/01/2025"
+                                            required>
+                                        <div class="valid-feedback fs-6 fw-normal">Valid.</div>
+                                        <div class="invalid-feedback fs-6 fw-normal">Please fill out this field.</div>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="align-middle heading5">Giới tính:</td>
+                                <td class="align-middle heading4">Nam
+                                    <div class="c-update d-none">
+                                        <input type="radio" name="gender" id="male" class="form-check-input" checked>
+                                        <label class="form-check-label text-primary me-3" for="male">Nam</label>
+                                        <input type="radio" name="gender" id="female" class="form-check-input">
+                                        <label class="form-check-label text-primary" for="female">Nữ</label>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="align-middle heading5">Quốc tịch:</td>
+                                <td class="align-middle heading4">
+                                    <span class="customer-info">Việt Nam</span>
+                                    <div class="c-update d-none">
+                                        <select class="form-select text-primary fs-5"
+                                            aria-label="Default select example">
+                                            <option value="0" selected>Việt Nam</option>
+                                            <option value="1">Nhật Bản</option>
+                                            <option value="2">Hàn Quốc</option>
+                                            <option value="3">Đức</option>
+                                        </select>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr class="d-lg-none d-xl-none">
+                                <td class="align-middle heading5">Địa chỉ:</td>
+                                <td class="align-middle heading4">
+                                    <span class="customer-info">298 Bắc Từ Liêm, Hà Nội</span>
+                                    <div class="c-update d-none">
+                                        <textarea class="form-control" id="address" rows="3"></textarea>
+                                    </div>
+                                </td>
+                            </tr>
+                        </table>
+                    </form>
                 </div>
                 <div class="col-lg-6 col-12 decrease-margin-15">
                     <table cellspacing="5px" class="table table-borderless text-primary fw-bold">
@@ -290,19 +330,56 @@
                         </colgroup>
                         <tr>
                             <td class="align-middle heading5">Email:</td>
-                            <td class="align-middle heading4">kdthinh04@gmail.com</td>
+                            <td class="align-middle heading4">
+                                <span class="customer-info">
+                                    kdthinh04@gmail.com
+                                </span>
+                                <div class="c-update d-none">
+                                    <input type="text" id="c-email" class="form-control" placeholder="@gmail.com"
+                                        required>
+                                    <div class="valid-feedback fs-6 fw-normal">Valid.</div>
+                                    <div class="invalid-feedback fs-6 fw-normal">Please fill out this field.</div>
+                                </div>
+                            </td>
                         </tr>
                         <tr>
                             <td class="align-middle heading5">Số điện thoại:</td>
-                            <td class="align-middle heading4">0343125685</td>
+                            <td class="align-middle heading4">
+                                <span class="customer-info">
+                                    0343125685
+                                </span>
+                                <div class="c-update d-none">
+                                    <input type="text" id="c-phone" class="form-control" placeholder="084">
+                                    <div class="valid-feedback fs-6 fw-normal">Valid.</div>
+                                    <div class="invalid-feedback fs-6 fw-normal">Please fill out this field.</div>
+                                </div>
+                            </td>
                         </tr>
                         <tr>
                             <td class="align-middle heading5">CCCD:</td>
-                            <td class="align-middle heading4">001204859761</td>
+                            <td class="align-middle heading4">
+                                <span class="customer-info">
+                                    001204859761
+                                </span>
+                                <div class="c-update d-none">
+                                    <input type="text" id="c-ci" class="form-control" placeholder="000">
+                                    <div class="valid-feedback fs-6 fw-normal">Valid.</div>
+                                    <div class="invalid-feedback fs-6 fw-normal">Please fill out this field.</div>
+                                </div>
+                            </td>
                         </tr>
                         <tr>
                             <td class="align-middle heading5">Hộ chiếu:</td>
-                            <td class="align-middle heading4">VN5978614</td>
+                            <td class="align-middle heading4">
+                                <span class="customer-info">
+                                    VN5978614
+                                </span>
+                                <div class="c-update d-none">
+                                    <input type="text" id="c-passport" class="form-control" placeholder="..">
+                                    <div class="valid-feedback fs-6 fw-normal">Valid.</div>
+                                    <div class="invalid-feedback fs-6 fw-normal">Please fill out this field.</div>
+                                </div>
+                            </td>
                         </tr>
                     </table>
                 </div>
@@ -314,7 +391,12 @@
                         </colgroup>
                         <tr>
                             <td class="align-middle heading5">Địa chỉ:</td>
-                            <td class="align-middle heading4">298 Bắc Từ Liêm, Hà Nội </td>
+                            <td class="align-middle heading4">
+                                <span class="customer-info">298 Bắc Từ Liêm, Hà Nội</span>
+                                <div class="c-update d-none">
+                                    <textarea class="form-control" id="address" rows="3"></textarea>
+                                </div>
+                            </td>
                         </tr>
                     </table>
                 </div>
@@ -336,33 +418,79 @@
                 </div>
             </div> -->
             <div class="d-flex justify-content-center mt-2">
-                <button class="btn btn-primary rounded-pill px-2 m-2" style="width: 150px; height: 50px;">Đổi mật
+                <button class="btn btn-primary rounded-pill px-2 m-2" style="width: 150px; height: 50px;"
+                    data-bs-toggle="modal" data-bs-target="#staticBackdrop">Đổi mật
                     khẩu</button>
+
+                <!-- Modal -->
+                <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false"
+                    tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered">
+                        <div class="modal-content">
+
+                            <div class="modal-body px-4 py-4">
+                                <p class="text-primary fw-bold h3 text-center mb-3">Đổi mật khẩu</p>
+                                <!-- .needs-validated .was-validated -->
+                                <form action="" class="needs-validated">
+                                    <div class="form-floating mb-3">
+                                        <input type="password" class="form-control text-dark" id="oldPwd"
+                                            placeholder="">
+                                        <label for="oldPwd">Mật khẩu cũ</label>
+                                        <div class="valid-feedback"></div>
+                                        <div class="invalid-feedback">Please fill out this field.</div>
+                                    </div>
+                                    <div class="form-floating mb-3">
+                                        <input type="password" class="form-control text-dark" id="newPwd"
+                                            placeholder="">
+                                        <label for="newPwd">Mật khẩu mới</label>
+                                        <div class="valid-feedback"></div>
+                                        <div class="invalid-feedback">Please fill out this field.</div>
+                                    </div>
+                                    <div class="form-floating mb-3">
+                                        <input type="password" class="form-control text-dark" id="verifyPwd"
+                                            placeholder="">
+                                        <label for="verifyPwd">Xác nhận mật khẩu mới</label>
+                                        <div class="valid-feedback"></div>
+                                        <div class="invalid-feedback">Please fill out this field.</div>
+                                    </div>
+                                </form>
+                                <div class="d-flex justify-content-center gap-2">
+                                    <button type="button" class="btn btn-outline-danger" style="width: 30%;"
+                                        data-bs-dismiss="modal">Hủy</button>
+                                    <button type="button" class="btn btn-outline-primary" style="width: 30%;"
+                                        data-bs-dismiss="modal">Đổi mật khẩu</button>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
                 <button class="btn btn-primary rounded-pill px-2 m-2" style="width: 150px; height: 50px;">Sửa</button>
             </div>
         </div>
     </div>
 
     <!-- Footer Start -->
-    <div class="container-fluid footer py-5 mx-auto mt-5">
+    <div class="container-fluid footer py-5 mx-auto">
         <div class="container py-5">
             <div class="row g-5">
                 <div class="col-md-4 col-lg-4 col-xl-4">
                     <div class="footer-item d-flex flex-column">
                         <h4 class="mb-4 text-white">Liên hệ</h4>
-                        <a href=""><i class="fas fa-home me-2"></i> 298 Bắc Từ Liêm, Hà Nội</a>
-                        <a href=""><i class="fas fa-envelope me-2"></i> travelvn@haui.com</a>
-                        <a href=""><i class="fas fa-phone me-2"></i> 0343 857 961</a>
-                        <a href="" class="mb-3"><i class="fas fa-print me-2"></i> 0247 814 592</a>
+                        <a href="#"><i class="fas fa-home me-2"></i> 298 Bắc Từ Liêm, Hà Nội</a>
+                        <a href="#"><i class="fas fa-envelope me-2"></i> travelvn@haui.com</a>
+                        <a href="#"><i class="fas fa-phone me-2"></i> 0343 857 961</a>
+                        <a href="#" class="mb-3"><i class="fas fa-print me-2"></i> 0247 814 592</a>
                         <div class="d-flex align-items-center">
                             <i class="fas fa-share fa-2x text-white me-2"></i>
-                            <a class="btn-square btn btn-primary rounded-circle mx-1" href=""><i
+                            <a class="btn-square btn btn-primary rounded-circle mx-1" href="#"><i
                                     class="fab fa-facebook-f"></i></a>
-                            <a class="btn-square btn btn-primary rounded-circle mx-1" href=""><i
+                            <a class="btn-square btn btn-primary rounded-circle mx-1" href="#"><i
                                     class="fab fa-twitter"></i></a>
-                            <a class="btn-square btn btn-primary rounded-circle mx-1" href=""><i
+                            <a class="btn-square btn btn-primary rounded-circle mx-1" href="#"><i
                                     class="fab fa-instagram"></i></a>
-                            <a class="btn-square btn btn-primary rounded-circle mx-1" href=""><i
+                            <a class="btn-square btn btn-primary rounded-circle mx-1" href="#"><i
                                     class="fab fa-linkedin-in"></i></a>
                         </div>
                     </div>
@@ -381,10 +509,10 @@
                 <div class="col-md-4 col-lg-4 col-xl-4 ps-5">
                     <div class="footer-item d-flex flex-column">
                         <h4 class="mb-4 text-white">Hỗ trợ</h4>
-                        <a href=""><i class="fas fa-angle-right me-2"></i> Trang chủ</a>
-                        <a href=""><i class="fas fa-angle-right me-2"></i> Giới thiệu</a>
-                        <a href=""><i class="fas fa-angle-right me-2"></i> Dịch vụ</a>
-                        <a href=""><i class="fas fa-angle-right me-2"></i> Liên hệ với chúng tôi</a>
+                        <a href="index.html"><i class="fas fa-angle-right me-2"></i> Trang chủ</a>
+                        <a href="about.html"><i class="fas fa-angle-right me-2"></i> Giới thiệu</a>
+                        <a href="services.html"><i class="fas fa-angle-right me-2"></i> Dịch vụ</a>
+                        <a href="contact.html"><i class="fas fa-angle-right me-2"></i> Liên hệ với chúng tôi</a>
                         <!-- <a href=""><i class="fas fa-angle-right me-2"></i> Sitemap</a>
                         <a href=""><i class="fas fa-angle-right me-2"></i> Cookie policy</a> -->
                     </div>

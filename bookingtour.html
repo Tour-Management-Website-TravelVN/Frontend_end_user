@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="utf-8">
-    <title>TravelVN - Trang chủ</title>
+    <title>TravelVN - Đặt tour</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta content="" name="keywords">
     <meta content="" name="description">
@@ -39,6 +39,7 @@
     <script src="https://kit.fontawesome.com/0b7fe90b3a.js" crossorigin="anonymous"></script>
 
     <script src="lib/lightbox/js/jquery-3.7.1.min.js"></script>
+    <script src="js/main2.js"></script>
 </head>
 
 <body>
@@ -53,47 +54,166 @@
     <!-- Spinner End -->
 
     <!-- Topbar Start -->
-    <div class="container-fluid bg-primary px-5 d-lg-block">
+    <div class="container-fluid bg-primary px-5 d-none d-lg-block">
         <div class="row gx-0">
-            <div class="col-lg-8 text-center text-lg-start mb-2 mb-lg-0 d-none d-lg-block">
+            <div class="col-lg-8 text-center text-lg-start mb-2 mb-lg-0">
                 <div class="d-inline-flex align-items-center" style="height: 45px;">
-                    <a class="btn btn-sm btn-outline-light btn-sm-square rounded-circle me-2" href=""><i
+                    <a class="btn btn-sm btn-outline-light btn-sm-square rounded-circle me-2" href="#"><i
                             class="fab fa-twitter fw-normal"></i></a>
-                    <a class="btn btn-sm btn-outline-light btn-sm-square rounded-circle me-2" href=""><i
+                    <a class="btn btn-sm btn-outline-light btn-sm-square rounded-circle me-2" href="#"><i
                             class="fab fa-facebook-f fw-normal"></i></a>
-                    <a class="btn btn-sm btn-outline-light btn-sm-square rounded-circle me-2" href=""><i
+                    <a class="btn btn-sm btn-outline-light btn-sm-square rounded-circle me-2" href="#"><i
                             class="fab fa-linkedin-in fw-normal"></i></a>
-                    <a class="btn btn-sm btn-outline-light btn-sm-square rounded-circle me-2" href=""><i
+                    <a class="btn btn-sm btn-outline-light btn-sm-square rounded-circle me-2" href="#"><i
                             class="fab fa-instagram fw-normal"></i></a>
-                    <a class="btn btn-sm btn-outline-light btn-sm-square rounded-circle" href=""><i
+                    <a class="btn btn-sm btn-outline-light btn-sm-square rounded-circle" href="#"><i
                             class="fab fa-youtube fw-normal"></i></a>
                 </div>
             </div>
-            <div class="col-lg-4 text-end text-lg-end ms-4 ms-lg-0">
+            <div class="col-lg-4 text-center text-lg-end">
                 <div class="d-inline-flex align-items-center" style="height: 45px;">
-                    <div class="dropdown" id="header-auth">
-                        <a href="#" class="dropdown-toggle text-light" id="fullname" data-bs-toggle="dropdown"><small><i
-                                    class="bi bi-person-fill fs-5 me-2"></i>Tên người dùng</small></a>
-                        <div class="dropdown-menu dropdown-menu-end rounded">
-                            <a href="#" class="dropdown-item"><i class="fas fa-user-alt me-2"></i>Thông tin cá nhân</a>
-                            <!-- <a href="#" class="dropdown-item"><i class="fas fa-cog me-2"></i>Quản lý tài khoản</a> -->
-                            <a href="#" class="dropdown-item"><i class="bi bi-airplane-engines-fill me-2"></i>Các tour
+                    <a href="#" data-bs-toggle="modal" data-bs-target="#register" class="header-unauth"><small
+                            class="me-3 text-light"><i class="fa fa-user me-2"></i>Đăng
+                            ký</small></a>
+                    <!-- <div class="modal fade" id="register" aria-modal="true"> -->
+                    <div class="modal fade" id="register">
+                        <div class="modal-dialog modal-lg modal-dialog-centered">
+                            <div class="modal-content">
+                                <div class="modal-body">
+                                    <div class="row">
+                                        <div class="col-5 d-flex justify-content-center align-items-center">
+                                            <img src="img/logo_tour.svg" alt="welcome" class="img-fluid"
+                                                style="height: 350px;">
+                                        </div>
+                                        <div class="col-7">
+                                            <button class="btn-close text-end" type="button"
+                                                data-bs-dismiss="modal"></button>
+                                            <h2 class="h1 text-center fw-bold text-primary">ĐĂNG KÝ</h2>
+                                            <div class="text-start mx-2 mt-3">
+                                                <div class="form-floating mb-3">
+                                                    <input type="text" class="form-control" id="floatingFullName"
+                                                        placeholder="Nguyễn Văn A">
+                                                    <label for="floatingFullName">Họ và tên</label>
+                                                </div>
+                                                <div class="form-floating mb-3">
+                                                    <input type="email" class="form-control" id="floatingEmail"
+                                                        placeholder="example@gmail.com">
+                                                    <label for="floatingEmail">Email</label>
+                                                </div>
+                                                <div class="form-floating mb-3">
+                                                    <input type="date" class="form-control" id="floatingDob"
+                                                        placeholder="Nguyễn Văn A">
+                                                    <label for="floatingDob">Ngày sinh</label>
+                                                </div>
+                                                <label for="optradio">Giới tính</label>
+                                                <div class="d-flex mb-3 mt-1">
+                                                    <div class="form-check">
+                                                        <input type="radio" class="form-check-input" id="radio1"
+                                                            name="optradio" value="0" checked>Nam
+                                                        <label class="form-check-label" for="radio1"></label>
+                                                    </div>
+                                                    <div class="form-check">
+                                                        <input type="radio" class="form-check-input ms-3 me-2"
+                                                            id="radio2" name="optradio" value="1">Nữ
+                                                        <label class="form-check-label" for="radio2"></label>
+                                                    </div>
+                                                </div>
+                                                <div class="form-floating mb-3">
+                                                    <input type="text" class="form-control" id="floatingUsername"
+                                                        placeholder="Nguyễn Văn A">
+                                                    <label for="floatingUsername">Tên đăng nhập</label>
+                                                </div>
+                                                <div class="form-floating mb-3">
+                                                    <input type="password" class="form-control" id="floatingPassword"
+                                                        placeholder="Nguyễn Văn A">
+                                                    <label for="floatingPassword">Mật khẩu</label>
+                                                </div>
+
+                                                <!-- <label for="fullname" class="fst-italic letter-spacing-1 label-log">Họ và tên</label><br/>
+                                                <input type="text" name="fullname" id="fullname" class="w-100 rounded-3 py-2 ps-3 bg-light border-0"><br/>
+                                                <label for="email" class="fst-italic letter-spacing-1 mt-2 pt-1 label-log">Email</label><br/>
+                                                <input type="email" name="email" id="email" class="w-100 rounded-3 py-1 ps-2 border-0 bg-dark"><br/>
+                                                <label for="dob" class="fst-italic letter-spacing-1 mt-2 pt-1 label-log">Ngày sinh</label><br/>
+                                                <input type="date" name="dob" id="dob" class="w-100 rounded-3 py-1 ps-2"><br/>
+                                                <label for="gender" class="fst-italic letter-spacing-1 mt-2 pt-1 label-log">Giới tính</label><br/>
+                                                <input type="radio" name="gender" id="male" checked><span class="text-dark fs-6 ps-1">Nam</span>
+                                                <input type="radio" name="gender" id="female" class="ms-3"><span class="text-dark fs-6 ps-1">Nữ</span><br/>
+                                                <label for="username" class="fst-italic letter-spacing-1 mt-2 pt-1 label-log">Tên đăng nhập</label><br/>
+                                                <input type="text" name="username" id="username" class="w-100 rounded-3 py-1 ps-2"><br/>
+                                                <label for="password" class="fst-italic letter-spacing-1 mt-2 pt-1 ps-2 label-log">Mật khẩu</label><br/>
+                                                <input type="password" name="password" id="password" class="w-100 rounded-3 py-1"><br/><br/> -->
+
+                                                <div class="d-grid mt-3">
+                                                    <button type="button" class="btn btn-primary btn-block w-50 mx-auto"
+                                                        id="btnRegister">Đăng ký</button>
+                                                </div>
+                                                <p class="mt-3 text-primary">Bạn đã có tài khoản? <a
+                                                        class="fst-italic text-decoration-underline pointer"
+                                                        data-bs-dismiss="modal" data-bs-toggle="modal"
+                                                        data-bs-target="#login">Đăng nhập</a></p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <a href="#"><small class="me-3 text-light header-unauth" data-bs-toggle="modal"
+                            data-bs-target="#login"><i class="fa fa-sign-in-alt me-2"></i>Đăng
+                            nhập</small></a>
+
+                    <div class="modal fade" id="login">
+                        <!-- <div class="modal fade" id="login" aria-modal="true"> -->
+                        <div class="modal-dialog modal-lg modal-dialog-centered">
+                            <div class="modal-content">
+                                <div class="modal-body">
+                                    <div class="row">
+                                        <div class="col-5 d-flex justify-content-center align-items-center">
+                                            <img src="img/logo_tour.svg" alt="welcome" class="img-fluid"
+                                                style="height: 350px;">
+                                        </div>
+                                        <div class="col-7">
+                                            <button class="btn-close text-end" type="button"
+                                                data-bs-dismiss="modal"></button>
+                                            <h2 class="h1 text-center fw-bold text-primary mb-3">ĐĂNG NHẬP</h2>
+                                            <div class="form-floating mb-3">
+                                                <input type="text" class="form-control" id="floatingUsernameLogin"
+                                                    placeholder="Nguyễn Văn A">
+                                                <label for="floatingUsernameLogin">Tên đăng nhập</label>
+                                            </div>
+                                            <div class="form-floating mb-3">
+                                                <input type="password" class="form-control" id="floatingPasswordLogin"
+                                                    placeholder="">
+                                                <label for="floatingPasswordLogin">Mật khẩu</label>
+                                            </div>
+                                            <div class="d-grid mt-3">
+                                                <button type="button" class="btn btn-primary btn-block w-50 mx-auto"
+                                                    id="btnLogin">Đăng nhập</button>
+                                            </div>
+                                            <p class="text-primary text-start mt-3">Bạn chưa có tài khoản? <a
+                                                    class="fst-italic text-decoration-underline pointer"
+                                                    data-bs-dismiss="modal" data-bs-toggle="modal"
+                                                    data-bs-target="#register">Đăng ký</a></p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="dropdown d-none" id="header-auth">
+                        <a href="#" class="dropdown-toggle text-light" data-bs-toggle="dropdown"><small id="fullname"><i
+                                    class="fa fa-home me-2"></i>Bảng điều khiển</small></a>
+                        <div class="dropdown-menu rounded">
+                            <a href="myinfo.html" class="dropdown-item"><i class="fas fa-user-alt me-2"></i>Thông tin cá
+                                nhân</a>
+                            <a href="mytour.html" class="dropdown-item"><i
+                                    class="bi bi-airplane-engines-fill me-2"></i>Các tour
                                 của bạn</a>
                             <a href="#" class="dropdown-item" id="btnLogout"><i class="fas fa-power-off me-2"></i>Đăng
                                 xuất</a>
                         </div>
                     </div>
-
-                    <!-- <div class="dropdown">
-                            <a href="#" class="dropdown-toggle text-light" data-bs-toggle="dropdown"><small><i class="fa fa-home me-2"></i>Bảng điều khiển</small></a>
-                            <div class="dropdown-menu rounded">
-                                <a href="#" class="dropdown-item"><i class="fas fa-user-alt me-2"></i>Hồ sơ của tôi</a>
-                                <a href="#" class="dropdown-item"><i class="fas fa-comment-alt me-2"></i>Hộp thư đến</a>
-                                <a href="#" class="dropdown-item"><i class="fas fa-bell me-2"></i>Thông báo</a>
-                                <a href="#" class="dropdown-item"><i class="fas fa-cog me-2"></i>Quản lý tài khoản</a>
-                                <a href="#" class="dropdown-item"><i class="fas fa-power-off me-2"></i>Đăng xuất</a>
-                            </div>
-                        </div> -->
                 </div>
             </div>
         </div>
@@ -147,6 +267,15 @@
     <div class="container-fluid increase-margin-top mb-3">
         <div class="container">
             <p class="text-dark fw-bold fs-4" id="back"><i class="bi bi-arrow-left fw-bold me-2"></i>Quay lại</p>
+
+            <script>
+                jQuery(function(){
+                    $('#back').click(function(){
+                        window.location.href = 'tourunit.html';
+                    })
+                })
+            </script>
+
             <h1 class="text-center text-primary text-uppercase fw-bold mb-4">Đặt tour</h1>
             <div class="row gap">
                 <div class="col-7">
@@ -370,53 +499,554 @@
                             style="letter-spacing: 1px;">
                             12.580.000
                             đ</p>
-                        
-                        <button class="btn btn-danger py-2 w-100" id="book">Đặt ngay</button>
+
+                        <button class="btn btn-danger py-2 w-100" id="book" data-bs-toggle="modal"
+                            data-bs-target="#bookNow">Đặt ngay</button>
+
+
+
                     </div>
                 </div>
                 <!--Right Side End-->
+                <!-- Modal -->
+                <div class="modal fade" id="bookNow" data-bs-backdrop="static" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-scrollable modal-lg">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title fw-bold text-primary fs-3">Điều khoản</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                    aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <!-- <div class="text-dark fs-6"> -->
+                                    <pre class="text-dark fs-6 mx-auto px-auto text-justify">
+Quý khách cần đọc những điều khoản dưới đây trước khi đăng ký và trải nghiệm dịch vụ
+do TravelVN tổ chức. Việc Quý khách tiếp tục sử dụng trang web này xác nhận việc
+Quý khách đã chấp thuận và tuân thủ những điều khoản dưới đây.
+
+Nội dung dưới đây gồm có 02 phần:
+
+Phần I: Điều kiện bán vé các chương trình du lịch nội địa
+
+Phần II: Chính sách bảo vệ dữ liệu cá nhân
+
+Chi tiết nội dung như sau:
+
+PHẦN I: ĐIỀU KIỆN BÁN VÉ CÁC CHƯƠNG TRÌNH DU LỊCH NỘI ĐỊA
+
+1. GIÁ VÉ DU LỊCH
+
+Giá vé du lịch được tính theo tiền Đồng (Việt Nam - VNĐ). Trường hợp khách thanh
+toán bằng ngoại tệ sẽ được quy đổi ra VNĐ theo tỷ giá của Ngân hàng Đầu tư và Phát
+triển Việt Nam - Chi nhánh TP.HCM tại thời điểm thanh toán.
+
+Giá vé chỉ bao gồm những khoản được liệt kê một cách rõ ràng trong phần “Bao gồm”
+trong các chương trình du lịch. TravelVN không có nghĩa vụ thanh toán bất cứ chi
+phí nào không nằm trong phần “Bao gồm”.
+
+2. GIÁ DÀNH CHO TRẺ EM
+
+- Trẻ em dưới 5 tuổi: không thu phí dịch vụ, bố mẹ tự lo cho bé và thanh toán các
+chi phí phát sinh (đối với các dịch vụ tính phí theo chiều cao…). Hai người lớn chỉ
+được kèm 1 trẻ em dưới 5 tuổi, trẻ em thứ 2 sẽ đóng phí theo quy định dành cho độ
+tuổi từ 5 đến dưới 12 tuổi và phụ thu phòng đơn. Vé máy bay, tàu hỏa, phương tiện
+vận chuyển công cộng mua vé theo quy định của các đơn vị vận chuyển (nếu có).
+
+- Trẻ em từ 5 tuổi đến dưới 12 tuổi: 50% giá tour người lớn đối với tuyến xe, 75%
+giá tour người lớn đối với tuyến có vé máy bay (không có chế độ giường riêng). Hai
+người lớn chỉ được kèm 1 trẻ em từ 5 - dưới 12 tuổi, trẻ em thứ hai trở lên phải mua
+1 suất giường đơn.
+
+- Trẻ em từ 12 tuổi trở lên: mua một vé như người lớn.
+
+3. THANH TOÁN
+
+Khi đăng ký, Quý khách vui lòng cung cấp đầy đủ thông tin và đóng một khoản tiền cọc
+để giữ chỗ. Số tiền cọc khác nhau tùy theo chương trình mà Quý khách chọn, số tiền
+còn lại sẽ thanh toán trước ngày khởi hành tối thiểu 05 ngày làm việc.
+
+Thanh toán bằng tiền mặt, cà thẻ tại văn phòng TravelVN hoặc chuyển khoản tới tài
+khoản ngân hàng của TravelVN.
+
+Tên Tài Khoản : Công ty CP Du lịch và Tiếp thị GTVT Việt Nam – TravelVN
+
+--------------------------------------------------
+
+Số Tài khoản : 190261 6659 4669
+
+Ngân hàng : Techcombank - Chi nhánh Tp.HCM
+
+--------------------------------------------------
+
+Số Tài khoản : 1116 9772 7979
+
+Ngân hàng : Vietinbank - Chi nhánh 7
+
+Việc thanh toán được xem là hoàn tất khi TravelVN nhận được đủ tiền trị giá chuyến
+đi trước lúc khởi hành hoặc theo hợp đồng thỏa thuận giữa hai bên. Bất kỳ mọi sự
+thanh toán chậm trễ dẫn đến việc hủy dịch vụ không thuộc trách nhiệm của TravelVN.
+
+Khách hàng có nhu cầu xuất hóa đơn, vui lòng cung cấp thông tin xuất hóa đơn ngay
+tại thời điểm đăng ký. TravelVN có trách nhiệm xuất hóa đơn cho khách hàng trong
+vòng 7 ngày sau khi tour kết thúc.
+
+Khi thực hiện việc chuyển khoản, Quý khách vui lòng ghi rõ Tên họ, Số điện thoại và
+Nội dung chuyển cho chương trình du lịch cụ thể đã được Quý khách chọn đăng ký.
+
+Sau khi thực hiện việc chuyển khoản, Quý khách vui lòng gửi Ủy Nhiệm Chi về công ty
+TravelVN theo địa chỉ email sales@TravelVN.com hoặc liên hệ với nhân viên tư vấn
+để nhận được biên nhận chính thức từ công ty TravelVN.
+
+TravelVN sẽ không giải quyết các trường hợp hệ thống tự động hủy chỗ đăng ký nếu
+Quý khách không thực hiện đúng qui định trên. TravelVN sẽ xác nhận phục vụ khách
+sau khi đã nhận được tiền thanh toán của Quý khách.
+
+*Lưu ý: Quý khách vui lòng điền đầy đủ thông tin theo yêu cầu khi đăng ký tour qua
+mạng bán travel.com.vn và chịu trách nhiệm về tính chính xác của những thông tin đã
+cung cấp. TravelVN sẽ sử dụng những thông tin này để cung cấp cho các đối tác dịch
+vụ và tiến hành các thủ tục cần thiết cho chuyến đi. Nếu có sự khác biệt giữa thông
+tin mà Quý khách cung cấp so với thực tế dẫn đến việc phải điều chỉnh thì Quý khách
+vui lòng thanh toán các khoản chi phí phát sinh (nếu có).
+
+4. HỦY VÉ VÀ PHÍ HỦY VÉ DU LỊCH
+
+4.1. Trường hợp bị hủy bỏ do TravelVN:
+
+Nếu TravelVN không thực hiện được chuyến du lịch, TravelVN phải báo ngay cho khách
+hàng biết và thanh toán lại cho khách hàng toàn bộ số tiền khách hàng đã đóng trong
+vòng 03 ngày kể từ lúc việc thông báo hủy chuyến du lịch bằng tiền mặt hoặc chuyển
+khoản và chịu toàn bộ chi phí đã trả cho các nhà cung cấp trước đó.
+
+4.2. Trường hợp bị hủy bỏ do khách hàng:
+
+Sau khi đóng tiền, nếu Quý khách muốn chuyển/hủy tour xin vui lòng mang Vé Du Lịch
+đến văn phòng đăng ký tour để làm thủ tục chuyển/hủy tour và chịu mất phí theo quy
+định của TravelVN nếu có. Dựa vào thời điểm khách hàng xác nhận hủy tour bằng văn
+bản với TravelVN:
+
+- Đối với tất cả các tuyến du lịch, áp dụng điều kiện hủy tour ghi trong Biên nhận
+thu tiền và tờ rơi chương trình du lịch.
+
+- Riêng đối với chương trình có ngủ đêm trên du thuyền, du lịch caravan, thể thao,
+mạo hiểm, sự kiện sẽ áp dụng theo điều kiện hủy tour trong tờ rơi chương trình du
+lịch.
+
+- Đối với khách hàng đăng ký Dòng Tour Giá Tốt, các tour có ưu đãi nhân dịp sự kiện,
+hội chợ, ưu đãi trực tuyến, ưu đãi giờ chót thì điều kiện là không hoàn, không hủy,
+không thay đổi được.
+
+4.3. Trường hợp bất khả kháng:
+
+- Nếu chương trình du lịch bị hủy bỏ hoặc thay đổi bởi một trong hai bên vì một lý
+do bất khả kháng (hỏa hoạn, thời tiết, tai nạn, thiên tai, chiến tranh, dịch bệnh,
+hoãn, dời, hủy chuyến hoặc thay đổi khác của các phương tiện vận chuyển công cộng
+hoặc các sự kiện bất khả kháng khác theo quy định pháp luật…), thì TravelVN sẽ
+không chịu bất kỳ nghĩa vụ bồi hoàn các tổn thất đã xảy ra và không chịu bất kỳ
+trách nhiệm pháp lý nào. Tuy nhiên, mỗi bên có trách nhiệm cố gắng tối đa để giúp đỡ
+bên bị thiệt hại nhằm giảm thiểu các tổn thất gây ra vì lý do bất khả kháng. Việc
+hoàn tiền dịch vụ trong trường hợp hủy tour do sự kiện bất khả kháng sẽ tùy thuộc
+vào quy định và điều kiện của các đối tác cung ứng dịch vụ, thời gian hoàn tiền (nếu
+có) từ 60 - 90 ngày.
+
+4.4. Thay đổi lộ trình:
+
+Tùy theo tình hình thực tế, TravelVN giữ quyền thay đổi lộ trình, sắp xếp lại thứ
+tự các điểm tham quan hoặc hủy bỏ chuyến đi du lịch bất cứ lúc nào mà TravelVN thấy
+cần thiết vì sự thuận tiện hoặc an toàn cho khách hàng.
+
+5. NHỮNG YÊU CẦU ĐẶC BIỆT TRONG CHUYẾN DU LỊCH
+
+Các yêu cầu đặc biệt của Quý khách phải được báo trước cho TravelVN ngay tại thời
+điểm đăng ký. TravelVN sẽ cố gắng đáp ứng những yêu cầu này trong khả năng của mình
+song sẽ không chịu trách nhiệm về bất kỳ sự từ chối cung cấp dịch vụ từ phía các nhà
+vận chuyển, khách sạn, nhà hàng và các nhà cung cấp dịch vụ độc lập khác.
+
+6. LƯU TRÚ
+
+Khách sạn được cung cấp trên cơ sở những phòng có hai giường đơn (TWN) hoặc một
+giường đôi (DBL) tùy theo cơ cấu phòng của các khách sạn. Khách sạn do TravelVN đặt
+cho các chương trình tham quan có tiêu chuẩn tương ứng với các mức giá vé mà khách
+chọn khi đăng ký đi du lịch. Nếu cần thiết thay đổi về bất kỳ lý do nào, khách sạn
+thay thế sẽ tương đương với tiêu chuẩn của khách sạn ban đầu và sẽ được báo cho du
+khách trước khi khởi hành. Những yêu cầu đặc biệt của khách hàng nếu thông báo trước
+cho TravelVN sẽ được đáp ứng tùy theo khả năng cung cấp của khách sạn và khách hàng
+phải trả thêm tiền đối với các yêu cầu này (nếu có). TravelVN có quyền không đáp
+ứng những yêu cầu này nếu khách sạn từ chối cung cấp dịch vụ. Giờ nhận phòng tại các
+khách sạn là sau 14g00 hoặc 15g00 và phải trả phòng là trước 12g00 hoặc 11g00 theo
+quy định của khách sạn. Đối với các trường hợp khách lưu trú tại hệ thống khách
+sạn/Resort 5 sao tuân thủ theo điều kiện hủy phạt của khách sạn/Resort cho từng thời
+điểm.
+
+7. VẬN CHUYỂN
+
+Phương tiện vận chuyển tùy thuộc theo từng chương trình du lịch.
+
+Với chương trình đi bằng xe: xe máy lạnh (4, 7, 15, 25, 35, 45 chỗ) sẽ được
+TravelVN sắp xếp tùy theo số lượng khách từng đoàn, phục vụ suốt chương trình tham
+quan.
+
+Với chương trình đi bằng xe lửa - máy bay - tàu cánh ngầm (phương tiện vận chuyển
+công cộng), trong một số chương trình các nhà cung cấp dịch vụ có thể thay đổi giờ
+khởi hành mà không báo trước, việc thay đổi này sẽ được TravelVN thông báo cho
+khách hàng nếu thời gian cho phép.
+
+TravelVN không chịu trách nhiệm bồi hoàn và trách nhiệm pháp lý với những thiệt hại
+về vật chất lẫn tinh thần do việc chậm trễ, thay đổi giờ giấc khởi hành của các
+phương tiện vận chuyển công cộng hoặc sự chậm trễ do chính hành khách gây ra.
+TravelVN chỉ thực hiện hành vi giúp đỡ để giảm bớt tổn thất cho hành khách.
+
+8. HÀNH LÝ
+
+Hành lý gọn nhẹ, với các chương trình sử dụng dịch vụ hàng không, hành lý miễn cước
+sẽ do các hãng hàng không quy định. TravelVN không chịu trách nhiệm về sự thất lạc,
+hư hỏng hành lý hoặc bất kỳ vật dụng gì của du khách trong suốt chuyến đi, du khách
+tự bảo quản hành lý của mình. Nếu khách hàng bị mất hay thất lạc hành lý thì
+TravelVN sẽ giúp hành khách liên lạc và khai báo với các bộ phận liên quan truy tìm
+hành lý bị mất hay thất lạc. Việc bồi thường hành lý bị mất hay thất lạc sẽ theo quy
+định của các đơn vị cung cấp dịch vụ hoặc các đơn vị bảo hiểm (nếu có).
+
+9. BẢO HIỂM DU LỊCH
+
+Giá dịch vụ du lịch trọn gói đã bao gồm bảo hiểm du lịch trong nước với mức đền bù
+cao nhất là 120.000.000đ/khách Việt Nam/vụ cho nhân mạng và 12.000.000 VNĐ/khách
+Việt Nam/vụ cho hành lý. Số hotline tư vấn về các điều kiện, điều khoản bảo hiểm
+0938 30 1234.
+
+10. CAM KẾT VỀ SỨC KHỎE
+
+Khách hàng và người thân cùng tham gia tour phải đảm bảo hoàn toàn đủ sức khỏe
+(không mắc các bệnh lý liên quan đến thần kinh/ tim mạch/ truyền nhiễm/ chất gây
+nghiện hoặc các biểu hiện bệnh khác có khả năng ảnh hưởng đến người khác…) khi đi du
+lịch theo chương trình. Đồng ý miễn trừ trách nhiệm pháp lý; không khiếu nại; không
+yêu cầu bồi thường đối với TravelVN nói chung và nhân viên TravelVN nói riêng khi
+có các vấn đề xảy ra liên quan đến tình trạng sức khỏe của khách hàng tham gia tour
+hoặc sử dụng các dịch vụ do TravelVN cung cấp. Khách hàng đồng ý chi trả các chi
+phí phát sinh ngoài chương trình tour liên quan đến việc giải quyết các rủi ro về
+sức khỏe (bao gồm lưu trú, vận chuyển, chi phí khám chữa bệnh...) – ngoại trừ các
+chi phí thuộc hạng mục bảo hiểm sẽ do Công ty Bảo hiểm hoàn trả theo Quy tắc Bảo
+hiểm du lịch trong nước.
+
+
+
+Vé du lịch cùng các văn bản kèm theo (biên nhận tour, chương trình tour) được xem
+như là bộ Hợp đồng lữ hành có giá trị ràng buộc với các bên và được lập thành hai
+bản, mỗi bên giữ một bản, có giá trị pháp lý như nhau. Do tính chất tour dành cho
+khách lẻ (cá nhân/nhóm gia đình) nên khách hàng (người đăng ký và người đi cùng
+nhóm) được coi là cùng chấp thuận toàn bộ nội dung trong Vé du lịch và các văn bản
+kèm theo kể từ thời điểm đặt cọc, không phụ thuộc vào việc khách hàng có ký tên trên
+Vé du lịch, biên nhận tour hay chương trình tour hay không. Trong quá trình thực
+hiện, nếu xảy ra tranh chấp sẽ được giải quyết trên cơ sở thương lượng trong thời
+hạn 30 ngày kể từ ngày một trong hai bên đưa tranh chấp ra thương lượng. Hết thời
+hạn này nếu tranh chấp không được giải quyết hoặc một trong hai bên không đồng ý với
+kết quả thương lượng thì có quyền đưa tranh chấp ra giải quyết tại Tòa án có thẩm
+quyền.
+
+PHẦN II: CHÍNH SÁCH BẢO VỆ DỮ LIỆU CÁ NHÂN
+
+1. TỔNG QUAN
+
+TravelVN (“chúng tôi”) cam kết tôn trọng quyền riêng tư của Quý khách hàng. Chúng
+tôi cố gắng cung cấp trải nghiệm người dùng an toàn, bảo mật. Chính sách bảo vệ dữ
+liệu cá nhân (sau đây gọi là “Chính sách”) nêu rõ việc thu thập, xử lý và sử dụng dữ
+liệu cá nhân trực tuyến áp dụng cho tất cả những trang web của chúng tôi (trừ khi có
+một tuyên bố riêng về quyền riêng tư áp dụng cụ thể). Chúng tôi khuyến khích Quý
+khách hàng đọc kỹ Chính sách này và thường xuyên kiểm tra trang này để xem xét bất
+kỳ thay đổi nào chúng tôi có thể thực hiện theo các điều khoản của Chính sách này.
+
+Với mục đích của Chính sách này, dữ liệu cá nhân có nghĩa là bất kỳ thông tin nào
+liên quan đến một thể nhân được xác định hoặc có thể nhận dạng (tức là một cá nhân).
+
+Bằng cách chọn và đồng ý với Chính sách bảo vệ dữ liệu cá nhân, Quý khách hàng cho
+phép chúng tôi thu thập, sử dụng, và/hoặc xử lý dữ liệu cá nhân của Quý khách hàng
+theo quy định tại Chính sách này. Việc cho phép này sẽ có hiệu lực và giá trị từ
+thời điểm Quý khách hàng đồng ý cho đến khi chấm dứt theo quy định của pháp luật.
+Nếu Quý khách hàng không đồng ý cho phép việc xử lý dữ liệu cá nhân của Quý khách
+hàng như mô tả trong Chính sách này, xin vui lòng không sử dụng dịch vụ của chúng
+tôi hoặc truy cập các trang web của chúng tôi.
+
+Dữ liệu cá nhân của Quý khách hàng sẽ được lưu trữ và xử lý toàn bộ hoặc một phần
+tại Việt Nam và các quốc gia khác trên thế giới. Nếu Quý khách hàng truy cập trang
+web của TravelVN từ các quốc gia khác ngoài Việt Nam, việc Quý khách hàng sử dụng
+trang web này đồng nghĩa với việc Quý khách hàng đồng ý chuyển dữ liệu của Quý khách
+hàng ra khỏi quốc gia của Quý khách hàng và đến Việt Nam.
+
+Lưu ý: Các trang web của chúng tôi có chứa liên kết đến các trang web khác mà chúng
+tôi không kiểm soát. TravelVN không chịu trách nhiệm về chính sách quyền riêng tư
+hoặc cách hoạt động của các trang web khác mà Quý khách hàng chọn kết nối từ một
+trang web của TravelVN. Chúng tôi khuyến khích Quý khách hàng xem xét các chính
+sách quyền riêng tư của những trang web khác đó để Quý khách hàng có thể hiểu cách
+họ xử lý, sử dụng và chia sẻ dữ liệu cá nhân của Quý khách hàng.
+
+2. CÁC LOẠI DỮ LIỆU CÁ NHÂN VÀ CÁCH THU THẬP
+
+Quý khách hàng hiểu, xác nhận và đồng ý rằng TravelVN được phép xử lý dữ liệu cá
+nhân của Quý khách hàng, người được Quý khách hàng ủy quyền và các bên khác có liên
+quan của Quý khách hàng, nếu cung cấp hoặc liên hệ với TravelVN, bao gồm các dữ
+liệu cá nhân được cập nhật, sửa đổi, bổ sung tại từng thời điểm, trong đó:
+
+- Dữ liệu được thu thập có thể bao gồm: Họ tên, ngày tháng năm sinh, giới tính, nơi
+sinh, địa chỉ thường trú, địa chỉ liên hệ, quốc tịch, hình ảnh, số điện thoại,
+email, các loại giấy tờ tùy thân, thông tin về tài khoản số, dữ liệu cá nhân phản
+ánh hoạt động, lịch sử hoạt động trên không gian mạng, các thông tin, dữ liệu khác
+gắn liền với cá nhân hoặc giúp xác định một cá nhân cụ thể và các thông tin, dữ liệu
+khác theo quy định của pháp luật;
+
+- Và trong một số trường hợp, chúng tôi có thể phải thu thập thêm một số dữ liệu cá
+nhân liên quan đến tình trạng sức khỏe, mối quan hệ trong gia đình, tình trạng công
+việc, một số thông tin khác được phân vào nhóm dữ liệu cá nhân nhạy cảm theo khoản 4
+điều 2 Nghị định 13/2023/NĐ-CP.
+
+Quý khách hàng cũng đồng ý và xác nhận rằng tất cả dữ liệu cá nhân và thông tin mà
+Quý khách hàng cung cấp, đăng hoặc tải lên trên trang web của chúng tôi là chính xác
+và hợp pháp, và Quý khách hàng không sử dụng dữ liệu và thông tin như vậy cho bất kỳ
+mục đích bất hợp pháp nào. TravelVN, hoạt động như một nền tảng trung gian, sẽ
+không cung cấp bất kỳ bảo đảm nào và không chịu trách nhiệm cho bất kỳ bên nào liên
+quan đến vấn đề này.
+
+Nếu Quý khách hàng cung cấp cho chúng tôi bất kỳ dữ liệu cá nhân của bất kỳ bên thứ
+ba nào, Quý khách hàng cam kết và đảm bảo rằng Quý khách hàng đã có được sự đồng ý,
+giấy phép và/hoặc sự cho phép từ bên thứ ba đó để chia sẻ và chuyển dữ liệu cá nhân
+của họ cho chúng tôi, và để chúng tôi thu thập, lưu trữ, sử dụng, tiết lộ và/hoặc xử
+lý dữ liệu đó theo Chính sách này.
+
+3. LƯU TRỮ
+
+Chúng tôi sẽ lưu trữ dữ liệu cá nhân của Quý khách hàng trong khoảng thời gian cần
+thiết để thực hiện mục đích chúng tôi thu thập dữ liệu đó và sẽ chấm dứt lưu trữ
+theo quy định của pháp luật.
+
+4. MỤC ĐÍCH XỬ LÝ DỮ LIỆU CÁ NHÂN
+
+Quý khách hàng đồng ý và xác nhận rằng dữ liệu cá nhân của Quý khách hàng được xử lý
+cho các mục đích, bao gồm nhưng không giới hạn:
+
+- Xác thực, định danh Quý khách hàng
+
+- Thông báo cho Quý khách hàng các sản phẩm, dịch vụ có sẵn hoặc gửi Quý khách hàng
+những tài liệu quảng cáo/tiếp thị khác, có thể trực tiếp hoặc thông qua các đối tác
+và chiến lược quảng cáo mà chúng tôi có từ TravelVN hoặc các công ty liên kết, công
+ty thành viên của TravelVN, hoặc để liên hệ với Quý khách hàng về ý kiến của Quý
+khách hàng đối với các sản phẩm, dịch vụ của chúng tôi.
+
+- Liên hệ cung cấp cho Quý khách hàng các thông tin về việc đăng ký thành viên và
+chăm sóc, hỗ trợ Quý khách hàng trong quá trình sử dụng sản phẩm, dịch vụ (như là
+gọi điện thoại; gửi email, nhắn tin thông qua ứng dụng…); hoặc gửi các thông điệp
+khác liên quan đến việc cập nhật trên trang web của chúng tôi, chẳng hạn như những
+sản phẩm mới, chương trình khuyến mãi, các chính sách ưu đãi…Tính chất và tần suất
+của các thông tin này sẽ thay đổi tùy từng thời điểm phù hợp với hoạt động kinh
+doanh của chúng tôi.
+
+- Cung cấp các dịch vụ theo thỏa thuận cho Quý khách hàng.
+
+- Cung cấp cho đối tác thứ ba liên quan đến đến việc cung cấp dịch vụ cho Quý khách
+hàng (đối tác vận chuyển, lưu trú, ăn uống, điểm tham quan, dịch thuật,…).
+
+- Cung cấp cho cơ quan chức năng để thực hiện các dịch vụ liên quan đến visa (Đại sứ
+quán, lãnh sự quán,…).
+
+- Để xuất hóa đơn, chứng từ theo quy định pháp luật.
+
+- Thực hiện theo yêu cầu của Cơ quan Nhà nước có thẩm quyền.
+
+- Mục đích khác theo mô tả cho Quý khách hàng tại thời điểm thu thập dữ liệu cá nhân
+(nếu có).
+
+5. TIẾT LỘ DỮ LIỆU CÁ NHÂN
+
+Chúng tôi sẽ không cung cấp thông tin Quý khách hàng cho bất kỳ bên thứ ba nào trừ
+các trường hợp cung cấp thông tin nhằm thực hiện “Mục đích thu thập và xử lý dữ
+liệu” nêu trên, phải thực hiện theo yêu cầu của các cơ quan Nhà nước có thẩm quyền,
+hoặc theo quy định của pháp luật, hoặc khi việc cung cấp thông tin đó là cần thiết
+để Chúng tôi cung cấp dịch vụ/tiện ích cho Quý khách hàng.
+
+6. TỔ CHỨC, CÁ NHÂN ĐƯỢC TIẾP CẬN, THU THẬP VÀ XỬ LÝ DỮ LIỆU CÁ NHÂN
+
+Quý khách hàng chấp thuận rằng việc xử lý dữ liệu cá nhân của Quý khách hàng được
+thực hiện bởi TravelVN/ Công ty con/ Công ty liên kết/ Nhân viên của TravelVN và
+các tổ chức, cá nhân hợp tác/liên kết với TravelVN hoặc các đối tác được TravelVN
+thuê/hợp tác để thực hiện một số chức năng liên quan đến sản phẩm, dịch vụ TravelVN
+cung cấp phù hợp với mục đích thu thập và xử lý dữ liệu cá nhân tại Chính sách này.
+
+7. CHUYỂN DỮ LIỆU CÁ NHÂN RA NƯỚC NGOÀI
+
+TravelVN có thể cần chuyển thông tin cá nhân của Quý khách hàng ra ngoài phạm vi
+lãnh thổ Việt Nam nếu có bất kỳ nhà cung cấp dịch vụ hoặc các đối tác chiến lược,
+đối tác liên kết (“các công ty nước ngoài”) tham gia cung cấp một phần của một trong
+các Dịch vụ của TravelVN.
+
+8. PHƯƠNG THỨC XỬ LÝ DỮ LIỆU CÁ NHÂN
+
+Quý khách hàng đồng ý rằng dữ liệu cá nhân của Quý khách hàng được xử lý bằng bất kỳ
+phương thức nào theo chính sách và/hoặc áp dụng của TravelVN trong từng thời kỳ,
+bao gồm nhưng không giới hạn việc thu thập, ghi, xác nhận, lưu trữ, chỉnh sửa, kết
+hợp, truy cập, truy xuất, thu hồi, mã hóa, giải mã, sao chép, chia sẻ, truyền đưa,
+cung cấp, chuyển giao, sử dụng không gian mạng, thiết bị, phương tiện điện tử hoặc
+các hình thức khác để chuyển dữ liệu cá nhân trong nước hoặc nước ngoài, xóa, hủy và
+các hành động khác có liên quan.
+
+9. THỜI GIAN BẮT ĐẦU VÀ KẾT THÚC XỬ LÝ DỮ LIỆU CÁ NHÂN
+
+TravelVN bắt đầu thực hiện các hoạt động xử lý dữ liệu cá nhân từ khi được cung cấp
+cho đến khi nhận được yêu cầu kết thúc xử lý dữ liệu cá nhân bằng văn bản của Cơ
+quan Nhà nước có thẩm quyền.
+
+10. PHƯƠNG TIỆN, CÔNG CỤ ĐỂ KHÁCH HÀNG CHỈNH SỬA DỮ LIỆU CÁ NHÂN
+
+Quý khách hàng có mong muốn chỉnh sửa dữ liệu cá nhân đối với thông tin của mình hãy
+liên hệ TravelVN thông qua Email: info@TravelVN.com hoặc Số điện thoại: (84-28)
+3822 8898 để được hỗ trợ.
+
+11. CÁC RỦI RO KHÔNG MONG MUỐN CÓ THỂ XẢY RA
+
+Trong quá trình xử lý dữ liệu cá nhân, TravelVN và các bên liên quan sẽ áp dụng các
+biện pháp kỹ thuật, an ninh, bảo mật cần thiết và trong khả năng phù hợp để bảo vệ
+dữ liệu cá nhân của Quý khách hàng. Tuy nhiên, Quý khách hàng hiểu và công nhận rằng
+không có hệ thống kỹ thuật hay biện pháp an ninh, bảo mật nào là an toàn tuyệt đối
+và giao dịch trực tuyến, không gian mạng cùng các hình thức xử lý dữ liệu cá nhân
+luôn tiềm ẩn nguy cơ phát sinh, bao gồm nhưng không giới hạn, việc dữ liệu bị rò rỉ,
+phát tán, lợi dụng, chiếm đoạt. Trong trường hợp này, Quý khách hàng đồng ý rằng
+TravelVN và các bên liên quan không phải chịu bất kỳ trách nhiệm nào đối với Quý
+khách hàng và bên liên quan của Quý khách hàng (nếu có).
+
+12. ĐỊA CHỈ CỦA ĐƠN VỊ XỬ LÝ DỮ LIỆU CÁ NHÂN
+
+Công ty Cổ phần Du lịch và Tiếp thị GTVT Việt Nam – TravelVN:
+
+- Địa chỉ trụ sở chính: 190 Pasteur, Phường Võ Thị Sáu, Quận 3, Thành phố Hồ Chí
+Minh.
+
+- Email: info@TravelVN.com
+
+- Số điện thoại: (84-28) 3822 8898
+
+13. BỘ PHẬN XỬ LÝ DỮ LIỆU CÁ NHÂN
+
+Để đảm bảo tính bảo mật thông tin dữ liệu cá nhân cũng như có đơn vị chuyên môn trực
+tiếp quản lý dữ liệu cá nhân của Quý khách hàng, Công ty Cổ phần Du lịch và Tiếp thị
+GTVT Việt Nam – TravelVN thành lâp Bộ phận xử lý dữ liệu, bao gồm các thành viên do
+Ban Lãnh đạo Công ty phân công theo tình hình hoạt động tại từng thời điểm.
+
+Chức năng, nhiệm vụ của Bộ phận xử lý dữ liệu cá nhân: Quản lý dữ liệu cá nhân của
+Quý khách hàng; phòng ngừa, phát hiện, ngăn chặn, xử lý hành vi vi phạm liên quan
+đến dữ liệu cá nhân theo quy định của pháp luật; bảo vệ thông tin cá nhân Quý khách
+hàng khỏi rò rỉ hoặc thiệt hại do tấn công mạng hoặc virus máy tính gây ra; khôi
+phục tính sẵn sàng và quyền truy cập vào dữ liệu cá nhân một cách kịp thời trong
+trường hợp có sự cố vật lý hay kỹ thuật; đảm bảo quy trình thường xuyên kiểm tra,
+đánh giá hiệu quả của các biện pháp kỹ thuật và tổ chức nhằm đảm bảo an ninh cho
+việc xử lý dữ liệu cá nhân.                                  
+                                    </pre>
+                                <!-- </div> -->
+
+                                <!-- <div style="position: fixed;"> -->
+                                <!-- <hr class="my-3"> -->
+
+                            </div>
+                            <div class="modal-footer">
+                                <div class="text-start w-100">
+                                    <input type="checkbox" id="agree" class="form-check-input me-2">
+                                    <label for="agree" class="form-check-label text-danger">Tôi đã đọc kỹ
+                                        điều
+                                        khoản</label>
+                                </div>
+                                <div class="mt-3 text-center w-100">
+                                    <button id="continueBtn" type="button" class="btn btn-outline-danger"
+                                        style="width: 25%;" disabled>Tiếp tục</button>
+                                </div>
+                                <!-- </div> -->
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Script xử lý -->
+                <script>
+                    document.getElementById('agree').addEventListener('change', function () {
+                        document.getElementById('continueBtn').disabled = !this.checked;
+                    });  
+                </script>
+
             </div>
         </div>
     </div>
     <!-- Body End-->
 
     <!-- Footer Start -->
-    <div class="container-fluid footer py-5 mx-auto mt-5">
+    <div class="container-fluid footer py-5 mx-auto">
         <div class="container py-5">
             <div class="row g-5">
                 <div class="col-md-4 col-lg-4 col-xl-4">
                     <div class="footer-item d-flex flex-column">
                         <h4 class="mb-4 text-white">Liên hệ</h4>
-                        <a href=""><i class="fas fa-home me-2"></i> 298 Bắc Từ Liêm, Hà Nội</a>
-                        <a href=""><i class="fas fa-envelope me-2"></i> travelvn@haui.com</a>
-                        <a href=""><i class="fas fa-phone me-2"></i> 0343 857 961</a>
-                        <a href="" class="mb-3"><i class="fas fa-print me-2"></i> 0247 814 592</a>
+                        <a href="#"><i class="fas fa-home me-2"></i> 298 Bắc Từ Liêm, Hà Nội</a>
+                        <a href="#"><i class="fas fa-envelope me-2"></i> travelvn@haui.com</a>
+                        <a href="#"><i class="fas fa-phone me-2"></i> 0343 857 961</a>
+                        <a href="#" class="mb-3"><i class="fas fa-print me-2"></i> 0247 814 592</a>
                         <div class="d-flex align-items-center">
                             <i class="fas fa-share fa-2x text-white me-2"></i>
-                            <a class="btn-square btn btn-primary rounded-circle mx-1" href=""><i
+                            <a class="btn-square btn btn-primary rounded-circle mx-1" href="#"><i
                                     class="fab fa-facebook-f"></i></a>
-                            <a class="btn-square btn btn-primary rounded-circle mx-1" href=""><i
+                            <a class="btn-square btn btn-primary rounded-circle mx-1" href="#"><i
                                     class="fab fa-twitter"></i></a>
-                            <a class="btn-square btn btn-primary rounded-circle mx-1" href=""><i
+                            <a class="btn-square btn btn-primary rounded-circle mx-1" href="#"><i
                                     class="fab fa-instagram"></i></a>
-                            <a class="btn-square btn btn-primary rounded-circle mx-1" href=""><i
+                            <a class="btn-square btn btn-primary rounded-circle mx-1" href="#"><i
                                     class="fab fa-linkedin-in"></i></a>
                         </div>
                     </div>
                 </div>
+                <!-- <div class="col-md-4 col-lg-4 col-xl-4">
+                    <div class="footer-item d-flex flex-column">
+                        <h4 class="mb-4 text-white">Doanh nghiệp</h4>
+                        <a href=""><i class="fas fa-angle-right me-2"></i> About</a>
+                        <a href=""><i class="fas fa-angle-right me-2"></i> Careers</a>
+                        <a href=""><i class="fas fa-angle-right me-2"></i> Blog</a>
+                        <a href=""><i class="fas fa-angle-right me-2"></i> Press</a>
+                        <a href=""><i class="fas fa-angle-right me-2"></i> Gift Cards</a>
+                        <a href=""><i class="fas fa-angle-right me-2"></i> Magazine</a>
+                    </div>
+                </div> -->
                 <div class="col-md-4 col-lg-4 col-xl-4 ps-5">
                     <div class="footer-item d-flex flex-column">
                         <h4 class="mb-4 text-white">Hỗ trợ</h4>
-                        <a href=""><i class="fas fa-angle-right me-2"></i> Trang chủ</a>
-                        <a href=""><i class="fas fa-angle-right me-2"></i> Giới thiệu</a>
-                        <a href=""><i class="fas fa-angle-right me-2"></i> Dịch vụ</a>
-                        <a href=""><i class="fas fa-angle-right me-2"></i> Liên hệ với chúng tôi</a>
+                        <a href="index.html"><i class="fas fa-angle-right me-2"></i> Trang chủ</a>
+                        <a href="about.html"><i class="fas fa-angle-right me-2"></i> Giới thiệu</a>
+                        <a href="services.html"><i class="fas fa-angle-right me-2"></i> Dịch vụ</a>
+                        <a href="contact.html"><i class="fas fa-angle-right me-2"></i> Liên hệ với chúng tôi</a>
                         <!-- <a href=""><i class="fas fa-angle-right me-2"></i> Sitemap</a>
                         <a href=""><i class="fas fa-angle-right me-2"></i> Cookie policy</a> -->
                     </div>
                 </div>
                 <div class="col-md-4 col-lg-4 col-xl-4 ps-5">
                     <div class="footer-item">
+                        <!-- <div class="row gy-3 gx-2 mb-4">
+                            <div class="col-xl-6">
+                                <form>
+                                    <div class="form-floating">
+                                        <select class="form-select bg-dark border" id="select1">
+                                            <option value="1">Arabic</option>
+                                            <option value="2">German</option>
+                                            <option value="3">Greek</option>
+                                            <option value="3">New York</option>
+                                        </select>
+                                        <label for="select1">English</label>
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="col-xl-6">
+                                <form>
+                                    <div class="form-floating">
+                                        <select class="form-select bg-dark border" id="select1">
+                                            <option value="1">USD</option>
+                                            <option value="2">EUR</option>
+                                            <option value="3">INR</option>
+                                            <option value="3">GBP</option>
+                                        </select>
+                                        <label for="select1">$</label>
+                                    </div>
+                                </form>
+                            </div>
+                        </div> -->
                         <h4 class="text-white mb-3">Thanh toán</h4>
                         <div class="footer-bank-card">
                             <a href="#" class="text-white me-2"><i class="bi bi-qr-code-scan fa-2x"></i></a>

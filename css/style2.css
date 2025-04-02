@@ -308,6 +308,12 @@ input[type=number].quantity:focus {
   /*z-index: 1000; /* Đảm bảo nó nằm trên các phần tử khác */
 }
 
+.alert{
+  position: sticky;
+  top: 0px;
+  z-index: 1000000;
+}
+
 .text-danger {
   color: var(--danger) !important;
 }

@@ -34,6 +34,9 @@
 
     <!-- Logo -->
     <link rel="icon" href="img/logo_tour_no_text.svg">
+
+    <script src="lib/lightbox/js/jquery-3.7.1.min.js"></script>
+    <script src="js/main2.js"></script>
 </head>
 
 <body>
@@ -48,23 +51,23 @@
     <!-- Spinner End -->
 
     <!-- Topbar Start -->
-    <div class="container-fluid bg-primary px-5 d-lg-block">
+    <div class="container-fluid bg-primary px-5 d-none d-lg-block">
         <div class="row gx-0">
-            <div class="col-lg-8 text-center text-lg-start mb-2 mb-lg-0 d-none d-lg-block">
+            <div class="col-lg-8 text-center text-lg-start mb-2 mb-lg-0">
                 <div class="d-inline-flex align-items-center" style="height: 45px;">
-                    <a class="btn btn-sm btn-outline-light btn-sm-square rounded-circle me-2" href=""><i
+                    <a class="btn btn-sm btn-outline-light btn-sm-square rounded-circle me-2" href="#"><i
                             class="fab fa-twitter fw-normal"></i></a>
-                    <a class="btn btn-sm btn-outline-light btn-sm-square rounded-circle me-2" href=""><i
+                    <a class="btn btn-sm btn-outline-light btn-sm-square rounded-circle me-2" href="#"><i
                             class="fab fa-facebook-f fw-normal"></i></a>
-                    <a class="btn btn-sm btn-outline-light btn-sm-square rounded-circle me-2" href=""><i
+                    <a class="btn btn-sm btn-outline-light btn-sm-square rounded-circle me-2" href="#"><i
                             class="fab fa-linkedin-in fw-normal"></i></a>
-                    <a class="btn btn-sm btn-outline-light btn-sm-square rounded-circle me-2" href=""><i
+                    <a class="btn btn-sm btn-outline-light btn-sm-square rounded-circle me-2" href="#"><i
                             class="fab fa-instagram fw-normal"></i></a>
-                    <a class="btn btn-sm btn-outline-light btn-sm-square rounded-circle" href=""><i
+                    <a class="btn btn-sm btn-outline-light btn-sm-square rounded-circle" href="#"><i
                             class="fab fa-youtube fw-normal"></i></a>
                 </div>
             </div>
-            <div class="col-lg-4 text-end text-lg-end ms-4 ms-lg-0">
+            <div class="col-lg-4 text-center text-lg-end">
                 <div class="d-inline-flex align-items-center" style="height: 45px;">
                     <a href="#" data-bs-toggle="modal" data-bs-target="#register" class="header-unauth"><small
                             class="me-3 text-light"><i class="fa fa-user me-2"></i>Đăng
@@ -124,18 +127,18 @@
                                                 </div>
 
                                                 <!-- <label for="fullname" class="fst-italic letter-spacing-1 label-log">Họ và tên</label><br/>
-                                                    <input type="text" name="fullname" id="fullname" class="w-100 rounded-3 py-2 ps-3 bg-light border-0"><br/>
-                                                    <label for="email" class="fst-italic letter-spacing-1 mt-2 pt-1 label-log">Email</label><br/>
-                                                    <input type="email" name="email" id="email" class="w-100 rounded-3 py-1 ps-2 border-0 bg-dark"><br/>
-                                                    <label for="dob" class="fst-italic letter-spacing-1 mt-2 pt-1 label-log">Ngày sinh</label><br/>
-                                                    <input type="date" name="dob" id="dob" class="w-100 rounded-3 py-1 ps-2"><br/>
-                                                    <label for="gender" class="fst-italic letter-spacing-1 mt-2 pt-1 label-log">Giới tính</label><br/>
-                                                    <input type="radio" name="gender" id="male" checked><span class="text-dark fs-6 ps-1">Nam</span>
-                                                    <input type="radio" name="gender" id="female" class="ms-3"><span class="text-dark fs-6 ps-1">Nữ</span><br/>
-                                                    <label for="username" class="fst-italic letter-spacing-1 mt-2 pt-1 label-log">Tên đăng nhập</label><br/>
-                                                    <input type="text" name="username" id="username" class="w-100 rounded-3 py-1 ps-2"><br/>
-                                                    <label for="password" class="fst-italic letter-spacing-1 mt-2 pt-1 ps-2 label-log">Mật khẩu</label><br/>
-                                                    <input type="password" name="password" id="password" class="w-100 rounded-3 py-1"><br/><br/> -->
+                                                <input type="text" name="fullname" id="fullname" class="w-100 rounded-3 py-2 ps-3 bg-light border-0"><br/>
+                                                <label for="email" class="fst-italic letter-spacing-1 mt-2 pt-1 label-log">Email</label><br/>
+                                                <input type="email" name="email" id="email" class="w-100 rounded-3 py-1 ps-2 border-0 bg-dark"><br/>
+                                                <label for="dob" class="fst-italic letter-spacing-1 mt-2 pt-1 label-log">Ngày sinh</label><br/>
+                                                <input type="date" name="dob" id="dob" class="w-100 rounded-3 py-1 ps-2"><br/>
+                                                <label for="gender" class="fst-italic letter-spacing-1 mt-2 pt-1 label-log">Giới tính</label><br/>
+                                                <input type="radio" name="gender" id="male" checked><span class="text-dark fs-6 ps-1">Nam</span>
+                                                <input type="radio" name="gender" id="female" class="ms-3"><span class="text-dark fs-6 ps-1">Nữ</span><br/>
+                                                <label for="username" class="fst-italic letter-spacing-1 mt-2 pt-1 label-log">Tên đăng nhập</label><br/>
+                                                <input type="text" name="username" id="username" class="w-100 rounded-3 py-1 ps-2"><br/>
+                                                <label for="password" class="fst-italic letter-spacing-1 mt-2 pt-1 ps-2 label-log">Mật khẩu</label><br/>
+                                                <input type="password" name="password" id="password" class="w-100 rounded-3 py-1"><br/><br/> -->
 
                                                 <div class="d-grid mt-3">
                                                     <button type="button" class="btn btn-primary btn-block w-50 mx-auto"
@@ -195,30 +198,19 @@
                             </div>
                         </div>
                     </div>
-
                     <div class="dropdown d-none" id="header-auth">
-                        <a href="#" class="dropdown-toggle text-light" id="fullname" data-bs-toggle="dropdown"><small><i
-                                    class="bi bi-person-fill fs-5 me-2"></i>Tên người dùng</small></a>
-                        <div class="dropdown-menu dropdown-menu-end rounded">
-                            <a href="#" class="dropdown-item"><i class="fas fa-user-alt me-2"></i>Thông tin cá nhân</a>
-                            <!-- <a href="#" class="dropdown-item"><i class="fas fa-cog me-2"></i>Quản lý tài khoản</a> -->
-                            <a href="#" class="dropdown-item"><i class="bi bi-airplane-engines-fill me-2"></i>Các tour
+                        <a href="#" class="dropdown-toggle text-light" data-bs-toggle="dropdown"><small id="fullname"><i
+                                    class="fa fa-home me-2"></i>Bảng điều khiển</small></a>
+                        <div class="dropdown-menu rounded">
+                            <a href="myinfo.html" class="dropdown-item"><i class="fas fa-user-alt me-2"></i>Thông tin cá
+                                nhân</a>
+                            <a href="mytour.html" class="dropdown-item"><i
+                                    class="bi bi-airplane-engines-fill me-2"></i>Các tour
                                 của bạn</a>
                             <a href="#" class="dropdown-item" id="btnLogout"><i class="fas fa-power-off me-2"></i>Đăng
                                 xuất</a>
                         </div>
                     </div>
-
-                    <!-- <div class="dropdown">
-                            <a href="#" class="dropdown-toggle text-light" data-bs-toggle="dropdown"><small><i class="fa fa-home me-2"></i>Bảng điều khiển</small></a>
-                            <div class="dropdown-menu rounded">
-                                <a href="#" class="dropdown-item"><i class="fas fa-user-alt me-2"></i>Hồ sơ của tôi</a>
-                                <a href="#" class="dropdown-item"><i class="fas fa-comment-alt me-2"></i>Hộp thư đến</a>
-                                <a href="#" class="dropdown-item"><i class="fas fa-bell me-2"></i>Thông báo</a>
-                                <a href="#" class="dropdown-item"><i class="fas fa-cog me-2"></i>Quản lý tài khoản</a>
-                                <a href="#" class="dropdown-item"><i class="fas fa-power-off me-2"></i>Đăng xuất</a>
-                            </div>
-                        </div> -->
                 </div>
             </div>
         </div>
@@ -244,23 +236,9 @@
                     <a href="index.html" class="nav-item nav-link active">Trang chủ</a>
                     <a href="about.html" class="nav-item nav-link">Giới thiệu</a>
                     <a href="services.html" class="nav-item nav-link">Dịch vụ</a>
-                    <!-- <a href="packages.html" class="nav-item nav-link">Các gói</a>
-                    <a href="blog.html" class="nav-item nav-link">Blog</a>
-                    <div class="nav-item dropdown">
-                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Các trang</a>
-                        <div class="dropdown-menu m-0">
-                            <a href="destination.html" class="dropdown-item">Điểm đến</a>
-                            <a href="tour.html" class="dropdown-item">Khám phá Tour</a>
-                            <a href="booking.html" class="dropdown-item">Đặt Tour</a>
-                            <a href="gallery.html" class="dropdown-item">Bộ sưu tập</a>
-                            <a href="guides.html" class="dropdown-item">Hướng dẫn du lịch</a>
-                            <a href="testimonial.html" class="dropdown-item">Đánh giá</a>
-                            <a href="404.html" class="dropdown-item">Trang 404</a>
-                        </div>
-                    </div> -->
                     <a href="contact.html" class="nav-item nav-link">Liên hệ</a>
                 </div>
-                <a href="" class="btn btn-primary rounded-pill py-2 px-4 ms-lg-4">Đặt ngay</a>
+                <a href="foundtourlist.html" class="btn btn-primary rounded-pill py-2 px-4 ms-lg-4">Đặt ngay</a>
             </div>
         </nav>
 
@@ -287,7 +265,7 @@
                                 </p>
                                 <div class="d-flex align-items-center justify-content-center">
                                     <a class="btn-hover-bg btn btn-primary rounded-pill text-white py-3 px-5"
-                                        href="#">Khám phá ngay</a>
+                                        href="foundtourlist.html">Khám phá ngay</a>
                                 </div>
                             </div>
                         </div>
@@ -373,7 +351,8 @@
                 <!-- <input class="form-control border-0 rounded-pill w-100 py-3 ps-4 pe-5" type="text"
                     placeholder="Ví dụ: Hà Nội"> -->
                 <button type="button" class="btn btn-primary rounded-pill py-2 px-4 position-absolute me-2"
-                    style="top: 50%; right: 46px; transform: translateY(-50%);">Tìm kiếm</button>
+                    style="top: 50%; right: 46px; transform: translateY(-50%);" id="btnFind">Tìm kiếm</button>
+                
             </div>
         </div>
     </div>
@@ -582,22 +561,22 @@
             </div>
             <div class="mx-auto d-flex justify-content-evenly festival-carousel owl-carousel">
                 <div>
-                    <button class="btn btn-outline-primary rounded-pill py-2 my-1" style="width: 155px;">30/4</button>
+                    <button class="btn btn-outline-primary rounded-pill py-2 my-1 btn-festival" style="width: 155px;">30/4</button>
                 </div>
                 <div>
-                    <button class="btn btn-outline-primary rounded-pill py-2 my-1" style="width: 155px;">Tháng
+                    <button class="btn btn-outline-primary rounded-pill py-2 my-1 btn-festival" style="width: 155px;">Tháng
                         Giêng</button>
                 </div>
                 <div>
-                    <button class="btn btn-outline-primary rounded-pill py-2 my-1" style="width: 155px;">Hội
+                    <button class="btn btn-outline-primary rounded-pill py-2 my-1 btn-festival" style="width: 155px;">Hội
                         Lim</button>
                 </div>
                 <div>
-                    <button class="btn btn-outline-primary rounded-pill py-2 my-1" style="width: 155px;">Đền
+                    <button class="btn btn-outline-primary rounded-pill py-2 my-1 btn-festival" style="width: 155px;">Đền
                         Trần</button>
                 </div>
                 <div>
-                    <button class="btn btn-outline-primary rounded-pill py-2 my-1" style="width: 155px;">Noel</button>
+                    <button class="btn btn-outline-primary rounded-pill py-2 my-1 btn-festival" style="width: 155px;">Noel</button>
                 </div>
             </div>
         </div>
@@ -1485,6 +1464,18 @@
     </div>
     <!-- New Tours End -->
 
+    <script>
+        $.noConflict;
+        jQuery(function($){
+            $('#btnFind, .btn-festival, .national-item, .destination-img').click(function(){
+                window.location.href = "foundtourlist.html";
+            });
+            $('.packages-item').click(function(){
+                window.location.href = 'tourunit.html';
+            })
+        })
+    </script>
+
     <!-- Gallery Start -->
     <!-- <div class="container-fluid gallery py-5 my-5">
         <div class="mx-auto text-center mb-5" style="max-width: 900px;">
@@ -2276,19 +2267,19 @@
                 <div class="col-md-4 col-lg-4 col-xl-4">
                     <div class="footer-item d-flex flex-column">
                         <h4 class="mb-4 text-white">Liên hệ</h4>
-                        <a href=""><i class="fas fa-home me-2"></i> 298 Bắc Từ Liêm, Hà Nội</a>
-                        <a href=""><i class="fas fa-envelope me-2"></i> travelvn@haui.com</a>
-                        <a href=""><i class="fas fa-phone me-2"></i> 0343 857 961</a>
-                        <a href="" class="mb-3"><i class="fas fa-print me-2"></i> 0247 814 592</a>
+                        <a href="#"><i class="fas fa-home me-2"></i> 298 Bắc Từ Liêm, Hà Nội</a>
+                        <a href="#"><i class="fas fa-envelope me-2"></i> travelvn@haui.com</a>
+                        <a href="#"><i class="fas fa-phone me-2"></i> 0343 857 961</a>
+                        <a href="#" class="mb-3"><i class="fas fa-print me-2"></i> 0247 814 592</a>
                         <div class="d-flex align-items-center">
                             <i class="fas fa-share fa-2x text-white me-2"></i>
-                            <a class="btn-square btn btn-primary rounded-circle mx-1" href=""><i
+                            <a class="btn-square btn btn-primary rounded-circle mx-1" href="#"><i
                                     class="fab fa-facebook-f"></i></a>
-                            <a class="btn-square btn btn-primary rounded-circle mx-1" href=""><i
+                            <a class="btn-square btn btn-primary rounded-circle mx-1" href="#"><i
                                     class="fab fa-twitter"></i></a>
-                            <a class="btn-square btn btn-primary rounded-circle mx-1" href=""><i
+                            <a class="btn-square btn btn-primary rounded-circle mx-1" href="#"><i
                                     class="fab fa-instagram"></i></a>
-                            <a class="btn-square btn btn-primary rounded-circle mx-1" href=""><i
+                            <a class="btn-square btn btn-primary rounded-circle mx-1" href="#"><i
                                     class="fab fa-linkedin-in"></i></a>
                         </div>
                     </div>
@@ -2307,10 +2298,10 @@
                 <div class="col-md-4 col-lg-4 col-xl-4 ps-5">
                     <div class="footer-item d-flex flex-column">
                         <h4 class="mb-4 text-white">Hỗ trợ</h4>
-                        <a href=""><i class="fas fa-angle-right me-2"></i> Trang chủ</a>
-                        <a href=""><i class="fas fa-angle-right me-2"></i> Giới thiệu</a>
-                        <a href=""><i class="fas fa-angle-right me-2"></i> Dịch vụ</a>
-                        <a href=""><i class="fas fa-angle-right me-2"></i> Liên hệ với chúng tôi</a>
+                        <a href="#"><i class="fas fa-angle-right me-2"></i> Trang chủ</a>
+                        <a href="about.html"><i class="fas fa-angle-right me-2"></i> Giới thiệu</a>
+                        <a href="services.html"><i class="fas fa-angle-right me-2"></i> Dịch vụ</a>
+                        <a href="contact.html"><i class="fas fa-angle-right me-2"></i> Liên hệ với chúng tôi</a>
                         <!-- <a href=""><i class="fas fa-angle-right me-2"></i> Sitemap</a>
                         <a href=""><i class="fas fa-angle-right me-2"></i> Cookie policy</a> -->
                     </div>
@@ -2396,8 +2387,8 @@
     <!-- Template Javascript -->
     <script src="js/main.js"></script>
 
-    <!--Register-->
-    <script>
+    Register
+    <!-- <script>
         var header_auth = document.getElementById("header-auth");
 
         document.getElementById('btnRegister').addEventListener('click',
@@ -2533,7 +2524,7 @@
                     console.error('Error:', error);
                 });
         });
-    </script>
+    </script> -->
 </body>
 
 </html>

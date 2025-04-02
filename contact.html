@@ -14,7 +14,7 @@
     <!-- <link href="https://fonts.googleapis.com/css2?family=Jost:wght@500;600&family=Roboto&display=swap" rel="stylesheet"> -->
 
     <!-- Icon Font Stylesheet -->
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"/>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
 
     <!-- Libraries Stylesheet -->
@@ -30,316 +30,441 @@
 
     <!-- Logo -->
     <link rel="icon" href="img/logo_tour_no_text.svg">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+    <link rel="stylesheet" href="css/style2.css">
+    <script src="lib/lightbox/js/jquery-3.7.1.min.js"></script>
+    <script src="js/main2.js"></script>
 </head>
 
-    <body>
+<body>
 
-        <!-- Spinner Start -->
-        <div id="spinner" class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
-            <div class="spinner-border text-primary" style="width: 3rem; height: 3rem;" role="status">
-                <span class="sr-only">Loading...</span>
-            </div>
+    <!-- Spinner Start -->
+    <div id="spinner"
+        class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
+        <div class="spinner-border text-primary" style="width: 3rem; height: 3rem;" role="status">
+            <span class="sr-only">Loading...</span>
         </div>
-        <!-- Spinner End -->
+    </div>
+    <!-- Spinner End -->
 
-        <!-- Topbar Start -->
-        <div class="container-fluid bg-primary px-5 d-none d-lg-block">
-            <div class="row gx-0">
-                <div class="col-lg-8 text-center text-lg-start mb-2 mb-lg-0">
-                    <div class="d-inline-flex align-items-center" style="height: 45px;">
-                        <a class="btn btn-sm btn-outline-light btn-sm-square rounded-circle me-2" href=""><i class="fab fa-twitter fw-normal"></i></a>
-                        <a class="btn btn-sm btn-outline-light btn-sm-square rounded-circle me-2" href=""><i class="fab fa-facebook-f fw-normal"></i></a>
-                        <a class="btn btn-sm btn-outline-light btn-sm-square rounded-circle me-2" href=""><i class="fab fa-linkedin-in fw-normal"></i></a>
-                        <a class="btn btn-sm btn-outline-light btn-sm-square rounded-circle me-2" href=""><i class="fab fa-instagram fw-normal"></i></a>
-                        <a class="btn btn-sm btn-outline-light btn-sm-square rounded-circle" href=""><i class="fab fa-youtube fw-normal"></i></a>
-                    </div>
+    <!-- Topbar Start -->
+    <div class="container-fluid bg-primary px-5 d-none d-lg-block">
+        <div class="row gx-0">
+            <div class="col-lg-8 text-center text-lg-start mb-2 mb-lg-0">
+                <div class="d-inline-flex align-items-center" style="height: 45px;">
+                    <a class="btn btn-sm btn-outline-light btn-sm-square rounded-circle me-2" href="#"><i
+                            class="fab fa-twitter fw-normal"></i></a>
+                    <a class="btn btn-sm btn-outline-light btn-sm-square rounded-circle me-2" href="#"><i
+                            class="fab fa-facebook-f fw-normal"></i></a>
+                    <a class="btn btn-sm btn-outline-light btn-sm-square rounded-circle me-2" href="#"><i
+                            class="fab fa-linkedin-in fw-normal"></i></a>
+                    <a class="btn btn-sm btn-outline-light btn-sm-square rounded-circle me-2" href="#"><i
+                            class="fab fa-instagram fw-normal"></i></a>
+                    <a class="btn btn-sm btn-outline-light btn-sm-square rounded-circle" href="#"><i
+                            class="fab fa-youtube fw-normal"></i></a>
                 </div>
-                <div class="col-lg-4 text-center text-lg-end">
-                    <div class="d-inline-flex align-items-center" style="height: 45px;">
-                        <a href="#"><small class="me-3 text-light"><i class="fa fa-user me-2"></i>Đăng ký</small></a>
-                        <a href="#"><small class="me-3 text-light"><i class="fa fa-sign-in-alt me-2"></i>Đăng nhập</small></a>
-                        <div class="dropdown">
-                            <a href="#" class="dropdown-toggle text-light" data-bs-toggle="dropdown"><small><i class="fa fa-home me-2"></i>Bảng điều khiển</small></a>
-                            <div class="dropdown-menu rounded">
-                                <a href="#" class="dropdown-item"><i class="fas fa-user-alt me-2"></i>Hồ sơ của tôi</a>
-                                <a href="#" class="dropdown-item"><i class="fas fa-comment-alt me-2"></i>Hộp thư đến</a>
-                                <a href="#" class="dropdown-item"><i class="fas fa-bell me-2"></i>Thông báo</a>
-                                <a href="#" class="dropdown-item"><i class="fas fa-cog me-2"></i>Quản lý tài khoản</a>
-                                <a href="#" class="dropdown-item"><i class="fas fa-power-off me-2"></i>Đăng xuất</a>
+            </div>
+            <div class="col-lg-4 text-center text-lg-end">
+                <div class="d-inline-flex align-items-center" style="height: 45px;">
+                    <a href="#" data-bs-toggle="modal" data-bs-target="#register" class="header-unauth"><small
+                            class="me-3 text-light"><i class="fa fa-user me-2"></i>Đăng
+                            ký</small></a>
+                    <!-- <div class="modal fade" id="register" aria-modal="true"> -->
+                    <div class="modal fade" id="register">
+                        <div class="modal-dialog modal-lg modal-dialog-centered">
+                            <div class="modal-content">
+                                <div class="modal-body">
+                                    <div class="row">
+                                        <div class="col-5 d-flex justify-content-center align-items-center">
+                                            <img src="img/logo_tour.svg" alt="welcome" class="img-fluid"
+                                                style="height: 350px;">
+                                        </div>
+                                        <div class="col-7">
+                                            <button class="btn-close text-end" type="button"
+                                                data-bs-dismiss="modal"></button>
+                                            <h2 class="h1 text-center fw-bold text-primary">ĐĂNG KÝ</h2>
+                                            <div class="text-start mx-2 mt-3">
+                                                <div class="form-floating mb-3">
+                                                    <input type="text" class="form-control" id="floatingFullName"
+                                                        placeholder="Nguyễn Văn A">
+                                                    <label for="floatingFullName">Họ và tên</label>
+                                                </div>
+                                                <div class="form-floating mb-3">
+                                                    <input type="email" class="form-control" id="floatingEmail"
+                                                        placeholder="example@gmail.com">
+                                                    <label for="floatingEmail">Email</label>
+                                                </div>
+                                                <div class="form-floating mb-3">
+                                                    <input type="date" class="form-control" id="floatingDob"
+                                                        placeholder="Nguyễn Văn A">
+                                                    <label for="floatingDob">Ngày sinh</label>
+                                                </div>
+                                                <label for="optradio">Giới tính</label>
+                                                <div class="d-flex mb-3 mt-1">
+                                                    <div class="form-check">
+                                                        <input type="radio" class="form-check-input" id="radio1"
+                                                            name="optradio" value="0" checked>Nam
+                                                        <label class="form-check-label" for="radio1"></label>
+                                                    </div>
+                                                    <div class="form-check">
+                                                        <input type="radio" class="form-check-input ms-3 me-2"
+                                                            id="radio2" name="optradio" value="1">Nữ
+                                                        <label class="form-check-label" for="radio2"></label>
+                                                    </div>
+                                                </div>
+                                                <div class="form-floating mb-3">
+                                                    <input type="text" class="form-control" id="floatingUsername"
+                                                        placeholder="Nguyễn Văn A">
+                                                    <label for="floatingUsername">Tên đăng nhập</label>
+                                                </div>
+                                                <div class="form-floating mb-3">
+                                                    <input type="password" class="form-control" id="floatingPassword"
+                                                        placeholder="Nguyễn Văn A">
+                                                    <label for="floatingPassword">Mật khẩu</label>
+                                                </div>
+
+                                                <!-- <label for="fullname" class="fst-italic letter-spacing-1 label-log">Họ và tên</label><br/>
+                                                <input type="text" name="fullname" id="fullname" class="w-100 rounded-3 py-2 ps-3 bg-light border-0"><br/>
+                                                <label for="email" class="fst-italic letter-spacing-1 mt-2 pt-1 label-log">Email</label><br/>
+                                                <input type="email" name="email" id="email" class="w-100 rounded-3 py-1 ps-2 border-0 bg-dark"><br/>
+                                                <label for="dob" class="fst-italic letter-spacing-1 mt-2 pt-1 label-log">Ngày sinh</label><br/>
+                                                <input type="date" name="dob" id="dob" class="w-100 rounded-3 py-1 ps-2"><br/>
+                                                <label for="gender" class="fst-italic letter-spacing-1 mt-2 pt-1 label-log">Giới tính</label><br/>
+                                                <input type="radio" name="gender" id="male" checked><span class="text-dark fs-6 ps-1">Nam</span>
+                                                <input type="radio" name="gender" id="female" class="ms-3"><span class="text-dark fs-6 ps-1">Nữ</span><br/>
+                                                <label for="username" class="fst-italic letter-spacing-1 mt-2 pt-1 label-log">Tên đăng nhập</label><br/>
+                                                <input type="text" name="username" id="username" class="w-100 rounded-3 py-1 ps-2"><br/>
+                                                <label for="password" class="fst-italic letter-spacing-1 mt-2 pt-1 ps-2 label-log">Mật khẩu</label><br/>
+                                                <input type="password" name="password" id="password" class="w-100 rounded-3 py-1"><br/><br/> -->
+
+                                                <div class="d-grid mt-3">
+                                                    <button type="button" class="btn btn-primary btn-block w-50 mx-auto"
+                                                        id="btnRegister">Đăng ký</button>
+                                                </div>
+                                                <p class="mt-3 text-primary">Bạn đã có tài khoản? <a
+                                                        class="fst-italic text-decoration-underline pointer"
+                                                        data-bs-dismiss="modal" data-bs-toggle="modal"
+                                                        data-bs-target="#login">Đăng nhập</a></p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
+                        </div>
+                    </div>
+
+                    <a href="#"><small class="me-3 text-light header-unauth" data-bs-toggle="modal"
+                            data-bs-target="#login"><i class="fa fa-sign-in-alt me-2"></i>Đăng
+                            nhập</small></a>
+
+                    <div class="modal fade" id="login">
+                        <!-- <div class="modal fade" id="login" aria-modal="true"> -->
+                        <div class="modal-dialog modal-lg modal-dialog-centered">
+                            <div class="modal-content">
+                                <div class="modal-body">
+                                    <div class="row">
+                                        <div class="col-5 d-flex justify-content-center align-items-center">
+                                            <img src="img/logo_tour.svg" alt="welcome" class="img-fluid"
+                                                style="height: 350px;">
+                                        </div>
+                                        <div class="col-7">
+                                            <button class="btn-close text-end" type="button"
+                                                data-bs-dismiss="modal"></button>
+                                            <h2 class="h1 text-center fw-bold text-primary mb-3">ĐĂNG NHẬP</h2>
+                                            <div class="form-floating mb-3">
+                                                <input type="text" class="form-control" id="floatingUsernameLogin"
+                                                    placeholder="Nguyễn Văn A">
+                                                <label for="floatingUsernameLogin">Tên đăng nhập</label>
+                                            </div>
+                                            <div class="form-floating mb-3">
+                                                <input type="password" class="form-control" id="floatingPasswordLogin"
+                                                    placeholder="">
+                                                <label for="floatingPasswordLogin">Mật khẩu</label>
+                                            </div>
+                                            <div class="d-grid mt-3">
+                                                <button type="button" class="btn btn-primary btn-block w-50 mx-auto"
+                                                    id="btnLogin">Đăng nhập</button>
+                                            </div>
+                                            <p class="text-primary text-start mt-3">Bạn chưa có tài khoản? <a
+                                                    class="fst-italic text-decoration-underline pointer"
+                                                    data-bs-dismiss="modal" data-bs-toggle="modal"
+                                                    data-bs-target="#register">Đăng ký</a></p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="dropdown d-none" id="header-auth">
+                        <a href="#" class="dropdown-toggle text-light" data-bs-toggle="dropdown"><small id="fullname"><i
+                                    class="fa fa-home me-2"></i>Bảng điều khiển</small></a>
+                        <div class="dropdown-menu rounded">
+                            <a href="myinfo.html" class="dropdown-item"><i class="fas fa-user-alt me-2"></i>Thông tin cá
+                                nhân</a>
+                            <a href="mytour.html" class="dropdown-item"><i
+                                    class="bi bi-airplane-engines-fill me-2"></i>Các tour
+                                của bạn</a>
+                            <a href="#" class="dropdown-item" id="btnLogout"><i class="fas fa-power-off me-2"></i>Đăng
+                                xuất</a>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        <!-- Topbar End -->
+    </div>
+    <!-- Topbar End -->
 
-        <!-- Navbar & Hero Start -->
-        <div class="container-fluid position-relative p-0">
-            <nav class="navbar navbar-expand-lg navbar-light px-4 px-lg-5 py-3 py-lg-0">
-                <a href="" class="navbar-brand p-0">
-                    <h1 class="m-0">
-                        <img src="img/logo_tour.svg" alt="Logo">
-                        <!-- <i class="fa fa-map-marker-alt me-3"></i> -->
-                        TravelVN
-                    </h1>
-                    <!-- <img src="img/logo.png" alt="Logo"> -->
-                </a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
-                    <span class="fa fa-bars"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarCollapse">
-                    <div class="navbar-nav ms-auto py-0">
-                        <a href="index.html" class="nav-item nav-link">Trang chủ</a>
-                        <a href="about.html" class="nav-item nav-link">Giới thiệu</a>
-                        <a href="services.html" class="nav-item nav-link">Dịch vụ</a>
-                        <a href="packages.html" class="nav-item nav-link">Các gói</a>
-                        <a href="blog.html" class="nav-item nav-link">Blog</a>
-                        <div class="nav-item dropdown">
-                            <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Các trang</a>
-                            <div class="dropdown-menu m-0">
-                                <a href="destination.html" class="dropdown-item">Điểm đến</a>
-                                <a href="tour.html" class="dropdown-item">Khám phá Tour</a>
-                                <a href="booking.html" class="dropdown-item">Đặt Tour</a>
-                                <a href="gallery.html" class="dropdown-item">Bộ sưu tập</a>
-                                <a href="guides.html" class="dropdown-item">Hướng dẫn du lịch</a>
-                                <a href="testimonial.html" class="dropdown-item">Đánh giá</a>
-                                <a href="404.html" class="dropdown-item">Trang 404</a>
-                            </div>
-                        </div>
-                        <a href="contact.html" class="nav-item nav-link active">Liên hệ</a>
-                    </div>
-                    <a href="" class="btn btn-primary rounded-pill py-2 px-4 ms-lg-4">Đặt ngay</a>
+    <!-- Navbar & Hero Start -->
+    <div class="container-fluid position-relative p-0">
+        <nav class="navbar navbar-expand-lg navbar-light px-4 px-lg-5 py-3 py-lg-0">
+            <a href="" class="navbar-brand p-0">
+                <h1 class="m-0">
+                    <img src="img/logo_tour.svg" alt="Logo">
+                    <!-- <i class="fa fa-map-marker-alt me-3"></i> -->
+                    TravelVN
+                </h1>
+                <!-- <img src="img/logo.png" alt="Logo"> -->
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+                <span class="fa fa-bars"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarCollapse">
+                <div class="navbar-nav ms-auto py-0">
+                    <a href="index.html" class="nav-item nav-link">Trang chủ</a>
+                    <a href="about.html" class="nav-item nav-link">Giới thiệu</a>
+                    <a href="services.html" class="nav-item nav-link">Dịch vụ</a>
+                    <a href="contact.html" class="nav-item nav-link active">Liên hệ</a>
                 </div>
-            </nav>
-        </div>
-        <!-- Navbar & Hero End -->
+                <a href="foundtourlist.html" class="btn btn-primary rounded-pill py-2 px-4 ms-lg-4">Đặt ngay</a>
+            </div>
+        </nav>
+    </div>
+    <!-- Navbar & Hero End -->
 
-        <!-- Header Start -->
-        <div class="container-fluid bg-breadcrumb">
-            <div class="container text-center py-5" style="max-width: 900px;">
-                <h3 class="text-white display-3 mb-4">Liên hệ</h1>
+    <!-- Header Start -->
+    <div class="container-fluid bg-breadcrumb">
+        <div class="container text-center py-5" style="max-width: 900px;">
+            <h3 class="text-white display-3 mb-4">Liên hệ</h1>
                 <ol class="breadcrumb justify-content-center mb-0">
                     <li class="breadcrumb-item"><a href="index.html">Trang chủ</a></li>
-                    <li class="breadcrumb-item"><a href="#">Các trang</a></li>
                     <li class="breadcrumb-item active text-white">Liên hệ</li>
-                </ol>    
-            </div>
+                </ol>
         </div>
-        <!-- Header End -->
+    </div>
+    <!-- Header End -->
 
-        <!-- Contact Start -->
-        <div class="container-fluid contact bg-light py-5">
-            <div class="container py-5">
-                <div class="mx-auto text-center mb-5" style="max-width: 900px;">
-                    <h5 class="section-title px-3">LIên hệ chúng tôi</h5>
-                    <h1 class="mb-0">Liên hệ ngay nếu bạn cần hỗ trợ</h1>
-                </div>
-                <div class="row g-5 align-items-center">
-                    <div class="col-lg-4">
-                        <div class="bg-white rounded p-4">
-                            <div class="text-center mb-4">
-                                <i class="fa fa-map-marker-alt fa-3x text-primary"></i>
-                                <h4 class="text-primary"><Address></Address></h4>
-                                <p class="mb-0">123 ranking Street, <br> New York, USA</p>
-                            </div>
-                            <div class="text-center mb-4">
-                                <i class="fa fa-phone-alt fa-3x text-primary mb-3"></i>
-                                <h4 class="text-primary">Mobile</h4>
-                                <p class="mb-0">+012 345 67890</p>
-                                <p class="mb-0">+012 345 67890</p>
-                            </div>
-                           
-                            <div class="text-center">
-                                <i class="fa fa-envelope-open fa-3x text-primary mb-3"></i>
-                                <h4 class="text-primary">Email</h4>
-                                <p class="mb-0">info@example.com</p>
-                                <p class="mb-0">info@example.com</p>
-                            </div>
+    <!-- Contact Start -->
+    <div class="container-fluid contact bg-light py-5">
+        <div class="container py-5">
+            <div class="mx-auto text-center mb-5" style="max-width: 900px;">
+                <h5 class="section-title px-3">LIên hệ chúng tôi</h5>
+                <h1 class="mb-3">Liên hệ ngay nếu bạn cần hỗ trợ</h1>
+            </div>
+            <div class="row g-5 align-items-center mt-2">
+                <!-- <div class="col-lg-4"> -->
+                    <div class="bg-white rounded p-4 row">
+                        <div class="text-center mb-4 col">
+                            <i class="fa fa-map-marker-alt fa-3x text-primary mb-3"></i>
+                            <h4 class="text-primary">
+                                Địa chỉ
+                            </h4>
+                            <p class="mb-0 fs-5 text-primary">298 Bắc Từ Liêm, Hà Nội</p>
+                        </div>
+
+                        <div class="text-center mb-4 col">
+                            <i class="fa fa-phone-alt fa-3x text-primary mb-3"></i>
+                            <h4 class="text-primary">Mobile</h4>
+                            <p class="mb-0 fs-5 text-primary">0343 857 961</p>
+                            <!-- <p class="mb-0">+012 345 67890</p> -->
+                        </div>
+
+                        <div class="text-center col">
+                            <i class="fa fa-envelope-open fa-3x text-primary mb-3"></i>
+                            <h4 class="text-primary">Email</h4>
+                            <p class="mb-0 fs-5 text-primary">travelvn@haui.com</p>
+                            <!-- <p class="mb-0">info@example.com</p> -->
                         </div>
                     </div>
-                    <div class="col-lg-8">
-                        <h3 class="mb-2">Gửi tin nhắn cho chúng tôi</h3>
-                        <p class="mb-4">The contact form is currently inactive. Get a functional and working contact form with Ajax & PHP in a few minutes. Just copy and paste the files, add a little code and you're done. <a href="https://htmlcodex.com/contact-form">Download Now</a>.</p>
-                        <form>
-                            <div class="row g-3">
-                                <div class="col-md-6">
-                                    <div class="form-floating">
-                                        <input type="text" class="form-control border-0" id="name" placeholder="Your Name">
-                                        <label for="name">Tên của bạn</label>
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-floating">
-                                        <input type="email" class="form-control border-0" id="email" placeholder="Your Email">
-                                        <label for="email">Email của bạn</label>
-                                    </div>
-                                </div>
-                                <div class="col-12">
-                                    <div class="form-floating">
-                                        <input type="text" class="form-control border-0" id="subject" placeholder="Subject">
-                                        <label for="subject">Tiêu đề</label>
-                                    </div>
-                                </div>
-                                <div class="col-12">
-                                    <div class="form-floating">
-                                        <textarea class="form-control border-0" placeholder="Leave a message here" id="message" style="height: 160px"></textarea>
-                                        <label for="message">Nội dung</label>
-                                    </div>
-                                </div>
-                                <div class="col-12">
-                                    <button class="btn btn-primary w-100 py-3" type="submit">Gửi nội dung</button>
+                <!-- </div> -->
+                <div class="col-lg-0">
+                    <!-- <h3 class="mb-2">Gửi tin nhắn cho chúng tôi</h3>
+                    <p class="mb-4">The contact form is currently inactive. Get a functional and working contact form
+                        with Ajax & PHP in a few minutes. Just copy and paste the files, add a little code and you're
+                        done. <a href="https://htmlcodex.com/contact-form">Download Now</a>.</p> -->
+                    <!-- <form>
+                        <div class="row g-3">
+                            <div class="col-md-6">
+                                <div class="form-floating">
+                                    <input type="text" class="form-control border-0" id="name" placeholder="Your Name">
+                                    <label for="name">Tên của bạn</label>
                                 </div>
                             </div>
-                        </form>
-                    </div>
-                    <!-- <div class="col-12">
+                            <div class="col-md-6">
+                                <div class="form-floating">
+                                    <input type="email" class="form-control border-0" id="email"
+                                        placeholder="Your Email">
+                                    <label for="email">Email của bạn</label>
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <div class="form-floating">
+                                    <input type="text" class="form-control border-0" id="subject" placeholder="Subject">
+                                    <label for="subject">Tiêu đề</label>
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <div class="form-floating">
+                                    <textarea class="form-control border-0" placeholder="Leave a message here"
+                                        id="message" style="height: 160px"></textarea>
+                                    <label for="message">Nội dung</label>
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <button class="btn btn-primary w-100 py-3" type="submit">Gửi nội dung</button>
+                            </div>
+                        </div>
+                    </form> -->
+                </div>
+                <!-- <div class="col-12">
                         <div class="rounded">
                             <iframe class="rounded w-100" 
                             style="height: 450px;" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d387191.33750346623!2d-73.97968099999999!3d40.6974881!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c24fa5d33f083b%3A0xc80b8f06e177fe62!2sNew%20York%2C%20NY%2C%20USA!5e0!3m2!1sen!2sbd!4v1694259649153!5m2!1sen!2sbd" 
                             loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                         </div>
                     </div> -->
-                </div>
             </div>
         </div>
-        <!-- Contact End -->
+    </div>
+    <!-- Contact End -->
 
-        <!-- Subscribe Start -->
-        <div class="container-fluid subscribe py-5">
-            <div class="container text-center py-5">
-                <div class="mx-auto text-center" style="max-width: 900px;">
-                    <h5 class="subscribe-title px-3">Đăng ký nhận thông báo</h5>
-                    <h1 class="text-white mb-4">Bản tin của chúng tôi</h1>
-                    <p class="text-white mb-5">Lorem ipsum dolor sit amet consectetur adipisicing elit. Laborum tempore nam, architecto doloremque velit explicabo? Voluptate sunt eveniet fuga eligendi! Expedita laudantium fugiat corrupti eum cum repellat a laborum quasi.
-                    </p>
-                    <div class="position-relative mx-auto">
-                        <input class="form-control border-primary rounded-pill w-100 py-3 ps-4 pe-5" type="text" placeholder="Email của bạn">
-                        <button type="button" class="btn btn-primary rounded-pill position-absolute top-0 end-0 py-2 px-4 mt-2 me-2">Đăng ký</button>
+    <!-- Footer Start -->
+    <div class="container-fluid footer py-5 mx-auto">
+        <div class="container py-5">
+            <div class="row g-5">
+                <div class="col-md-4 col-lg-4 col-xl-4">
+                    <div class="footer-item d-flex flex-column">
+                        <h4 class="mb-4 text-white">Liên hệ</h4>
+                        <a href="#"><i class="fas fa-home me-2"></i> 298 Bắc Từ Liêm, Hà Nội</a>
+                        <a href="#"><i class="fas fa-envelope me-2"></i> travelvn@haui.com</a>
+                        <a href="#"><i class="fas fa-phone me-2"></i> 0343 857 961</a>
+                        <a href="#" class="mb-3"><i class="fas fa-print me-2"></i> 0247 814 592</a>
+                        <div class="d-flex align-items-center">
+                            <i class="fas fa-share fa-2x text-white me-2"></i>
+                            <a class="btn-square btn btn-primary rounded-circle mx-1" href="#"><i
+                                    class="fab fa-facebook-f"></i></a>
+                            <a class="btn-square btn btn-primary rounded-circle mx-1" href="#"><i
+                                    class="fab fa-twitter"></i></a>
+                            <a class="btn-square btn btn-primary rounded-circle mx-1" href="#"><i
+                                    class="fab fa-instagram"></i></a>
+                            <a class="btn-square btn btn-primary rounded-circle mx-1" href="#"><i
+                                    class="fab fa-linkedin-in"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <!-- <div class="col-md-4 col-lg-4 col-xl-4">
+                    <div class="footer-item d-flex flex-column">
+                        <h4 class="mb-4 text-white">Doanh nghiệp</h4>
+                        <a href=""><i class="fas fa-angle-right me-2"></i> About</a>
+                        <a href=""><i class="fas fa-angle-right me-2"></i> Careers</a>
+                        <a href=""><i class="fas fa-angle-right me-2"></i> Blog</a>
+                        <a href=""><i class="fas fa-angle-right me-2"></i> Press</a>
+                        <a href=""><i class="fas fa-angle-right me-2"></i> Gift Cards</a>
+                        <a href=""><i class="fas fa-angle-right me-2"></i> Magazine</a>
+                    </div>
+                </div> -->
+                <div class="col-md-4 col-lg-4 col-xl-4 ps-5">
+                    <div class="footer-item d-flex flex-column">
+                        <h4 class="mb-4 text-white">Hỗ trợ</h4>
+                        <a href="index.html"><i class="fas fa-angle-right me-2"></i> Trang chủ</a>
+                        <a href="about.html"><i class="fas fa-angle-right me-2"></i> Giới thiệu</a>
+                        <a href="services.html"><i class="fas fa-angle-right me-2"></i> Dịch vụ</a>
+                        <a href="#"><i class="fas fa-angle-right me-2"></i> Liên hệ với chúng tôi</a>
+                        <!-- <a href=""><i class="fas fa-angle-right me-2"></i> Sitemap</a>
+                        <a href=""><i class="fas fa-angle-right me-2"></i> Cookie policy</a> -->
+                    </div>
+                </div>
+                <div class="col-md-4 col-lg-4 col-xl-4 ps-5">
+                    <div class="footer-item">
+                        <!-- <div class="row gy-3 gx-2 mb-4">
+                            <div class="col-xl-6">
+                                <form>
+                                    <div class="form-floating">
+                                        <select class="form-select bg-dark border" id="select1">
+                                            <option value="1">Arabic</option>
+                                            <option value="2">German</option>
+                                            <option value="3">Greek</option>
+                                            <option value="3">New York</option>
+                                        </select>
+                                        <label for="select1">English</label>
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="col-xl-6">
+                                <form>
+                                    <div class="form-floating">
+                                        <select class="form-select bg-dark border" id="select1">
+                                            <option value="1">USD</option>
+                                            <option value="2">EUR</option>
+                                            <option value="3">INR</option>
+                                            <option value="3">GBP</option>
+                                        </select>
+                                        <label for="select1">$</label>
+                                    </div>
+                                </form>
+                            </div>
+                        </div> -->
+                        <h4 class="text-white mb-3">Thanh toán</h4>
+                        <div class="footer-bank-card">
+                            <a href="#" class="text-white me-2"><i class="bi bi-qr-code-scan fa-2x"></i></a>
+                            <a href="#" class="text-white me-2"><i class="fab fa-cc-amex fa-2x"></i></a>
+                            <a href="#" class="text-white me-2"><i class="fab fa-cc-visa fa-2x"></i></a>
+                            <a href="#" class="text-white me-2"><i class="fas fa-credit-card fa-2x"></i></a>
+                            <a href="#" class="text-white me-2"><i class="fab fa-cc-mastercard fa-2x"></i></a>
+                            <a href="#" class="text-white me-2"><i class="fab fa-cc-paypal fa-2x"></i></a>
+                            <a href="#" class="text-white"><i class="fab fa-cc-discover fa-2x"></i></a>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-        <!-- Subscribe End -->
+    </div>
+    <!-- Footer End -->
 
-        <!-- Footer Start -->
-        <div class="container-fluid footer py-5">
-            <div class="container py-5">
-                <div class="row g-5">
-                    <div class="col-md-6 col-lg-6 col-xl-3">
-                        <div class="footer-item d-flex flex-column">
-                            <h4 class="mb-4 text-white">Liên hệ</h4>
-                            <a href=""><i class="fas fa-home me-2"></i> 123 Street, New York, USA</a>
-                            <a href=""><i class="fas fa-envelope me-2"></i> info@example.com</a>
-                            <a href=""><i class="fas fa-phone me-2"></i> +012 345 67890</a>
-                            <a href="" class="mb-3"><i class="fas fa-print me-2"></i> +012 345 67890</a>
-                            <div class="d-flex align-items-center">
-                                <i class="fas fa-share fa-2x text-white me-2"></i>
-                                <a class="btn-square btn btn-primary rounded-circle mx-1" href=""><i class="fab fa-facebook-f"></i></a>
-                                <a class="btn-square btn btn-primary rounded-circle mx-1" href=""><i class="fab fa-twitter"></i></a>
-                                <a class="btn-square btn btn-primary rounded-circle mx-1" href=""><i class="fab fa-instagram"></i></a>
-                                <a class="btn-square btn btn-primary rounded-circle mx-1" href=""><i class="fab fa-linkedin-in"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-6 col-lg-6 col-xl-3">
-                        <div class="footer-item d-flex flex-column">
-                            <h4 class="mb-4 text-white">Doanh nghiệp</h4>
-                            <a href=""><i class="fas fa-angle-right me-2"></i> About</a>
-                            <a href=""><i class="fas fa-angle-right me-2"></i> Careers</a>
-                            <a href=""><i class="fas fa-angle-right me-2"></i> Blog</a>
-                            <a href=""><i class="fas fa-angle-right me-2"></i> Press</a>
-                            <a href=""><i class="fas fa-angle-right me-2"></i> Gift Cards</a>
-                            <a href=""><i class="fas fa-angle-right me-2"></i> Magazine</a>
-                        </div>
-                    </div>
-                    <div class="col-md-6 col-lg-6 col-xl-3">
-                        <div class="footer-item d-flex flex-column">
-                            <h4 class="mb-4 text-white">Hỗ trợ</h4>
-                            <a href=""><i class="fas fa-angle-right me-2"></i> Contact</a>
-                            <a href=""><i class="fas fa-angle-right me-2"></i> Legal Notice</a>
-                            <a href=""><i class="fas fa-angle-right me-2"></i> Privacy Policy</a>
-                            <a href=""><i class="fas fa-angle-right me-2"></i> Terms and Conditions</a>
-                            <a href=""><i class="fas fa-angle-right me-2"></i> Sitemap</a>
-                            <a href=""><i class="fas fa-angle-right me-2"></i> Cookie policy</a>
-                        </div>
-                    </div>
-                    <div class="col-md-6 col-lg-6 col-xl-3">
-                        <div class="footer-item">
-                            <div class="row gy-3 gx-2 mb-4">
-                                <div class="col-xl-6">
-                                    <form>
-                                        <div class="form-floating">
-                                            <select class="form-select bg-dark border" id="select1">
-                                                <option value="1">Arabic</option>
-                                                <option value="2">German</option>
-                                                <option value="3">Greek</option>
-                                                <option value="3">New York</option>
-                                            </select>
-                                            <label for="select1">English</label>
-                                        </div>
-                                    </form>
-                                </div>
-                                <div class="col-xl-6">
-                                    <form>
-                                        <div class="form-floating">
-                                            <select class="form-select bg-dark border" id="select1">
-                                                <option value="1">USD</option>
-                                                <option value="2">EUR</option>
-                                                <option value="3">INR</option>
-                                                <option value="3">GBP</option>
-                                            </select>
-                                            <label for="select1">$</label>
-                                        </div>
-                                    </form>
-                                </div>
-                            </div>
-                            <h4 class="text-white mb-3">Thanh toán</h4>
-                            <div class="footer-bank-card">
-                                <a href="#" class="text-white me-2"><i class="fab fa-cc-amex fa-2x"></i></a>
-                                <a href="#" class="text-white me-2"><i class="fab fa-cc-visa fa-2x"></i></a>
-                                <a href="#" class="text-white me-2"><i class="fas fa-credit-card fa-2x"></i></a>
-                                <a href="#" class="text-white me-2"><i class="fab fa-cc-mastercard fa-2x"></i></a>
-                                <a href="#" class="text-white me-2"><i class="fab fa-cc-paypal fa-2x"></i></a>
-                                <a href="#" class="text-white"><i class="fab fa-cc-discover fa-2x"></i></a>
-                            </div>
-                        </div>
-                    </div>
+    <!-- Copyright Start -->
+    <div class="container-fluid copyright text-body py-4">
+        <div class="container">
+            <div class="row g-4 align-items-center d-flex justify-content-center">
+                <div
+                    class="col-md-6 text-center text-md-end mb-md-0 d-inline-flex justify-content-center align-items-center">
+                    <i class="fas fa-copyright me-2"></i><a class="text-white" href="#">TravelVN</a>, All right
+                    reserved.
                 </div>
-            </div>
-        </div>
-        <!-- Footer End -->
-        
-        <!-- Copyright Start -->
-        <div class="container-fluid copyright text-body py-4">
-            <div class="container">
-                <div class="row g-4 align-items-center d-flex justify-content-center">
-                    <div class="col-md-6 text-center text-md-end mb-md-0 d-inline-flex justify-content-center align-items-center">
-                        <i class="fas fa-copyright me-2"></i><a class="text-white" href="#">TravelVN</a>, All right reserved.
-                    </div>
-                    <!-- <div class="col-md-6 text-center text-md-start">
+                <!-- <div class="col-md-6 text-center text-md-start">
                         Designed By <a class="text-white" href="https://htmlcodex.com">HTML Codex</a> Distributed By <a href="https://themewagon.com">ThemeWagon</a>
                     </div> -->
-                </div>
             </div>
         </div>
-        <!-- Copyright End -->
+    </div>
+    <!-- Copyright End -->
 
-        <!-- Back to Top -->
-        <a href="#" class="btn btn-primary btn-primary-outline-0 btn-md-square back-to-top"><i class="fa fa-arrow-up"></i></a>   
+    <!-- Back to Top -->
+    <a href="#" class="btn btn-primary btn-primary-outline-0 btn-md-square back-to-top"><i
+            class="fa fa-arrow-up"></i></a>
 
-        
-        <!-- JavaScript Libraries -->
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
-        <script src="lib/easing/easing.min.js"></script>
-        <script src="lib/waypoints/waypoints.min.js"></script>
-        <script src="lib/owlcarousel/owl.carousel.min.js"></script>
-        <script src="lib/lightbox/js/lightbox.min.js"></script>
-        
 
-        <!-- Template Javascript -->
-        <script src="js/main.js"></script>
-    </body>
+    <!-- JavaScript Libraries -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="lib/easing/easing.min.js"></script>
+    <script src="lib/waypoints/waypoints.min.js"></script>
+    <script src="lib/owlcarousel/owl.carousel.min.js"></script>
+    <script src="lib/lightbox/js/lightbox.min.js"></script>
+
+
+    <!-- Template Javascript -->
+    <script src="js/main.js"></script>
+</body>
 
 </html>
