@@ -1,12 +1,96 @@
+import { validateFullName, validateAge } from "./validate.js";
+
 document.addEventListener('DOMContentLoaded', function () {
     var header_auth = document.getElementById("header-auth");
+
+    fetch('http://localhost:8080/auth/introspect', {
+        method: 'POST',
+        credentials: 'include',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({})
+    })
+        .then(response => response.json())
+        .then(data => {
+            console.log(data);
+            if (data.code != 0) {
+                unauthen();
+                return;
+            }
+
+            //Xác minh được token
+            if (data.result.valid) {
+                authen();
+                return;
+            }
+
+            let fullname = localStorage.getItem('fullname');
+            console.log('Fullname: ', fullname);
+            //Không có fullname trong storage
+            if (!fullname || fullname.trim() === "") {
+                unauthen();
+                return;
+            }
+
+            fetch('http://localhost:8080/auth/refresh', {
+                method: 'POST',
+                credentials: 'include',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({})
+            })
+                .then(response => response.json())
+                .then(data => {
+                    console.log(data);
+                    if (data.result.role != 'CUSTOMER') {
+                        alert('Trang web chỉ dành cho khách hàng!');
+                        unauthen();
+                        return;
+                    }
+
+                    // localStorage.setItem("token", data.result.token);  // Lưu token vào localStorage
+                    localStorage.setItem("fullname", data.result.fullname);  // Lưu thông tin người dùng vào localStorage
+                    authen();
+                })
+                .catch((error) => {
+                    console.error('Error1:', error);
+                })
+        })
+        .catch((error) => {
+            console.error('Error2:', error);
+            unauthen();
+        });
+
+    //Authen người dùng
+    function authen() {
+        // document.querySelectorAll('.header-unauth').forEach(element => {
+        //     element.classList.add("d-none");
+        // });
+        // header_auth.classList.remove("d-none");
+
+        document.getElementById('fullname').textContent = localStorage.getItem('fullname');
+    }
+
+    //unAuthen người dùng
+    function unauthen() {
+        document.querySelectorAll('.header-unauth').forEach(element => {
+            element.classList.remove("d-none");
+        });
+        header_auth.classList.add("d-none");
+
+        localStorage.clear();
+    }
 
     document.getElementById('btnRegister').addEventListener('click',
         function () {
             let username = document.getElementById('floatingUsername').value;
             let password = document.getElementById('floatingPassword').value;
 
-            let fullname = document.getElementById('floatingFullName').value.trim().split(' ');
+            let fullname = document.getElementById('floatingFullName').value.trim();
+
+            fullname = fullname.split(' ');
             let temp = document.getElementById('floatingFullName').value.trim();
             let lastname = fullname.pop();
             let firstname = fullname.join(' ');
@@ -24,6 +108,7 @@ document.addEventListener('DOMContentLoaded', function () {
             console.log(useraccount);
             fetch('http://localhost:8080/register', {
                 method: 'POST',
+                credentials: 'include',
                 headers: {
                     'Content-Type': 'application/json'
                 },
@@ -41,15 +126,15 @@ document.addEventListener('DOMContentLoaded', function () {
                         let modal = bootstrap.Modal.getInstance(document.getElementById("register")); // Lấy instance của modal
                         modal.hide(); // Ẩn modal
 
-                        document.querySelectorAll('.header-unauth').forEach(element => {
-                            element.classList.add("d-none");
-                        });
+                        // document.querySelectorAll('.header-unauth').forEach(element => {
+                        //     element.classList.add("d-none");
+                        // });
 
-                        header_auth.classList.remove("d-none");
+                        // header_auth.classList.remove("d-none");
 
                         document.getElementById('fullname').textContent = temp;
 
-                        localStorage.setItem("token", data.result.token);  // Lưu token vào localStorage
+                        //localStorage.setItem("token", data.result.token);  // Lưu token vào localStorage
                         // localStorage.setItem("fullname", fullname);  // Lưu thông tin người dùng vào localStorage
                     }
                     console.log("Data: ", data);
@@ -74,16 +159,26 @@ document.addEventListener('DOMContentLoaded', function () {
             .then(response => response.json())
             .then(data => {
                 if (data.code == 0) {
+                    let currentPath = window.location.pathname;
+                    let restrictedPages = ["/mytour.html", "/bookingdetail.html","/myinfo.html"];
+
+                    if (restrictedPages.includes(currentPath)) {
+                        window.location.href = "index.html"; // Chuyển về trang index
+                    } else {
+                        console.log("Không cần chuyển hướng.");
+                    }
+
                     // localStorage.removeItem("token");
                     localStorage.removeItem("fullname");
-                    header_auth.classList.add("d-none");
+                    // header_auth.classList.add("d-none");
 
-                    document.querySelectorAll('.header-unauth').forEach(element => {
-                        element.classList.remove("d-none");
-                    });
+                    // document.querySelectorAll('.header-unauth').forEach(element => {
+                    //     element.classList.remove("d-none");
+                    // });
 
-                    document.querySelector("#header-auth").classList.add("d-none");
-
+                    // document.querySelector("#header-auth").classList.add("d-none");
+                    unauthen();
+                    // Nếu đang ở các trang cụ thể thì chuyển hướng về index
                 }
                 console.log("Data: ", data);
             })
@@ -109,6 +204,11 @@ document.addEventListener('DOMContentLoaded', function () {
             .then(response => response.json())
             .then(data => {
                 if (data.code == 0) {
+                    if (data.result.role != 'CUSTOMER') {
+                        alert('Trang web chỉ dành cho khách hàng!');
+                        return;
+                    }
+
                     document.getElementById("login").addEventListener("hidden.bs.modal", function () {
                         document.activeElement.blur(); // Bỏ focus khỏi phần tử đang focus
                     });
@@ -120,6 +220,7 @@ document.addEventListener('DOMContentLoaded', function () {
                         element.classList.add("d-none");
                     });
                     header_auth.classList.remove("d-none");
+                    authen();
 
                     document.getElementById('fullname').textContent = data.result.fullname;
 
@@ -134,4 +235,49 @@ document.addEventListener('DOMContentLoaded', function () {
                 console.error('Error:', error);
             });
     });
+
+    (function () {
+        'use strict'
+
+        // Lấy form
+        const form = document.getElementById('registerForm');
+        // Lấy trường họ và tên
+        const fullNameInput = document.getElementById('floatingFullName');
+
+        // Thêm event listener cho sự kiện 'input' (khi giá trị trường thay đổi)
+        fullNameInput.addEventListener('input', function () {
+            // Kiểm tra tính hợp lệ của trường
+            if (!this.checkValidity() || !validateFullName(fullNameInput.value)) {
+                this.classList.add('is-invalid');
+                this.classList.remove('is-valid');
+                $(this).next().next().text('Họ và tên chỉ chứa ký tự chữ và khoảng trắng. Từ 5 đến 50 ký tự.')
+            } else {
+                this.classList.remove('is-invalid');
+                this.classList.add('is-valid');
+            }
+        });
+
+        //Kiểm tra tuổi
+        $('#floatingDob').on({
+            'input': function(){
+                if(!validateAge($(this).val())){
+                    $(this).addClass('is-invalid');
+                    $(this).removeClass('is-valid');
+                    $(this).next().next().text('Ngày sinh không hợp lệ');
+                } else {
+                    $(this).removeClass('is-invalid');
+                    $(this).addClass('is-valid');
+                }
+            }
+        })
+
+        // Ngăn chặn submit form nếu không hợp lệ (vẫn giữ lại logic submit khi hợp lệ)
+        form.addEventListener('submit', function (event) {
+            if (!form.checkValidity()) {
+                event.preventDefault();
+                event.stopPropagation();
+            }
+            form.classList.add('was-validated');
+        }, false);
+    })();
 });
