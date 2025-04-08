@@ -303,7 +303,7 @@ input[type=number].quantity:focus {
 
 .filter-box {
   position: sticky;
-  top: 80px;
+  top: 75px;
   /* Cách đỉnh trang 80px */
   /*z-index: 1000; /* Đảm bảo nó nằm trên các phần tử khác */
 }

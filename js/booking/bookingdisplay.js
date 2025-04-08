@@ -1,17 +1,17 @@
-jQuery(function(){
+jQuery(function () {
     let foundtour = JSON.parse(localStorage.getItem("foundtour"));
     let category = foundtour.tour.category;
     let tour = foundtour.tour;
     let discount = foundtour.discount;
 
     let tourName = tour.tourName;
-    if (tourName.length > 150)
-        tourName = tourName.substring(0, 140) + "...";
+    if (tourName.length > 120)
+        tourName = tourName.substring(0, 120) + "...";
 
 
     let placesToVisitSub = tour.placesToVisit;
-    // if (placesToVisitSub.length > 50)
-    //     placesToVisitSub = placesToVisitSub.substring(0, 50) + "...";
+    if (placesToVisitSub.length > 40)
+        placesToVisitSub = placesToVisitSub.substring(0, 40) + "...";
 
     let adultTourPrice = getPrice(foundtour.adultTourPrice);
     let toddlerTourPrice = getPrice(foundtour.toddlerTourPrice);
@@ -24,6 +24,8 @@ jQuery(function(){
     $(".tourname").text(tour.tourName);
     $(".tourname").eq(0).text(tourName);
 
+    //
+    $('#sm-img').html(`<img src="${tour.firstImageUrl}" class="object-fit cover w-100 rounded-1" alt="">`);
 
     //Carousel
     let imageSet = tour.imageSet;
@@ -63,132 +65,14 @@ jQuery(function(){
     discount_tag.text(discount.discountName);
     $('#carousel-list').append(discount_tag);
 
-    //Calendar
-
-    let currentMonthIndex;
-    let currentYearValue;
-
-    function generateCalendar(year, month) {
-        currentMonthIndex = month;
-        currentYearValue = year;
-
-        //obj thời gian hiện tại
-        const today = new Date();
-
-        //Tháng, năm, ngày hiện tại
-        const currentMonth = month;
-        const currentYear = year;
-        const currentDate = (today.getMonth() === month && today.getFullYear() === year) ? today.getDate() : -1; // Lấy ngày hiện tại nếu đang ở tháng hiện tại
-
-        // const monthYearElement = document.getElementById("month-year");
-        // const calendarBodyElement = document.getElementById("calendar-body");
-
-        // const monthNames = ["Tháng 1", "Tháng 2", "Tháng 3", "Tháng 4", "Tháng 5", "Tháng 6",
-        //     "Tháng 7", "Tháng 8", "Tháng 9", "Tháng 10", "Tháng 11", "Tháng 12"];
-        // monthYearElement.textContent = `${monthNames[currentMonth]} ${currentYear}`;
-
-        // Lấy thông tin tháng trước
-        //obj thời gian ngày cuối tháng trước
-        const prevMonth = new Date(currentYear, currentMonth, 0);
-        //Ngày tháng trước
-        const daysInPrevMonth = prevMonth.getDate();
-        //Thứ của ngày đầu tháng này
-        const firstDayOfMonth = new Date(currentYear, currentMonth, 1).getDay();
-
-        //Ví dụ: ngày 30 ngày 4 - ngày đầu tháng 5 thứ năm (4)
-        //Tạo hàng
-        let row1 = $('<div class="row pt-3 gap-3 gap-3"></div>');
-
-        //Con thoi
-        let shuttle = 0;
-        let flag = false;
-
-        // Hiển thị các ngày cuối tháng trước
-        for (let i = firstDayOfMonth - 1; i > 0; i--) {
-            const day = daysInPrevMonth - i + 1; //30-3+1=28 => Để hiện từ thứ 2
-            let cell = $(`<div class="text-muted text-center fs-5 fw-bold col cell-day cell-day">
-                                            ${day}
-                                            <p class="heading7 text-danger"><small></small></p>
-                                        </div>`)
-            row1.append(cell);
-            shuttle++;
-        }
-
-        let row2 = $('<div class="row pt-3 gap-3 gap-3"></div>');
-        // Hiển thị các ngày của tháng hiện tại
-        //Ví dụ: 15/5/2025
-        const daysInMonth = new Date(currentYear, currentMonth + 1, 0).getDate();
-
-
-        //Duyệt từ ngày 1 đến ngày 31/5
-        for (let day = 1; day <= daysInMonth; day++) {
-            let dayClass = "text-dark";
-            if (day < currentDate) {
-                dayClass = "text-muted";
-            } else if (day === currentDate && currentMonth === today.getMonth() && currentYear === today.getFullYear()) {
-                dayClass = "text-dark"; // Thêm class 'today' nếu muốn đánh dấu ngày hiện tại
-            }
-            // if(true)
-            let cell = (`<div class="${dayClass} text-center fs-5 fw-bold col cell-day cell-day">
-                                            ${day}
-                                            <p class="heading7 text-danger"><small></small></p>
-                                        </div>`);
-            //Tăng chỉ số con thoi
-            shuttle++;
-            if (!flag) {
-                //Nếu chưa đầy hàng 1 => Thêm ô
-                row1.append(cell);
-
-                //Đầy hàng 1. => Đóng hàng 1 và thêm vào lịch. Reset con thoi
-                if (shuttle == 7) {
-                    flag = true;
-                    shuttle = 0;
-                    $('.face-before').append(row1);
-                }
-            } else {
-                //Thêm ô
-                row2.append(cell);
-                //Đầy hàng 1
-                //Đầy hàng sau
-                if (shuttle == 7) {
-                    //Reset con thoi
-                    shuttle = 0;
-                    //Đưa hàng vào lịch
-                    $('.face-before').append(row2);
-                    //Tạo hàng mới
-                    row2 = $('<div class="row pt-3 gap-3 gap-3"></div>');
-                }
-            }
-        }
-
-        // Lấy thông tin tháng sau
-        const daysLeft = 35 - (firstDayOfMonth + daysInMonth);//35-(4+31) // Giả sử hiển thị tối đa 35 ô (5 hàng)
-        for (let i = 1; i <= daysLeft + 1; i++) { //i<=1. Vì Chủ nhật ở cuối
-            let cell = (`<div class="text-muted text-center fs-5 fw-bold col cell-day cell-day">
-                ${i}
-                <p class="heading7 text-danger"><small></small></p>
-            </div>`);
-
-            //Thêm ô vào hàng
-            row2.append(cell);
-        }
-
-        //Thêm hàng vào lịch
-        $('.face-before').append(row2);
-        $('.face-before').find(".cell-day").css('min-height', '76px');
-    }
-
-    // Khởi tạo lịch với tháng và năm hiện tại khi trang tải
-    const initialDate = new Date();
-    generateCalendar(initialDate.getFullYear(), initialDate.getMonth());
 
     $('#de-re-date').text(formatDate(foundtour.departureDate) + " - " + formatDate(foundtour.returnDate));
     $('#departure-date').text(formatDate(foundtour.departureDate));
-    $('.adultTourPrice').text(adultTourPrice + " đ");
-    $('#childTourPrice').text(childTourPrice + " đ");
-    $('#toddlerTourPrice').text(toddlerTourPrice + " đ");
-    $('#babyTourPrice').text(foundtour.babyTourPrice + " đ");
-    $('#privateRoomPrice').text(privateRoom + " đ");
+    $('.adultTourPrice').text(adultTourPrice);
+    $('#childTourPrice').text(childTourPrice);
+    $('#toddlerTourPrice').text(toddlerTourPrice);
+    $('#babyTourPrice').text(foundtour.babyTourPrice);
+    $('.privateRoomPrice').text(privateRoom);
 
     //Additional Info
     $('#targetAudience').text(tour.targetAudience);
@@ -260,4 +144,287 @@ jQuery(function(){
         return `${day}/${month}/${year}`;
     }
 
+    function getPriceToCal(price) {
+        return Math.round((discount.discountUnit == "%") ?
+            price * (1 - discount.discountValue / 100)
+            :
+            price - discount.discountValue);
+    }
+
+    //Biến cho việc tính toán
+    let adultPrice = getPriceToCal(foundtour.adultTourPrice);
+    let toddlerPrice = getPriceToCal(foundtour.toddlerTourPrice);
+    let childPrice = getPriceToCal(foundtour.childTourPrice);
+    let babyPrice = foundtour.babyTourPrice;
+    let privateRoomPrice = Math.round(foundtour.privateRoomPrice);
+    let adultQuant = 1;
+    let toddlerQuant = 0;
+    let childQuant = 0;
+    let babyQuant = 0;
+    let privateRoomQuant = 1;
+    let availableCapacity = foundtour.availableCapacity;
+
+    let totalQuant = 1;
+    let totalPrice = parseInt(adultPrice) + parseInt(privateRoomPrice);
+
+    $('#total').text(formatNumberWithDots(totalPrice) + " đ");
+
+    let adult_box_item =
+        `
+        <table class="table table-borderless adult-info-peace">
+                                <colgroup>
+                                    <col style="width: 50%;">
+                                    <col style="width: 15%;">
+                                    <col style="width: 15%;">
+                                    <col style="width: 20%;">
+                                </colgroup>
+                                <tr class="text-dark pb-0">
+                                    <th class="pb-0">Họ tên</th>
+                                    <th class="pb-0 text-center">Giới tính</th>
+                                    <th class="pb-0 text-center">Ngày sinh</th>
+                                    <th class="pb-0 text-center">Phòng đơn</th>
+                                </tr>
+                                <tr>
+                                    <td class="align-middle">
+                                        <input type="text"
+                                            class="form-control text-dark custom-info-input border-0 ps-0 fs-6"
+                                            placeholder="Liên hệ" name="fullnameC">
+                                    </td>
+                                    <td class="align-middle">
+                                        <select class="form-select border-0">
+                                            <option value="0" selected>Nam</option>
+                                            <option value="1">Nữ</option>
+                                        </select>
+                                    </td>
+                                    <td class="align-middle">
+                                        <input type="date" name="dobC" id="dobC" class="form-control border-0">
+                                    </td>
+                                    <td class="align-middle">
+                                        <div
+                                            class="form-check form-switch d-flex flex-column align-items-center justify-content-center ps-0">
+                                            <input class="form-check-input mx-auto fs-4 singleRoom" type="checkbox"
+                                                name="darkmode" value="yes" checked>
+                                            <p class="text-dark fw-bold mt-2 mb-0 privateRoomPrice">${privateRoom} đ</p>
+                                        </div>
+                                    </td>
+                                </tr>
+                        </table>
+    `;
+
+    let ctb_box_item =
+        `
+    <table class="table table-borderless adult-info-peace">
+                                        <colgroup>
+                                            <col style="width: 70%;">
+                                            <col style="width: 15%;">
+                                            <col style="width: 15%;">
+                                        </colgroup>
+                                        <tr class="text-dark pb-0">
+                                            <th class="pb-0">Họ tên</th>
+                                            <th class="pb-0 text-center">Giới tính</th>
+                                            <th class="pb-0 text-center">Ngày sinh</th>
+                                        </tr>
+                                        <tr>
+                                            <td class="align-middle">
+                                                <input type="text"
+                                                    class="form-control text-dark custom-info-input border-0 ps-0 fs-6"
+                                                    placeholder="Liên hệ" name="fullnameC">
+                                            </td>
+                                            <td class="align-middle">
+                                                <select class="form-select border-0">
+                                                    <option value="0" selected>Nam</option>
+                                                    <option value="1">Nữ</option>
+                                                </select>
+                                            </td>
+                                            <td class="align-middle">
+                                                <input type="date" name="dobC" class="form-control border-0">
+                                            </td>
+                                        </tr>
+                                </table>
+    `;
+
+    $('#btnSubAQ').click(function () {
+        if ($('#quanAdult').val() <= 1)
+            return;
+        adultQuant--;
+
+        if (adultQuant == 1) {
+            $('.singleRoom').prop("checked", true);
+            privateRoomQuant = 1;
+        } else {
+            privateRoomQuant--;
+        }
+
+        $('#quanAdult').val(adultQuant);
+        updateView();
+
+        $('.adult-box').children("table").last().remove();
+    })
+
+    $('#btnAddAQ').click(function () {
+        if (totalQuant + 1 > availableCapacity)
+            return;
+        adultQuant++;
+        $('#quanAdult').val(adultQuant);
+
+        privateRoomQuant++;
+
+        updateView();
+
+        $('.adult-box').append(adult_box_item);
+    })
+
+    $('#btnSubCQ').click(function () {
+        if ($('#quanChild').val() <= 0)
+            return;
+        childQuant--;
+        $('#quanChild').val(childQuant);
+        updateView();
+
+        $('.child-box').children("table").last().remove();
+    })
+
+    $('#btnAddCQ').click(function () {
+        if (totalQuant + 1 > availableCapacity)
+            return;
+        childQuant++;
+        $('#quanChild').val(childQuant);
+        updateView();
+
+        $('.child-box').append(ctb_box_item);
+    })
+
+    $('#btnSubTQ').click(function () {
+        if ($('#quanTod').val() <= 0)
+            return;
+        toddlerQuant--;
+        $('#quanTod').val(toddlerQuant);
+        updateView();
+
+        $('.toddler-box').children("table").last().remove();
+    })
+
+    $('#btnAddTQ').click(function () {
+        if (totalQuant + 1 > availableCapacity)
+            return;
+        toddlerQuant++;
+        $('#quanTod').val(toddlerQuant);
+        updateView();
+
+        $('.toddler-box').append(ctb_box_item);
+    })
+
+    $('#btnSubBQ').click(function () {
+        if ($('#quanBaby').val() <= 0)
+            return;
+        babyQuant--;
+        $('#quanBaby').val(babyQuant);
+        updateView();
+
+        $('.baby-box').children("table").last().remove();
+    })
+
+    $('#btnAddBQ').click(function () {
+        if (totalQuant + 1 > availableCapacity)
+            return;
+        babyQuant++;
+        $('#quanBaby').val(babyQuant);
+        updateView();
+        $('.baby-box').append(ctb_box_item);
+
+    })
+
+
+    // document.addEventListener('change', function (event) {
+    //     if (event.target.classList.contains('singleRoom')) {
+    //         const checkbox = event.target;
+    //         if (adultQuant <= 1) {
+    //             checkbox.checked = true;
+    //             return;
+    //         }
+
+    //         if (checkbox.checked) {
+    //             privateRoomQuant++;
+    //         } else {
+    //             privateRoomQuant--;
+    //         }
+    //         updateView();
+    //     }
+    // });
+
+    $('.adult-box').on('change', '.singleRoom', function () {
+        if (adultQuant <= 1) {
+            $(this).prop('checked', true);
+            return;
+        }
+
+        if ($(this).prop("checked")) {
+            privateRoomQuant++;
+        } else {
+            privateRoomQuant--;
+        }
+        updateView();
+    });
+
+
+    // $('.singleRoom').change(function () {
+    //     if (adultQuant <= 1) {
+    //         $(this).prop('checked', true);
+    //         return;
+    //     }
+
+    //     if ($(this).prop("checked")) {
+    //         privateRoomQuant++;
+    //     }
+    //     else{
+    //         privateRoomQuant--;
+    //     }
+    //     updateView();
+    // })
+
+    function updateView() {
+        if (childQuant == 0) {
+            if (!$('#child-line').hasClass('d-none'))
+                $('#child-line').addClass('d-none');
+        } else {
+            if ($('#child-line').hasClass('d-none'))
+                $('#child-line').removeClass('d-none');
+        }
+
+        if (toddlerQuant == 0) {
+            if (!$('#toddler-line').hasClass('d-none'))
+                $('#toddler-line').addClass('d-none');
+        } else {
+            if ($('#toddler-line').hasClass('d-none'))
+                $('#toddler-line').removeClass('d-none');
+        }
+
+        if (babyQuant == 0) {
+            if (!$('#baby-line').hasClass('d-none'))
+                $('#baby-line').addClass('d-none');
+        } else {
+            if ($('#baby-line').hasClass('d-none'))
+                $('#baby-line').removeClass('d-none');
+        }
+
+        if (privateRoomQuant == 0) {
+            if (!$('#privateRoom-line').hasClass('d-none'))
+                $('#privateRoom-line').addClass('d-none');
+        } else {
+            if ($('#privateRoom-line').hasClass('d-none'))
+                $('#privateRoom-line').removeClass('d-none');
+        }
+
+        $('.quantAdult').text(adultQuant);
+        $('.quantChild').text(childQuant);
+        $('.quantToddler').text(toddlerQuant);
+        $('.quantBaby').text(babyQuant);
+
+        // console.log(privateRoomQuant);
+        $('.quantPrivateRoom').text(privateRoomQuant);
+
+        totalPrice = (adultQuant * adultPrice) + (childQuant * childPrice) + (toddlerQuant * toddlerPrice) + (babyQuant * babyPrice) + (privateRoomQuant * privateRoomPrice);
+        totalQuant = adultQuant + childQuant + toddlerQuant + babyQuant;
+        $('#total').text(formatNumberWithDots(totalPrice) + " đ");
+    }
 })
