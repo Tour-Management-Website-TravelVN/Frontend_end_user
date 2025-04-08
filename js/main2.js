@@ -1,4 +1,4 @@
-import { validateFullName, validateAge } from "./validate.js";
+import { validateFullName, validateEmail, validateAge, validateUsername, validatePwd } from "./validate.js";
 
 document.addEventListener('DOMContentLoaded', function () {
     var header_auth = document.getElementById("header-auth");
@@ -79,8 +79,8 @@ document.addEventListener('DOMContentLoaded', function () {
             element.classList.remove("d-none");
         });
         header_auth.classList.add("d-none");
-
-        localStorage.clear();
+        localStorage.removeItem('fullname');
+        // localStorage.clear();
     }
 
     document.getElementById('btnRegister').addEventListener('click',
@@ -257,6 +257,20 @@ document.addEventListener('DOMContentLoaded', function () {
             }
         });
 
+        //Kiểm tra email
+        $('#floatingEmail').on({
+            'input': function(){
+                if(!validateEmail($(this).val())){
+                    $(this).addClass('is-invalid');
+                    $(this).removeClass('is-valid');
+                    $(this).next().next().text('Email không hợp lệ');
+                } else {
+                    $(this).removeClass('is-invalid');
+                    $(this).addClass('is-valid');
+                }
+            }
+        })
+
         //Kiểm tra tuổi
         $('#floatingDob').on({
             'input': function(){
@@ -264,6 +278,78 @@ document.addEventListener('DOMContentLoaded', function () {
                     $(this).addClass('is-invalid');
                     $(this).removeClass('is-valid');
                     $(this).next().next().text('Ngày sinh không hợp lệ');
+                } else {
+                    $(this).removeClass('is-invalid');
+                    $(this).addClass('is-valid');
+                }
+            }
+        })
+
+        //Kiểm tra tên đăng nhập
+        $('#floatingUsername').on({
+            'input': function(){
+                if(!validateUsername($(this).val())){
+                    $(this).addClass('is-invalid');
+                    $(this).removeClass('is-valid');
+                    $(this).next().next().text('Tên đăng nhập gồm 8 đến 40 ký tự chữ hoặc số.');
+                } else {
+                    $(this).removeClass('is-invalid');
+                    $(this).addClass('is-valid');
+                }
+            }
+        })
+
+        //Kiểm tra mật khẩu
+        $('#floatingPassword').on({
+            'input': function(){
+                if(!validatePwd($(this).val())){
+                    $(this).addClass('is-invalid');
+                    $(this).removeClass('is-valid');
+                    $(this).next().next().text('Mật khẩu từ 6 đến 20 ký tự.');
+                } else {
+                    $(this).removeClass('is-invalid');
+                    $(this).addClass('is-valid');
+                }
+            }
+        })
+
+        // Ngăn chặn submit form nếu không hợp lệ (vẫn giữ lại logic submit khi hợp lệ)
+        form.addEventListener('submit', function (event) {
+            if (!form.checkValidity()) {
+                event.preventDefault();
+                event.stopPropagation();
+            }
+            form.classList.add('was-validated');
+        }, false);
+    })();
+
+    (function () {
+        'use strict'
+
+        // Lấy form
+        const form = document.getElementById('loginForm');
+
+        //Kiểm tra tên đăng nhập
+        $('#floatingUsernameLogin').on({
+            'input': function(){
+                if(!validateUsername($(this).val())){
+                    $(this).addClass('is-invalid');
+                    $(this).removeClass('is-valid');
+                    $(this).next().next().text('Tên đăng nhập gồm 8 đến 40 ký tự chữ hoặc số.');
+                } else {
+                    $(this).removeClass('is-invalid');
+                    $(this).addClass('is-valid');
+                }
+            }
+        })
+
+        //Kiểm tra mật khẩu
+        $('#floatingPasswordLogin').on({
+            'input': function(){
+                if(!validatePwd($(this).val())){
+                    $(this).addClass('is-invalid');
+                    $(this).removeClass('is-valid');
+                    $(this).next().next().text('Mật khẩu từ 6 đến 20 ký tự.');
                 } else {
                     $(this).removeClass('is-invalid');
                     $(this).addClass('is-valid');

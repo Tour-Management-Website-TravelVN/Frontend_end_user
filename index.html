@@ -38,6 +38,7 @@
     <script src="lib/lightbox/js/jquery-3.7.1.min.js"></script>
     <script type="module" src="js/main2.js"></script>
     <script src="js/main3.js"></script>
+    <script src="js/search/search-input.js"></script>
 </head>
 
 <body>
@@ -193,9 +194,9 @@
                                         <h2 class="h1 text-center fw-bold text-primary mb-3">ĐĂNG NHẬP</h2>
 
                                         <!--Login Form Start-->
-                                        <form action="" class="was-validated" id="loginForm" novalidate>
+                                        <form action="" class="needs-validation" id="loginForm" novalidate>
                                             <div class="form-floating mb-3">
-                                                <input type="text" class="form-control is-invalid" id="floatingUsernameLogin"
+                                                <input type="text" class="form-control" id="floatingUsernameLogin"
                                                     required placeholder="Nguyễn Văn A">
                                                 <label for="floatingUsernameLogin">Tên đăng nhập</label>
                                                 <div class="invalid-feedback">Please fill out this field.</div>
@@ -367,11 +368,11 @@
                     <div class="col-md-4">
                         <label class="heading5 text-dark fs-6">Ngân sách</label><br />
                         <select class="form-select border-0 text-dark ps-0" style="width: 60%;"
-                            aria-label="Chọn ngân sách">
-                            <option selected="5000">Dưới 5 triệu</option>
-                            <option value="10000">Từ 5 triệu đến 10 triệu</option>
-                            <option value="19000">Từ 10 triệu đến 20 triệu</option>
-                            <option value="20000">Trên 20 triệu</option>
+                            aria-label="Chọn ngân sách" id="price">
+                            <option value="0-5000000" selected="selected">Dưới 5 triệu</option>
+                            <option value="5000000-10000000">Từ 5 triệu đến 10 triệu</option>
+                            <option value="10000000-20000000">Từ 10 triệu đến 20 triệu</option>
+                            <option value="20000000-Infinity">Trên 20 triệu</option>
                         </select>
                     </div>
                 </div>
@@ -1511,7 +1512,10 @@
     <script>
         $.noConflict;
         jQuery(function ($) {
-            $('#btnFind, .btn-festival, .national-item, .destination-img').click(function () {
+            // $('#btnFind, .btn-festival, .national-item, .destination-img').click(function () {
+            //     window.location.href = "foundtourlist.html";
+            // });
+            $('.btn-festival, .national-item, .destination-img').click(function () {
                 window.location.href = "foundtourlist.html";
             });
             $('.packages-item').click(function () {
