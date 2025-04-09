@@ -41,6 +41,7 @@
     <script src="lib/lightbox/js/jquery-3.7.1.min.js"></script>
     <script type="module" src="js/main2.js"></script>
     <script src="js/booking/bookingdisplay.js"></script>
+    <script type="module" src="js/booking/bookingvalidate.js"></script>
 </head>
 
 <body>
@@ -270,8 +271,8 @@
             <p class="text-dark fw-bold fs-4" id="back"><i class="bi bi-arrow-left fw-bold me-2"></i>Quay lại</p>
 
             <script>
-                jQuery(function(){
-                    $('#back').click(function(){
+                jQuery(function () {
+                    $('#back').click(function () {
                         window.location.href = 'tourunit.html';
                     })
                 })
@@ -279,7 +280,10 @@
 
             <h1 class="text-center text-primary text-uppercase fw-bold mb-4">Đặt tour</h1>
             <div class="row gap">
-                <div class="col-7">
+
+                <!-- <div class="col-7"> -->
+                <!-- FORM START -->
+                <form action="" class="needs-validation col-7" id="bookingForm">
                     <!-- Customer Info Start-->
                     <div class="">
                         <h3 class="text-start text-primary text-uppercase fw-bold mt-3 mb-4">Thông tin liên lạc</h3>
@@ -287,30 +291,46 @@
                             <!-- Customer Info Form Start -->
                             <div class="row">
                                 <div class="col">
-                                    <label for="fullname" class="form-label fw-bold fs-5 text-dark mb-1">Họ tên</label>
-                                    <br>
-                                    <input type="text"
-                                        class="form-control text-dark custom-info-input border-0 ps-0 fs-5"
-                                        id="fullname" placeholder="Liên hệ" name="fullname">
+                                    <!--fullname-->
+                                    <div>
+                                        <label for="fullname" class="form-label fw-bold fs-5 text-dark mb-1">Họ
+                                            tên</label>
+                                        <br>
+                                        <input type="text"
+                                            class="form-control text-dark custom-info-input border-0 ps-0 fs-5 fullnameIBF"
+                                            id="fullnameBF" placeholder="Liên hệ" name="fullname" required>
+                                        <div class="invalid-feedback">Please fill out this field.</div>
+                                    </div>
+                                    <!--email-->
                                     <label for="email" class="form-label fw-bold fs-5 text-dark mb-1 mt-3">Email</label>
                                     <br>
                                     <input type="email"
-                                        class="form-control text-dark custom-info-input border-0 ps-0 fs-5" id="email"
-                                        placeholder="Nhập email" name="email">
+                                        class="form-control text-dark custom-info-input border-0 ps-0 fs-5 emailIBF"
+                                        id="emailBF" placeholder="Nhập email" name="email" required>
+                                    <div class="invalid-feedback">Please fill out this field.</div>
                                 </div>
+
                                 <div class="col">
-                                    <label for="phonenumber" class="form-label fw-bold fs-5 text-dark mb-1">Điện
-                                        thoại</label>
-                                    <br>
-                                    <input type="number"
-                                        class="form-control text-dark custom-info-input border-0 ps-0 fs-5"
-                                        id="phonenumber" placeholder="Nhập số điện thoại" name="phonenumber">
+                                    <!--phonenumber-->
+                                    <div>
+                                        <label for="phonenumber" class="form-label fw-bold fs-5 text-dark mb-1">Điện
+                                            thoại</label>
+                                        <br>
+                                        <input type="number"
+                                            class="form-control text-dark custom-info-input border-0 ps-0 fs-5 phonenumberIBF"
+                                            id="phonenumber" placeholder="Nhập số điện thoại" name="phonenumber"
+                                            required>
+                                        <div class="invalid-feedback">Please fill out this field.</div>
+                                    </div>
+                                    <!--address-->
                                     <label for="address" class="form-label fw-bold fs-5 text-dark mb-1 mt-3">Địa
                                         chỉ</label>
                                     <br>
                                     <input type="text"
-                                        class="form-control text-dark custom-info-input border-0 ps-0 fs-5" id="address"
-                                        placeholder="Nhập địa chỉ" name="address">
+                                        class="form-control text-dark custom-info-input border-0 ps-0 fs-5 addressIBF"
+                                        id="address" placeholder="Nhập địa chỉ" name="address">
+                                    <div class="invalid-feedback">Please fill out this field.</div>
+
                                 </div>
                             </div>
                             <!-- Customer Info Form End -->
@@ -330,25 +350,29 @@
                                         <p class="mb-0"><small>(Từ 10 tuổi trở lên)</small></p>
                                     </div>
                                     <div class="col-4 d-flex align-items-center">
-                                        <button type="button" class="py-0 fs-1 border-0 bg-white" id="btnSubAQ">-</button>
+                                        <button type="button" class="py-0 fs-1 border-0 bg-white"
+                                            id="btnSubAQ">-</button>
                                         <input type="number" step="1" min="1" value="1" name="quanAdult" id="quanAdult"
                                             class="w-100 text-center border-0 fs-5 quantity text-primary fw-bold"
                                             placeholder="0" readonly>
-                                        <button type="button" class="py-0 fs-4 border-0 bg-white" id="btnAddAQ">+</button>
+                                        <button type="button" class="py-0 fs-4 border-0 bg-white"
+                                            id="btnAddAQ">+</button>
                                     </div>
                                 </div>
 
                                 <div class="border border-dark rounded-1 d-flex px-3 py-2 p-3">
                                     <div class="col-8 py-2">
                                         <p class="text-dark fw-bold mb-1">Trẻ em</p>
-                                        <p class="mb-0"><small>(Từ 5 đến 10 tuổi)</small></p>
+                                        <p class="mb-0"><small>(Từ 5 đến 9 tuổi)</small></p>
                                     </div>
                                     <div class="col-4 d-flex align-items-center">
-                                        <button type="button" class="py-0 fs-1 border-0 bg-white" id="btnSubCQ">-</button>
+                                        <button type="button" class="py-0 fs-1 border-0 bg-white"
+                                            id="btnSubCQ">-</button>
                                         <input type="number" step="1" min="0" value="0" name="quanChild" id="quanChild"
                                             class="w-100 text-center border-0 fs-5 quantity text-primary fw-bold"
                                             placeholder="0" readonly>
-                                        <button type="button" class="py-0 fs-4 border-0 bg-white" id="btnAddCQ">+</button>
+                                        <button type="button" class="py-0 fs-4 border-0 bg-white"
+                                            id="btnAddCQ">+</button>
                                     </div>
                                 </div>
                             </div>
@@ -359,11 +383,13 @@
                                         <p class="mb-0"><small>(Từ 2 đến 4 tuổi)</small></p>
                                     </div>
                                     <div class="col-4 d-flex align-items-center">
-                                        <button type="button" class="py-0 fs-1 border-0 bg-white" id="btnSubTQ">-</button>
+                                        <button type="button" class="py-0 fs-1 border-0 bg-white"
+                                            id="btnSubTQ">-</button>
                                         <input type="number" step="1" min="0" value="0" name="quanTod" id="quanTod"
                                             class="w-100 text-center border-0 fs-5 quantity text-primary fw-bold"
                                             placeholder="0" readonly>
-                                        <button type="button" class="py-0 fs-4 border-0 bg-white" id="btnAddTQ">+</button>
+                                        <button type="button" class="py-0 fs-4 border-0 bg-white"
+                                            id="btnAddTQ">+</button>
                                     </div>
                                 </div>
 
@@ -373,11 +399,13 @@
                                         <p class="mb-0"><small>(Dưới 2 tuổi)</small></p>
                                     </div>
                                     <div class="col-4 d-flex align-items-center">
-                                        <button type="button" class="py-0 fs-1 border-0 bg-white" id="btnSubBQ">-</button>
+                                        <button type="button" class="py-0 fs-1 border-0 bg-white"
+                                            id="btnSubBQ">-</button>
                                         <input type="number" step="1" min="0" value="0" name="quanBaby" id="quanBaby"
                                             class="w-100 text-center border-0 fs-5 quantity text-primary fw-bold"
                                             placeholder="0" readonly>
-                                        <button type="button" class="py-0 fs-4 border-0 bg-white" id="btnAddBQ">+</button>
+                                        <button type="button" class="py-0 fs-4 border-0 bg-white"
+                                            id="btnAddBQ">+</button>
                                     </div>
                                 </div>
                             </div>
@@ -388,159 +416,176 @@
                     <!-- Additional Information 2 Start -->
                     <div class="mt-4 pt-1">
                         <h3 class="text-start text-primary text-uppercase fw-bold mt-3 mb-4">Thông tin hành khách</h3>
-                        
+
                         <!-- Adult Box Start-->
                         <div class="adult-box">
                             <hr class="text-dark" />
                             <p><span class="fw-bold fs-5 text-dark">Người lớn</span> <small
                                     class="ps-1 text-dark fst-italic">(Từ 10 tuổi trở lên)</small> </p>
-                                <table class="table table-borderless adult-info-peace">
-                                    <colgroup>
-                                        <col style="width: 50%;">
-                                        <col style="width: 15%;">
-                                        <col style="width: 15%;">
-                                        <col style="width: 20%;">
-                                    </colgroup>
-                                    <tr class="text-dark pb-0">
-                                        <th class="pb-0">Họ tên</th>
-                                        <th class="pb-0 text-center">Giới tính</th>
-                                        <th class="pb-0 text-center">Ngày sinh</th>
-                                        <th class="pb-0 text-center">Phòng đơn</th>
-                                    </tr>
-                                    <tr>
-                                        <td class="align-middle">
-                                            <input type="text"
-                                                class="form-control text-dark custom-info-input border-0 ps-0 fs-6"
-                                                placeholder="Liên hệ" name="fullnameC">
-                                        </td>
-                                        <td class="align-middle">
-                                            <select class="form-select border-0">
-                                                <option value="0" selected>Nam</option>
-                                                <option value="1">Nữ</option>
-                                            </select>
-                                        </td>
-                                        <td class="align-middle">
-                                            <input type="date" name="dobC" id="dobC" class="form-control border-0">
-                                        </td>
-                                        <td class="align-middle">
-                                            <div
-                                                class="form-check form-switch d-flex flex-column align-items-center justify-content-center ps-0">
-                                                <input class="form-check-input mx-auto fs-4 singleRoom" type="checkbox"
-                                                    name="darkmode" value="yes" checked>
-                                                <p class="text-dark fw-bold mt-2 mb-0 privateRoomPrice">1.850.000 đ</p>
-                                            </div>
-                                        </td>
-                                    </tr>
+                            <table class="table table-borderless adult-info-peace">
+                                <colgroup>
+                                    <col style="width: 50%;">
+                                    <col style="width: 15%;">
+                                    <col style="width: 15%;">
+                                    <col style="width: 20%;">
+                                </colgroup>
+                                <tr class="text-dark pb-0">
+                                    <th class="pb-0">Họ tên</th>
+                                    <th class="pb-0 text-center">Giới tính</th>
+                                    <th class="pb-0 text-center">Ngày sinh</th>
+                                    <th class="pb-0 text-center">Phòng đơn</th>
+                                </tr>
+                                <tr>
+                                    <td class="align-middle">
+                                        <!--fullname-->
+                                        <input type="text"
+                                            class="form-control text-dark custom-info-input border-0 ps-0 fs-6 fullnameIBF"
+                                            placeholder="Liên hệ" name="fullnameC" id="fullnameCopy" required>
+                                        <div class="invalid-feedback">Please fill out this field.</div>
+                                    </td>
+                                    <td class="align-middle">
+                                        <select class="form-select border-0">
+                                            <option value="0" selected>Nam</option>
+                                            <option value="1">Nữ</option>
+                                        </select>
+                                    </td>
+                                    <td class="align-middle">
+                                        <!-- dobAIBF -->
+                                        <input type="date" name="dobC" id="dobBF" class="form-control border-0"
+                                            required>
+                                        <div class="invalid-feedback">Please fill out this field.</div>
+                                    </td>
+                                    <td class="align-middle">
+                                        <div
+                                            class="form-check form-switch d-flex flex-column align-items-center justify-content-center ps-0">
+                                            <input class="form-check-input mx-auto fs-4 singleRoom" type="checkbox"
+                                                name="darkmode" value="yes" checked>
+                                            <p class="text-dark fw-bold mt-2 mb-0 privateRoomPrice">1.850.000 đ</p>
+                                        </div>
+                                    </td>
+                                </tr>
                             </table>
 
                         </div>
                         <!-- Adult Box End-->
 
                         <!-- Child Box Start-->
-                        <div class="child-box">
+                        <div class="child-box d-none">
                             <hr class="text-dark" />
                             <p><span class="fw-bold fs-5 text-dark">Trẻ em</span> <small
-                                    class="ps-1 text-dark fst-italic">(Từ 5 đến 10 tuổi)</small> </p>
-                                    <table class="table table-borderless adult-info-peace">
-                                        <colgroup>
-                                            <col style="width: 70%;">
-                                            <col style="width: 15%;">
-                                            <col style="width: 15%;">
-                                        </colgroup>
-                                        <tr class="text-dark pb-0">
-                                            <th class="pb-0">Họ tên</th>
-                                            <th class="pb-0 text-center">Giới tính</th>
-                                            <th class="pb-0 text-center">Ngày sinh</th>
-                                        </tr>
-                                        <tr>
-                                            <td class="align-middle">
-                                                <input type="text"
-                                                    class="form-control text-dark custom-info-input border-0 ps-0 fs-6"
-                                                    placeholder="Liên hệ" name="fullnameC">
-                                            </td>
-                                            <td class="align-middle">
-                                                <select class="form-select border-0">
-                                                    <option value="0" selected>Nam</option>
-                                                    <option value="1">Nữ</option>
-                                                </select>
-                                            </td>
-                                            <td class="align-middle">
-                                                <input type="date" name="dobC" class="form-control border-0">
-                                            </td>
-                                        </tr>
-                                </table>
+                                    class="ps-1 text-dark fst-italic">(Từ 5 đến 9 tuổi)</small> </p>
+                            <!-- <table class="table table-borderless adult-info-peace">
+                                <colgroup>
+                                    <col style="width: 70%;">
+                                    <col style="width: 15%;">
+                                    <col style="width: 15%;">
+                                </colgroup>
+                                <tr class="text-dark pb-0">
+                                    <th class="pb-0">Họ tên</th>
+                                    <th class="pb-0 text-center">Giới tính</th>
+                                    <th class="pb-0 text-center">Ngày sinh</th>
+                                </tr>
+                                <tr>
+                                    <td class="align-middle">
+                                        
+                                        <input type="text"
+                                            class="form-control text-dark custom-info-input border-0 ps-0 fs-6 fullnameIBF"
+                                            placeholder="Liên hệ" name="fullnameC" required>
+                                        <div class="invalid-feedback">Please fill out this field.</div>
+                                    </td>
+                                    <td class="align-middle">
+                                        <select class="form-select border-0">
+                                            <option value="0" selected>Nam</option>
+                                            <option value="1">Nữ</option>
+                                        </select>
+                                    </td>
+                                    <td class="align-middle">
+                                        
+                                        <input type="date" name="dobC" class="form-control border-0 dobCBF" required>
+                                        <div class="invalid-feedback">Please fill out this field.</div>
+                                    </td>
+                                </tr>
+                            </table> -->
                         </div>
                         <!-- Child Box End-->
 
                         <!-- Toddler Box Start-->
-                        <div class="toddler-box">
+                        <div class="toddler-box d-none">
                             <hr class="text-dark" />
                             <p><span class="fw-bold fs-5 text-dark">Trẻ nhỏ</span> <small
                                     class="ps-1 text-dark fst-italic">(Từ 2 đến 4 tuổi)</small> </p>
-                                    <table class="table table-borderless adult-info-peace">
-                                        <colgroup>
-                                            <col style="width: 70%;">
-                                            <col style="width: 15%;">
-                                            <col style="width: 15%;">
-                                        </colgroup>
-                                        <tr class="text-dark pb-0">
-                                            <th class="pb-0">Họ tên</th>
-                                            <th class="pb-0 text-center">Giới tính</th>
-                                            <th class="pb-0 text-center">Ngày sinh</th>
-                                        </tr>
-                                        <tr>
-                                            <td class="align-middle">
-                                                <input type="text"
-                                                    class="form-control text-dark custom-info-input border-0 ps-0 fs-6"
-                                                    placeholder="Liên hệ" name="fullnameC">
-                                            </td>
-                                            <td class="align-middle">
-                                                <select class="form-select border-0">
-                                                    <option value="0" selected>Nam</option>
-                                                    <option value="1">Nữ</option>
-                                                </select>
-                                            </td>
-                                            <td class="align-middle">
-                                                <input type="date" name="dobC" class="form-control border-0">
-                                            </td>
-                                        </tr>
-                                </table>
+                            <!-- <table class="table table-borderless adult-info-peace">
+                                <colgroup>
+                                    <col style="width: 70%;">
+                                    <col style="width: 15%;">
+                                    <col style="width: 15%;">
+                                </colgroup>
+                                <tr class="text-dark pb-0">
+                                    <th class="pb-0">Họ tên</th>
+                                    <th class="pb-0 text-center">Giới tính</th>
+                                    <th class="pb-0 text-center">Ngày sinh</th>
+                                </tr>
+                                <tr>
+                                    <td class="align-middle">
+                                        
+                                        <input type="text"
+                                            class="form-control text-dark custom-info-input border-0 ps-0 fs-6 fullnameIBF"
+                                            placeholder="Liên hệ" name="fullnameC" required>
+                                        <div class="invalid-feedback">Please fill out this field.</div>
+                                    </td>
+                                    <td class="align-middle">
+                                        <select class="form-select border-0">
+                                            <option value="0" selected>Nam</option>
+                                            <option value="1">Nữ</option>
+                                        </select>
+                                    </td>
+                                    <td class="align-middle">
+                                        
+                                        <input type="date" name="dobC" class="form-control border-0 dobTBF" required>
+                                        <div class="invalid-feedback">Please fill out this field.</div>
+                                    </td>
+                                </tr>
+                            </table> -->
                         </div>
                         <!-- Toddler Box End-->
 
                         <!-- Baby Box Start-->
-                        <div class="baby-box">
+                        <div class="baby-box d-none">
                             <hr class="text-dark" />
                             <p><span class="fw-bold fs-5 text-dark">Em bé</span> <small
                                     class="ps-1 text-dark fst-italic">(Dưới 2 tuổi)</small> </p>
-                                <table class="table table-borderless adult-info-peace">
-                                    <colgroup>
-                                        <col style="width: 70%;">
-                                        <col style="width: 15%;">
-                                        <col style="width: 15%;">
-                                    </colgroup>
-                                    <tr class="text-dark pb-0">
-                                        <th class="pb-0">Họ tên</th>
-                                        <th class="pb-0 text-center">Giới tính</th>
-                                        <th class="pb-0 text-center">Ngày sinh</th>
-                                    </tr>
-                                    <tr>
-                                        <td class="align-middle">
-                                            <input type="text"
-                                                class="form-control text-dark custom-info-input border-0 ps-0 fs-6"
-                                                placeholder="Liên hệ" name="fullnameC">
-                                        </td>
-                                        <td class="align-middle">
-                                            <select class="form-select border-0">
-                                                <option value="0" selected>Nam</option>
-                                                <option value="1">Nữ</option>
-                                            </select>
-                                        </td>
-                                        <td class="align-middle">
-                                            <input type="date" name="dobC" class="form-control border-0">
-                                        </td>
-                                    </tr>
-                            </table>
+                            <!-- <table class="table table-borderless adult-info-peace">
+                                <colgroup>
+                                    <col style="width: 70%;">
+                                    <col style="width: 15%;">
+                                    <col style="width: 15%;">
+                                </colgroup>
+                                <tr class="text-dark pb-0">
+                                    <th class="pb-0">Họ tên</th>
+                                    <th class="pb-0 text-center">Giới tính</th>
+                                    <th class="pb-0 text-center">Ngày sinh</th>
+                                </tr>
+                                <tr>
+                                    <td class="align-middle">
+                                        
+                                        <input type="text"
+                                            class="form-control text-dark custom-info-input border-0 ps-0 fs-6 fullnameIBF"
+                                            placeholder="Liên hệ" name="fullnameC" required>
+                                        <div class="invalid-feedback">Please fill out this field.</div>
+                                    </td>
+                                    <td class="align-middle">
+                                        <select class="form-select border-0">
+                                            <option value="0" selected>Nam</option>
+                                            <option value="1">Nữ</option>
+                                        </select>
+                                    </td>
+                                    <td class="align-middle">
+                                        
+                                        <input type="date" name="dobC" class="form-control border-0 dobBBF" required>
+                                        <div class="invalid-feedback">Please fill out this field.</div>
+                                    </td>
+                                </tr>
+                            </table> -->
                         </div>
                         <!-- Baby Box End-->
 
@@ -555,7 +600,9 @@
                         </div>
                     </div>
                     <!-- Notice End -->
-                </div>
+                    <!-- </div> -->
+                    <!-- FORM BOOKING END-->
+                </form>
 
                 <!--Right Side Start-->
                 <div class="col-5">
@@ -564,58 +611,68 @@
                             <div class="col-4 pe-0" id="sm-img">
                                 <img src="img/destination/DaNang.webp" class="object-fit cover w-100 rounded-1" alt="">
                             </div>
-                            <p class="col-8 text-primary fw-bold text-justify mt-0 fs-5 py-0 tourname">Tour Đà Nẵng 4N3Đ: HCM -
+                            <p class="col-8 text-primary fw-bold text-justify mt-0 fs-5 py-0 tourname">Tour Đà Nẵng
+                                4N3Đ: HCM -
                                 Đà Nẵng - Hội An
                                 - Huế - Quảng Bình - Động Phong Nha</p>
                         </div>
                         <div class="d-flex mb-0 pt-1 pb-1">
                             <i class="bi bi-ticket-fill text-primary me-2 mt-1"></i>
-                            <p class="heading4 text-primary fw-bold mb-0 pb-0" id="tourUnitId">T001-00001-4N3Đ-170305</p>
+                            <p class="heading4 text-primary fw-bold mb-0 pb-0" id="tourUnitId">T001-00001-4N3Đ-170305
+                            </p>
                         </div>
                         <div class="d-flex justify-content-between pb-1 mb-0">
                             <div class="d-flex">
-                                <i class="bi bi-clock-fill me-2 text-dark fw-bold fs-5"></i><p class="fs-5 text-dark mb-1 fw-bold" id="duration">4N3Đ</p>
+                                <i class="bi bi-clock-fill me-2 text-dark fw-bold fs-5"></i>
+                                <p class="fs-5 text-dark mb-1 fw-bold" id="duration">4N3Đ</p>
                             </div>
                             <i class="bi bi-airplane-fill text-dark rotate-45 fs-5"></i>
                         </div>
                         <div class="d-flex">
-                            <i class="bi bi-hourglass-split me-2 fw-bold fs-5 text-dark"></i><p class="fs-5 text-dark mb-1 pb-1 fw-bold" id="de-re-date">27/03/2025
+                            <i class="bi bi-hourglass-split me-2 fw-bold fs-5 text-dark"></i>
+                            <p class="fs-5 text-dark mb-1 pb-1 fw-bold" id="de-re-date">27/03/2025
                                 -
                                 31/03/2025</p>
                         </div>
                         <p class="fs-5 mb-2 heading6 text-dark pt-0 pb-0 mb-0"><i
-                                class="bi bi-geo-alt-fill me-2 pb-2 mb-2"></i><span class="text-primary fw-bold" id="departurePlace">TP. Hồ
+                                class="bi bi-geo-alt-fill me-2 pb-2 mb-2"></i><span class="text-primary fw-bold"
+                                id="departurePlace">TP. Hồ
                                 Chí
                                 Minh</span></p>
                         <p class="fs-5 mb-2 heading6 text-dark pt-0 pb-0 mb-0"><i class="bi bi-flag-fill me-2"></i><span
                                 class="text-primary fw-bold" id="placesToVisit">TP. Đà Nẵng</span></p>
                         <hr class="mt-3 mb-2" style="height: 2px;" />
                         <p class="text-uppercase text-primary fw-bold my-1 fs-5">Khách hàng + phụ thu</p>
-                        
+
                         <!-- Calculate Lines Start-->
                         <div class="d-flex justify-content-between fs-5 text-dark" id="adult-line">
                             <p class="mb-1">Người lớn</p>
-                            <p class="mb-1 text-danger fw-bold"><span class="quantAdult">1</span> x <span class="adultTourPrice">12.850.000</span> đ</p>
+                            <p class="mb-1 text-danger fw-bold"><span class="quantAdult">1</span> x <span
+                                    class="adultTourPrice">12.850.000</span> đ</p>
                         </div>
 
                         <div class="d-flex justify-content-between fs-5 text-dark d-none" id="child-line">
                             <p class="mb-1">Trẻ em</p>
-                            <p class="mb-1 text-danger fw-bold"><span class="quantChild">1</span> x <span id="childTourPrice">12.850.000</span> đ</p>
+                            <p class="mb-1 text-danger fw-bold"><span class="quantChild">1</span> x <span
+                                    id="childTourPrice">12.850.000</span> đ</p>
                         </div>
 
                         <div class="d-flex justify-content-between fs-5 text-dark d-none" id="toddler-line">
                             <p class="mb-1">Trẻ nhỏ</p>
-                            <p class="mb-1 text-danger fw-bold"><span class="quantToddler">1</span> x <span id="toddlerTourPrice">12.850.000</span> đ</p>
+                            <p class="mb-1 text-danger fw-bold"><span class="quantToddler">1</span> x <span
+                                    id="toddlerTourPrice">12.850.000</span> đ</p>
                         </div>
 
                         <div class="d-flex justify-content-between fs-5 text-dark d-none" id="baby-line">
                             <p class="mb-1">Em bé</p>
-                            <p class="mb-1 text-danger fw-bold"><span class="quantBaby">1</span> x <span id="babyTourPrice">12.850.000</span> đ</p>
+                            <p class="mb-1 text-danger fw-bold"><span class="quantBaby">1</span> x <span
+                                    id="babyTourPrice">12.850.000</span> đ</p>
                         </div>
- 
+
                         <div class="d-flex justify-content-between text-dark fs-5" id="privateRoom-line">
                             <p class="mb-0">Phụ thu phòng đơn</p>
-                            <p class="mb-0 text-danger fw-bold"><span class="quantPrivateRoom">1</span> x <span class="privateRoomPrice">1.850.000</span> đ</p>
+                            <p class="mb-0 text-danger fw-bold"><span class="quantPrivateRoom">1</span> x <span
+                                    class="privateRoomPrice">1.850.000</span> đ</p>
                         </div>
 
                         <p class="text-danger h3 fw-bold letter-spacing-2 ps-2 text-end mt-0"
@@ -626,7 +683,7 @@
                         <!-- Calculate Lines End-->
 
                         <button class="btn btn-danger py-2 w-100" id="book" data-bs-toggle="modal"
-                            data-bs-target="#bookNow">Đặt ngay</button>
+                            data-bs-target="#bookNow" disabled>Đặt ngay</button>
 
                     </div>
                 </div>
@@ -642,7 +699,7 @@
                             </div>
                             <div class="modal-body">
                                 <!-- <div class="text-dark fs-6"> -->
-                                    <pre class="text-dark fs-6 mx-auto px-auto text-justify">
+                                <pre class="text-dark fs-6 mx-auto px-auto text-justify">
 Quý khách cần đọc những điều khoản dưới đây trước khi đăng ký và trải nghiệm dịch vụ
 do TravelVN tổ chức. Việc Quý khách tiếp tục sử dụng trang web này xác nhận việc
 Quý khách đã chấp thuận và tuân thủ những điều khoản dưới đây.

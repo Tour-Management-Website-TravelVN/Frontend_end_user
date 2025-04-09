@@ -1,6 +1,6 @@
 //Kiểm tra tên đầy đủ
 export function validateFullName(fullname) {
-    const fullNameRegex = /^[A-Za-zÀ-ỹ\s]{5,49}[A-Za-zÀ-ỹ]$/;
+    const fullNameRegex = /^[A-Za-zÀ-ỹ\s]{4,49}[A-Za-zÀ-ỹ]$/;
     return (fullNameRegex.test(fullname) && fullname.includes(' '));
 }
 
@@ -30,6 +30,25 @@ export function validateAge(birthDateValue) {
     }
 
     return age >= 15 && age <= 125;
+}
+
+//Kiểm tra  độ tuổi xác định dựa vào ngày sinh
+export function validateAgeRange(birthDateValue, minAge, maxAge) {
+    if (!birthDateValue) {
+        return false; // Hoặc xử lý trường hợp không có ngày sinh
+    }
+
+    const birthDate = new Date(birthDateValue);
+    const currentDate = new Date();
+
+    let age = currentDate.getFullYear() - birthDate.getFullYear();
+    const monthDifference = currentDate.getMonth() - birthDate.getMonth();
+
+    if (monthDifference < 0 || (monthDifference === 0 && currentDate.getDate() < birthDate.getDate())) {
+        age--;
+    }
+
+    return age >= minAge && age <= maxAge;
 }
 
 //Kiểm tra tên đăng nhập
@@ -79,11 +98,6 @@ export function validatePhoneNumber(pn){
     return regex.test(pn);
 }
 
-//Kiểm tra số điện thoại
-export function validateAddress(param){
-    return param.length >= 6 && param.length <= 255;
-}
-
 //Kiểm tra mật khẩu
 export function valideVerifyPwd(newPwd, verPwd){
     return newPwd === verPwd;
@@ -96,4 +110,9 @@ export function vaidateComment(textareaElement) {
     }
     const text = textareaElement.value.trim(); // Lấy giá trị và loại bỏ khoảng trắng ở đầu và cuối
     return text.length > 0; // Kiểm tra xem chuỗi còn lại có độ dài lớn hơn 0 hay không
+  }
+
+//Kiểm tra địa chỉ
+export function validateAddress(param) {
+    return param.length > 20 && param.length <= 255; // Kiểm tra xem chuỗi còn lại có độ dài lớn hơn 0 hay không
   }

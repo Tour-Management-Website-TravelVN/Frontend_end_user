@@ -356,7 +356,7 @@ jQuery(function () {
 
             point.removeClass('choose');
             parent.next().find('.thumbnail-img').addClass('choose');
-            resetInterval()
+            resetInterval();
         });
         $('#carouselExampleIndicators').hover(function () {
             //Khi hover chuột vào carousel xóa interval và dừng owl carousel

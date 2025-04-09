@@ -187,8 +187,9 @@ jQuery(function () {
                                 <tr>
                                     <td class="align-middle">
                                         <input type="text"
-                                            class="form-control text-dark custom-info-input border-0 ps-0 fs-6"
+                                            class="form-control text-dark custom-info-input border-0 ps-0 fs-6 fullnameIBF" required
                                             placeholder="Liên hệ" name="fullnameC">
+                                        <div class="invalid-feedback">Please fill out this field.</div>
                                     </td>
                                     <td class="align-middle">
                                         <select class="form-select border-0">
@@ -197,7 +198,8 @@ jQuery(function () {
                                         </select>
                                     </td>
                                     <td class="align-middle">
-                                        <input type="date" name="dobC" id="dobC" class="form-control border-0">
+                                        <input type="date" name="dobC" class="form-control border-0 dobAIBF" required>
+                                        <div class="invalid-feedback">Please fill out this field.</div>
                                     </td>
                                     <td class="align-middle">
                                         <div
@@ -227,8 +229,9 @@ jQuery(function () {
                                         <tr>
                                             <td class="align-middle">
                                                 <input type="text"
-                                                    class="form-control text-dark custom-info-input border-0 ps-0 fs-6"
+                                                    class="form-control text-dark custom-info-input border-0 ps-0 fs-6 fullnameIBF" required
                                                     placeholder="Liên hệ" name="fullnameC">
+                                                <div class="invalid-feedback">Please fill out this field.</div>
                                             </td>
                                             <td class="align-middle">
                                                 <select class="form-select border-0">
@@ -237,7 +240,8 @@ jQuery(function () {
                                                 </select>
                                             </td>
                                             <td class="align-middle">
-                                                <input type="date" name="dobC" class="form-control border-0">
+                                                <input type="date" name="dobC" class="form-control border-0" required>
+                                                <div class="invalid-feedback">Please fill out this field.</div>
                                             </td>
                                         </tr>
                                 </table>
@@ -291,7 +295,9 @@ jQuery(function () {
         $('#quanChild').val(childQuant);
         updateView();
 
-        $('.child-box').append(ctb_box_item);
+        let $item = $(ctb_box_item); // chuyển thành jQuery element
+        $item.find("input").last().addClass('dobCBF'); // thêm class
+        $('.child-box').append($item);
     })
 
     $('#btnSubTQ').click(function () {
@@ -310,8 +316,10 @@ jQuery(function () {
         toddlerQuant++;
         $('#quanTod').val(toddlerQuant);
         updateView();
-
-        $('.toddler-box').append(ctb_box_item);
+        
+        let $item = $(ctb_box_item); // chuyển thành jQuery element
+        $item.find("input").last().addClass('dobTBF'); // thêm class
+        $('.toddler-box').append($item);
     })
 
     $('#btnSubBQ').click(function () {
@@ -330,7 +338,10 @@ jQuery(function () {
         babyQuant++;
         $('#quanBaby').val(babyQuant);
         updateView();
-        $('.baby-box').append(ctb_box_item);
+        
+        let $item = $(ctb_box_item); // chuyển thành jQuery element
+        $item.find("input").last().addClass('dobBBF'); // thêm class
+        $('.baby-box').append($item);
 
     })
 
@@ -384,27 +395,39 @@ jQuery(function () {
 
     function updateView() {
         if (childQuant == 0) {
-            if (!$('#child-line').hasClass('d-none'))
+            if (!$('#child-line').hasClass('d-none')){
                 $('#child-line').addClass('d-none');
+                $('.child-box').addClass('d-none');
+            }
         } else {
-            if ($('#child-line').hasClass('d-none'))
+            if ($('#child-line').hasClass('d-none')){
                 $('#child-line').removeClass('d-none');
+                $('.child-box').removeClass('d-none');
+            }     
         }
 
         if (toddlerQuant == 0) {
-            if (!$('#toddler-line').hasClass('d-none'))
+            if (!$('#toddler-line').hasClass('d-none')){
                 $('#toddler-line').addClass('d-none');
+                $('.toddler-box').addClass('d-none');
+            }   
         } else {
-            if ($('#toddler-line').hasClass('d-none'))
+            if ($('#toddler-line').hasClass('d-none')){
                 $('#toddler-line').removeClass('d-none');
+                $('.toddler-box').removeClass('d-none');
+            }   
         }
 
         if (babyQuant == 0) {
-            if (!$('#baby-line').hasClass('d-none'))
+            if (!$('#baby-line').hasClass('d-none')){
                 $('#baby-line').addClass('d-none');
+                $('.baby-box').addClass('d-none');
+            }
         } else {
-            if ($('#baby-line').hasClass('d-none'))
+            if ($('#baby-line').hasClass('d-none')){
                 $('#baby-line').removeClass('d-none');
+                $('.baby-box').removeClass('d-none');
+            }
         }
 
         if (privateRoomQuant == 0) {
