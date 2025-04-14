@@ -34,7 +34,9 @@
     <link rel="icon" href="img/logo_tour_no_text.svg">
 
     <script src="lib/lightbox/js/jquery-3.7.1.min.js"></script>
+    <script src="js/main3.js"></script>
     <script type="module" src="js/main2.js"></script>
+    <script type="module" src="js/myinfo/my-info.js"></script>
 </head>
 
 <body>
@@ -54,7 +56,7 @@
         <strong>Success!</strong> Indicates a successful or positive action.
     </div>
     <!-- Alert End -->
-    
+
     <!-- Topbar Start -->
     <div class="container-fluid bg-primary px-5 d-block">
         <div class="row gx-0">
@@ -72,13 +74,14 @@
                             class="fab fa-youtube fw-normal"></i></a>
                 </div>
             </div>
+
             <div class="col-lg-4 text-end">
                 <div class="d-inline-flex align-items-center" style="height: 45px;">
-                    <a href="#" data-bs-toggle="modal" data-bs-target="#register" class="header-unauth d-none"><small
+                    <!-- <a href="#" data-bs-toggle="modal" data-bs-target="#register" class="header-unauth d-none"><small
                             class="me-3 text-light"><i class="fa fa-user me-2"></i>Đăng
-                            ký</small></a>
+                            ký</small></a> -->
                     <!-- <div class="modal fade" id="register" aria-modal="true"> -->
-                    <div class="modal fade" id="register">
+                    <!-- <div class="modal fade" id="register">
                         <div class="modal-dialog modal-lg modal-dialog-centered">
                             <div class="modal-content">
                                 <div class="modal-body">
@@ -129,9 +132,9 @@
                                                     <input type="password" class="form-control" id="floatingPassword"
                                                         placeholder="Nguyễn Văn A">
                                                     <label for="floatingPassword">Mật khẩu</label>
-                                                </div>
+                                                </div> -->
 
-                                                <!-- <label for="fullname" class="fst-italic letter-spacing-1 label-log">Họ và tên</label><br/>
+                    <!-- <label for="fullname" class="fst-italic letter-spacing-1 label-log">Họ và tên</label><br/>
                                                 <input type="text" name="fullname" id="fullname" class="w-100 rounded-3 py-2 ps-3 bg-light border-0"><br/>
                                                 <label for="email" class="fst-italic letter-spacing-1 mt-2 pt-1 label-log">Email</label><br/>
                                                 <input type="email" name="email" id="email" class="w-100 rounded-3 py-1 ps-2 border-0 bg-dark"><br/>
@@ -145,7 +148,7 @@
                                                 <label for="password" class="fst-italic letter-spacing-1 mt-2 pt-1 ps-2 label-log">Mật khẩu</label><br/>
                                                 <input type="password" name="password" id="password" class="w-100 rounded-3 py-1"><br/><br/> -->
 
-                                                <div class="d-grid mt-3">
+                    <!-- <div class="d-grid mt-3">
                                                     <button type="button" class="btn btn-primary btn-block w-50 mx-auto"
                                                         id="btnRegister">Đăng ký</button>
                                                 </div>
@@ -165,9 +168,9 @@
                             data-bs-target="#login"><i class="fa fa-sign-in-alt me-2"></i>Đăng
                             nhập</small></a>
 
-                    <div class="modal fade" id="login">
-                        <!-- <div class="modal fade" id="login" aria-modal="true"> -->
-                        <div class="modal-dialog modal-lg modal-dialog-centered">
+                    <div class="modal fade" id="login"> -->
+                    <!-- <div class="modal fade" id="login" aria-modal="true"> -->
+                    <!-- <div class="modal-dialog modal-lg modal-dialog-centered">
                             <div class="modal-content">
                                 <div class="modal-body">
                                     <div class="row">
@@ -202,7 +205,7 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </div> -->
                     <div class="dropdown header-auth">
                         <a href="#" class="dropdown-toggle text-light" data-bs-toggle="dropdown"><small id="fullname"><i
                                     class="fa fa-home me-2"></i>Bảng điều khiển</small></a>
@@ -212,8 +215,42 @@
                             <a href="mytour.html" class="dropdown-item"><i
                                     class="bi bi-airplane-engines-fill me-2"></i>Các tour
                                 của bạn</a>
-                            <a href="#" class="dropdown-item" id="btnLogout"><i class="fas fa-power-off me-2"></i>Đăng
+                            <a class="dropdown-item" id="btnLogout"><i class="fas fa-power-off me-2"></i>Đăng
                                 xuất</a>
+                            <script>
+                                $(function () {
+                                    $('#btnLogout').click(function () {
+                                        fetch('http://localhost:8080/auth/logout', {
+                                            method: 'POST',
+                                            credentials: 'include',
+                                            headers: {
+                                                'Content-Type': 'application/json'
+                                            },
+                                            body: JSON.stringify(
+                                                {}
+                                                // { "token": localStorage.getItem("token") }
+                                            )
+                                        })
+                                            .then(response => response.json())
+                                            .then(data => {
+                                                if (data.code == 0) {
+                                                    let currentPath = window.location.pathname;
+                                                    let restrictedPages = ["/mytour.html", "/bookingdetail.html", "/myinfo.html", "/success.html"];
+                                                    if (restrictedPages.includes(currentPath)) {
+                                                        window.location.href = "index.html"; // Chuyển về trang index
+                                                    } else {
+                                                        console.log("Không cần chuyển hướng.");
+                                                    }
+                                                    localStorage.removeItem("fullname");
+                                                }
+                                                console.log("Data: ", data);
+                                            })
+                                            .catch((error) => {
+                                                console.error('Error:', error);
+                                            });
+                                    })
+                                })
+                            </script>
                         </div>
                     </div>
                 </div>
@@ -250,7 +287,7 @@
 
     <!-- Info start -->
     <div class="container-fluid increase-margin-top">
-        <div class="container">
+        <div class="container" id="myinfo-form">
             <h1 class="text-center text-primary fw-bold mb-2 mt-5">Kiều Đức Thịnh</h1>
             <div class="row gap-0">
                 <div class="col-lg-6 col-12">
@@ -264,7 +301,7 @@
                             <tr>
                                 <td class="align-middle heading5">Tên đăng nhập:</td>
                                 <td class="align-middle heading4">
-                                    <span class="customer-info">kdthinh04</span>
+                                    <span class="customer-info" id="username">kdthinh04</span>
                                     <div class="d-none c-update">
                                         <input type="text" id="c-username" class="form-control" placeholder="kdthinh04"
                                             readonly>
@@ -275,7 +312,7 @@
                             <tr>
                                 <td class="align-middle heading5">Ngày sinh:</td>
                                 <td class="align-middle heading4">
-                                    <span class="customer-info">23/12/2004</span>
+                                    <span class="customer-info" id="dob">23/12/2004</span>
                                     <div class="d-none c-update">
                                         <input type="date" id="c-dob" class="form-control" placeholder="01/01/2025"
                                             required>
@@ -286,7 +323,7 @@
                             </tr>
                             <tr>
                                 <td class="align-middle heading5">Giới tính:</td>
-                                <td class="align-middle heading4">Nam
+                                <td class="align-middle heading4"><span id="gender" class="customer-info">Nam</span>
                                     <div class="c-update d-none">
                                         <input type="radio" name="gender" id="male" class="form-check-input" checked>
                                         <label class="form-check-label text-primary me-3" for="male">Nam</label>
@@ -298,14 +335,14 @@
                             <tr>
                                 <td class="align-middle heading5">Quốc tịch:</td>
                                 <td class="align-middle heading4">
-                                    <span class="customer-info">Việt Nam</span>
+                                    <span class="customer-info" id="nationality">Việt Nam</span>
                                     <div class="c-update d-none">
-                                        <select class="form-select text-primary fs-5"
+                                        <select class="form-select text-primary fs-5" id="select-natio"
                                             aria-label="Default select example">
-                                            <option value="0" selected>Việt Nam</option>
-                                            <option value="1">Nhật Bản</option>
-                                            <option value="2">Hàn Quốc</option>
-                                            <option value="3">Đức</option>
+                                            <option value="Việt Nam" selected>Việt Nam</option>
+                                            <option value="Nhật Bản">Nhật Bản</option>
+                                            <option value="Hàn Quốc">Hàn Quốc</option>
+                                            <option value="Đức">Đức</option>
                                         </select>
                                     </div>
                                 </td>
@@ -313,9 +350,9 @@
                             <tr class="d-lg-none d-xl-none">
                                 <td class="align-middle heading5">Địa chỉ:</td>
                                 <td class="align-middle heading4">
-                                    <span class="customer-info">298 Bắc Từ Liêm, Hà Nội</span>
+                                    <span class="customer-info address">298 Bắc Từ Liêm, Hà Nội</span>
                                     <div class="c-update d-none">
-                                        <textarea class="form-control" id="address" rows="3"></textarea>
+                                        <textarea class="form-control c-address" rows="3"></textarea>
                                     </div>
                                 </td>
                             </tr>
@@ -331,7 +368,7 @@
                         <tr>
                             <td class="align-middle heading5">Email:</td>
                             <td class="align-middle heading4">
-                                <span class="customer-info">
+                                <span class="customer-info" id="email">
                                     kdthinh04@gmail.com
                                 </span>
                                 <div class="c-update d-none">
@@ -345,11 +382,11 @@
                         <tr>
                             <td class="align-middle heading5">Số điện thoại:</td>
                             <td class="align-middle heading4">
-                                <span class="customer-info">
+                                <span class="customer-info" id="phonenumber">
                                     0343125685
                                 </span>
                                 <div class="c-update d-none">
-                                    <input type="text" id="c-phone" class="form-control" placeholder="084">
+                                    <input type="text" id="c-phone" class="form-control" placeholder="">
                                     <div class="valid-feedback fs-6 fw-normal">Valid.</div>
                                     <div class="invalid-feedback fs-6 fw-normal">Please fill out this field.</div>
                                 </div>
@@ -358,11 +395,11 @@
                         <tr>
                             <td class="align-middle heading5">CCCD:</td>
                             <td class="align-middle heading4">
-                                <span class="customer-info">
+                                <span class="customer-info" id="ci">
                                     001204859761
                                 </span>
                                 <div class="c-update d-none">
-                                    <input type="text" id="c-ci" class="form-control" placeholder="000">
+                                    <input type="text" id="c-ci" class="form-control" placeholder="">
                                     <div class="valid-feedback fs-6 fw-normal">Valid.</div>
                                     <div class="invalid-feedback fs-6 fw-normal">Please fill out this field.</div>
                                 </div>
@@ -371,11 +408,11 @@
                         <tr>
                             <td class="align-middle heading5">Hộ chiếu:</td>
                             <td class="align-middle heading4">
-                                <span class="customer-info">
+                                <span class="customer-info" id="passport">
                                     VN5978614
                                 </span>
                                 <div class="c-update d-none">
-                                    <input type="text" id="c-passport" class="form-control" placeholder="..">
+                                    <input type="text" id="c-passport" class="form-control" placeholder="">
                                     <div class="valid-feedback fs-6 fw-normal">Valid.</div>
                                     <div class="invalid-feedback fs-6 fw-normal">Please fill out this field.</div>
                                 </div>
@@ -392,9 +429,9 @@
                         <tr>
                             <td class="align-middle heading5">Địa chỉ:</td>
                             <td class="align-middle heading4">
-                                <span class="customer-info">298 Bắc Từ Liêm, Hà Nội</span>
+                                <span class="customer-info address">298 Bắc Từ Liêm, Hà Nội</span>
                                 <div class="c-update d-none">
-                                    <textarea class="form-control" id="address" rows="3"></textarea>
+                                    <textarea class="form-control c-address" rows="3"></textarea>
                                 </div>
                             </td>
                         </tr>
@@ -419,7 +456,7 @@
             </div> -->
             <div class="d-flex justify-content-center mt-2">
                 <button class="btn btn-primary rounded-pill px-2 m-2" style="width: 150px; height: 50px;"
-                    data-bs-toggle="modal" data-bs-target="#staticBackdrop">Đổi mật
+                    data-bs-toggle="modal" data-bs-target="#staticBackdrop" id="btnChangePwd">Đổi mật
                     khẩu</button>
 
                 <!-- Modal -->
@@ -466,7 +503,12 @@
                     </div>
                 </div>
 
-                <button class="btn btn-primary rounded-pill px-2 m-2" style="width: 150px; height: 50px;">Sửa</button>
+                <button class="btn btn-primary rounded-pill px-2 m-2" style="width: 150px; height: 50px;"
+                    id="btnChange">Sửa</button>
+                <button type="button" class="btn btn-danger rounded-pill px-2 m-2 d-none"
+                    style="width: 150px; height: 50px;" id="btnCancel">Hủy</button>
+                <button type="button" class="btn btn-success rounded-pill px-2 m-2 d-none"
+                    style="width: 150px; height: 50px;" id="btnUpdate">Cập nhật</button>
             </div>
         </div>
     </div>
@@ -598,144 +640,6 @@
     <!-- Template Javascript -->
     <script src="js/main.js"></script>
 
-    <!--Register-->
-    <script>
-        var header_auth = document.getElementById("header-auth");
-
-        document.getElementById('btnRegister').addEventListener('click',
-            function () {
-                let username = document.getElementById('floatingUsername').value;
-                let password = document.getElementById('floatingPassword').value;
-
-                let fullname = document.getElementById('floatingFullName').value.trim().split(' ');
-                let temp = document.getElementById('floatingFullName').value.trim();
-                let lastname = fullname.pop();
-                let firstname = fullname.join(' ');
-
-                let dob = document.getElementById('floatingDob').value;
-                let gender = parseInt(document.querySelector('input[name=optradio]:checked').value);
-
-                let c = { firstname: firstname, lastname: lastname, dob: dob, gender: gender };
-
-                let email = document.getElementById('floatingEmail').value;
-                let status = "OFF";
-
-                let useraccount = { username: username, password: password, c: c, status: status, email: email };
-
-                console.log(useraccount);
-                fetch('http://localhost:8080/register', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify(
-                        useraccount
-                    )
-                })
-                    .then(response => response.json())
-                    .then(data => {
-                        if (data.code == 0) {
-                            document.getElementById("register").addEventListener("hidden.bs.modal", function () {
-                                document.activeElement.blur(); // Bỏ focus khỏi phần tử đang focus
-                            });
-
-                            let modal = bootstrap.Modal.getInstance(document.getElementById("register")); // Lấy instance của modal
-                            modal.hide(); // Ẩn modal
-
-                            document.querySelectorAll('.header-unauth').forEach(element => {
-                                element.classList.add("d-none");
-                            });
-
-                            header_auth.classList.remove("d-none");
-
-                            document.getElementById('fullname').textContent = temp;
-
-                            localStorage.setItem("token", data.result.token);  // Lưu token vào localStorage
-                            // localStorage.setItem("fullname", fullname);  // Lưu thông tin người dùng vào localStorage
-                        }
-                        console.log("Data: ", data);
-                    })
-                    .catch((error) => {
-                        console.error('Error:', error);
-                    });
-            });
-
-        document.getElementById('btnLogout').addEventListener('click', function () {
-            fetch('http://localhost:8080/auth/logout', {
-                method: 'POST',
-                credentials: 'include',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify(
-                    {}
-                    // { "token": localStorage.getItem("token") }
-                )
-            })
-                .then(response => response.json())
-                .then(data => {
-                    if (data.code == 0) {
-                        // localStorage.removeItem("token");
-                        localStorage.removeItem("fullname");
-                        header_auth.classList.add("d-none");
-
-                        document.querySelectorAll('.header-unauth').forEach(element => {
-                            element.classList.remove("d-none");
-                        });
-
-                        document.querySelector("#header-auth").classList.add("d-none");
-
-                    }
-                    console.log("Data: ", data);
-                })
-                .catch((error) => {
-                    console.error('Error:', error);
-                });
-        });
-
-        document.getElementById('btnLogin').addEventListener('click', function () {
-            let username = document.getElementById('floatingUsernameLogin').value;
-            let password = document.getElementById('floatingPasswordLogin').value;
-
-            fetch('http://localhost:8080/auth/token', {
-                method: 'POST',
-                credentials: 'include',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify(
-                    { "username": username, "password": password }
-                )
-            })
-                .then(response => response.json())
-                .then(data => {
-                    if (data.code == 0) {
-                        document.getElementById("login").addEventListener("hidden.bs.modal", function () {
-                            document.activeElement.blur(); // Bỏ focus khỏi phần tử đang focus
-                        });
-
-                        let modal = bootstrap.Modal.getInstance(document.getElementById("login")); // Lấy instance của modal
-                        modal.hide(); // Ẩn modal                        
-
-                        document.querySelectorAll('.header-unauth').forEach(element => {
-                            element.classList.add("d-none");
-                        });
-                        header_auth.classList.remove("d-none");
-
-                        document.getElementById('fullname').textContent = data.result.fullname;
-
-                        // localStorage.setItem("token", data.result.token);  // Lưu token vào localStorage
-                        localStorage.setItem("fullname", data.result.fullname);  // Lưu thông tin người dùng vào localStorage
-                    }
-                    console.log("Status: ", data.status);
-                    console.log("Code: ", data.code);
-                    console.log("Data: ", data);
-                })
-                .catch((error) => {
-                    console.error('Error:', error);
-                });
-        });
-    </script>
 </body>
 
 </html>

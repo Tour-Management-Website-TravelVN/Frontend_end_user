@@ -49,18 +49,28 @@ document.addEventListener('DOMContentLoaded', function () {
                         unauthen();
                         return;
                     }
+                    if (data.code != 0) {
+                        let currentPath = window.location.pathname;
+                        let restrictedPages = ["/mytour.html", "/bookingdetail.html", "/myinfo.html", "/success.html"];
 
-                    // localStorage.setItem("token", data.result.token);  // Lưu token vào localStorage
-                    localStorage.setItem("fullname", data.result.fullname);  // Lưu thông tin người dùng vào localStorage
-                    authen();
-                })
+                        if (restrictedPages.includes(currentPath)) {
+                            window.location.href = "index.html"; // Chuyển về trang index
+                        }
+                    }
+                        // localStorage.setItem("token", data.result.token);  // Lưu token vào localStorage
+                        localStorage.setItem("fullname", data.result.fullname);  // Lưu thông tin người dùng vào localStorage
+                        authen();
+                    })
                 .catch((error) => {
                     console.error('Error1:', error);
+                    window.location.href = "index.html";
                 })
         })
         .catch((error) => {
+            // window.location.href = "500.html";
             console.error('Error2:', error);
             unauthen();
+            // window.location.href = "500.html";
         });
 
     //Authen người dùng
@@ -145,6 +155,7 @@ document.addEventListener('DOMContentLoaded', function () {
         });
 
     document.getElementById('btnLogout').addEventListener('click', function () {
+        console.log("Kích logout");
         fetch('http://localhost:8080/auth/logout', {
             method: 'POST',
             credentials: 'include',
@@ -160,7 +171,7 @@ document.addEventListener('DOMContentLoaded', function () {
             .then(data => {
                 if (data.code == 0) {
                     let currentPath = window.location.pathname;
-                    let restrictedPages = ["/mytour.html", "/bookingdetail.html","/myinfo.html","/success.html"];
+                    let restrictedPages = ["/mytour.html", "/bookingdetail.html", "/myinfo.html", "/success.html"];
 
                     if (restrictedPages.includes(currentPath)) {
                         window.location.href = "index.html"; // Chuyển về trang index
@@ -259,8 +270,8 @@ document.addEventListener('DOMContentLoaded', function () {
 
         //Kiểm tra email
         $('#floatingEmail').on({
-            'input': function(){
-                if(!validateEmail($(this).val())){
+            'input': function () {
+                if (!validateEmail($(this).val())) {
                     $(this).addClass('is-invalid');
                     $(this).removeClass('is-valid');
                     $(this).next().next().text('Email không hợp lệ');
@@ -273,8 +284,8 @@ document.addEventListener('DOMContentLoaded', function () {
 
         //Kiểm tra tuổi
         $('#floatingDob').on({
-            'input': function(){
-                if(!validateAge($(this).val())){
+            'input': function () {
+                if (!validateAge($(this).val())) {
                     $(this).addClass('is-invalid');
                     $(this).removeClass('is-valid');
                     $(this).next().next().text('Ngày sinh không hợp lệ');
@@ -287,8 +298,8 @@ document.addEventListener('DOMContentLoaded', function () {
 
         //Kiểm tra tên đăng nhập
         $('#floatingUsername').on({
-            'input': function(){
-                if(!validateUsername($(this).val())){
+            'input': function () {
+                if (!validateUsername($(this).val())) {
                     $(this).addClass('is-invalid');
                     $(this).removeClass('is-valid');
                     $(this).next().next().text('Tên đăng nhập gồm 8 đến 40 ký tự chữ hoặc số.');
@@ -301,8 +312,8 @@ document.addEventListener('DOMContentLoaded', function () {
 
         //Kiểm tra mật khẩu
         $('#floatingPassword').on({
-            'input': function(){
-                if(!validatePwd($(this).val())){
+            'input': function () {
+                if (!validatePwd($(this).val())) {
                     $(this).addClass('is-invalid');
                     $(this).removeClass('is-valid');
                     $(this).next().next().text('Mật khẩu từ 6 đến 20 ký tự.');
@@ -331,8 +342,8 @@ document.addEventListener('DOMContentLoaded', function () {
 
         //Kiểm tra tên đăng nhập
         $('#floatingUsernameLogin').on({
-            'input': function(){
-                if(!validateUsername($(this).val())){
+            'input': function () {
+                if (!validateUsername($(this).val())) {
                     $(this).addClass('is-invalid');
                     $(this).removeClass('is-valid');
                     $(this).next().next().text('Tên đăng nhập gồm 8 đến 40 ký tự chữ hoặc số.');
@@ -345,8 +356,8 @@ document.addEventListener('DOMContentLoaded', function () {
 
         //Kiểm tra mật khẩu
         $('#floatingPasswordLogin').on({
-            'input': function(){
-                if(!validatePwd($(this).val())){
+            'input': function () {
+                if (!validatePwd($(this).val())) {
                     $(this).addClass('is-invalid');
                     $(this).removeClass('is-valid');
                     $(this).next().next().text('Mật khẩu từ 6 đến 20 ký tự.');

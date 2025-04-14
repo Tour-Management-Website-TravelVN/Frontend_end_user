@@ -5,5 +5,6 @@ document.addEventListener('DOMContentLoaded', function () {
     document.querySelectorAll('.header-unauth').forEach(element => {
         element.classList.add("d-none");
     });
-    header_auth.classList.remove("d-none");
+    if(header_auth.classList.contains('d-none'))
+        header_auth.classList.remove("d-none");
 })
