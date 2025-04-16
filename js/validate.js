@@ -99,7 +99,7 @@ export function validatePhoneNumber(pn){
 }
 
 //Kiểm tra mật khẩu
-export function valideVerifyPwd(newPwd, verPwd){
+export function validateVerifyPwd(newPwd, verPwd){
     return newPwd === verPwd;
 }
 
@@ -114,5 +114,36 @@ export function vaidateComment(textareaElement) {
 
 //Kiểm tra địa chỉ
 export function validateAddress(param) {
+    return param.length > 20 && param.length <= 255; // Kiểm tra xem chuỗi còn lại có độ dài lớn hơn 0 hay không
+  }
+
+//Kiểm tra cccd
+export function validateCILite(ci){
+    if(ci == null || ci.trim() == "")
+        return true;
+    const regex = /^[0-9]{12}$/;
+    return regex.test(ci);
+}
+
+//Kiểm tra số hộ chiếu
+export function validatePassportLite(passport){
+    if(passport == null || passport.trim() == "")
+        return true;
+    const regex = /^[A-Z0-9]{6,16}$/;
+    return regex.test(passport);
+}
+
+//Kiểm tra số điện thoại
+export function validatePhoneNumberLite(pn){
+    if(pn == null || pn.trim() == "")
+        return true;
+    const regex = /^(032|033|034|035|036|037|038|039|096|097|098|086|083|084|085|081|082|088|091|094|070|079|077|076|078|090|093|089|056|058|092|059|099)[0-9]{7}$/;
+    return regex.test(pn);
+}
+
+  //Kiểm tra địa chỉ
+export function validateAddressLite(param) {
+    if(param == null || param.trim() == "")
+        return true;
     return param.length > 20 && param.length <= 255; // Kiểm tra xem chuỗi còn lại có độ dài lớn hơn 0 hay không
   }

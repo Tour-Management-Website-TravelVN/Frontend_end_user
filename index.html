@@ -36,10 +36,13 @@
     <link rel="icon" href="img/logo_tour_no_text.svg">
 
     <script src="lib/lightbox/js/jquery-3.7.1.min.js"></script>
-    <script type="module" src="js/main2.js"></script>
     <script src="js/main3.js"></script>
+    <script type="module" src="js/main2.js"></script>
     <script src="js/search/search-input.js"></script>
     <script src="js/display/festival.js"></script>
+    <script type="module" src="js/display/hottours.js"></script>
+    <script type="module" src="js/display/discountedtours.js"></script>
+    <script type="module" src="js/display/newtours.js"></script>
 </head>
 
 <body>
@@ -589,17 +592,17 @@
                 <h5 class="section-title px-3 mb-1 mt-0">Lễ hội</h5>
             </div>
             <div class="mx-auto d-flex justify-content-evenly festival-carousel owl-carousel">
-                <div>
+                <!-- <div class="text-center mx-2">
                     <button class="btn btn-outline-primary rounded-pill py-2 my-1 btn-festival"
                         >Ngày Quốc tế lao động</button>
                 </div>
                 <div>
                     <button class="btn btn-outline-primary rounded-pill py-2 my-1 btn-festival"
-                        style="width: 155px;">30/4</button>
+                        >30/4</button>
                 </div>
                 <div>
                     <button class="btn btn-outline-primary rounded-pill py-2 my-1 btn-festival"
-                        style="width: 155px;">Tháng
+                        >Tháng
                         Giêng</button>
                 </div>
                 <div>
@@ -615,7 +618,7 @@
                 <div>
                     <button class="btn btn-outline-primary rounded-pill py-2 my-1 btn-festival"
                         style="width: 155px;">Noel</button>
-                </div>
+                </div> -->
             </div>
         </div>
     </div>
@@ -802,10 +805,10 @@
                     <div id="tab-2" class="tab-pane fade show p-0">
                         <div class="row g-4">
                             <div class="col-lg-6">
-                                <div class="destination-img">
-                                    <img class="img-fluid rounded w-100" src="img/destination-5.jpg" alt="">
+                                <div class="destination-img h-100">
+                                    <img class="img-fluid rounded h-100 object-fit-cover" src="img/location/HaNoi/HoHoanKiem.webp" alt="">
                                     <div class="destination-overlay p-4">
-                                        <a href="#" class="h4 text-white mb-2 mt-3">OceanPark<i
+                                        <a href="#" class="h4 text-white mb-2 mt-3">Hồ Hoàn Kiếm<i
                                                 class="fa fa-arrow-right ms-2"></i></a>
                                     </div>
                                     <!-- <div class="search-icon">
@@ -815,10 +818,10 @@
                                 </div>
                             </div>
                             <div class="col-lg-6">
-                                <div class="destination-img">
-                                    <img class="img-fluid rounded w-100" src="img/destination-6.jpg" alt="">
+                                <div class="destination-img h-100">
+                                    <img class="img-fluid rounded h-100 object-fit-cover" src="img/location/HaNoi/VanMieu.jpg" alt="">
                                     <div class="destination-overlay p-4">
-                                        <a href="#" class="h4 text-white mb-2 mt-3">City<i
+                                        <a href="#" class="h4 text-white mb-2 mt-3">Văn Miếu - Quốc Tử Giám<i
                                                 class="fa fa-arrow-right ms-2"></i></a>
                                     </div>
                                     <!-- <div class="search-icon">
@@ -832,11 +835,11 @@
                     <div id="tab-3" class="tab-pane fade show p-0">
                         <div class="row g-4">
                             <div class="col-lg-6">
-                                <div class="destination-img">
-                                    <img class="img-fluid rounded w-100" src="img/destination-5.jpg" alt="">
+                                <div class="destination-img h-100">
+                                    <img class="img-fluid rounded h-100 object-fit-cover" src="img/location/TuyenQuang/TanTrao.jpg" alt="">
                                     <div class="destination-overlay p-4">
-                                        <a href="#" class="h4 text-white mb-2 mt-3">OceanPark<i
-                                                class="fa fa-arrow-right ms-2"></i></a>
+                                        <a href="#" class="h4 text-white mb-2 mt-3">Tân Trào
+                                                <i class="fa fa-arrow-right ms-2"></i></a>
                                     </div>
                                     <!-- <div class="search-icon">
                                         <a href="img/destination-5.jpg" data-lightbox="destination-5"><i
@@ -845,10 +848,10 @@
                                 </div>
                             </div>
                             <div class="col-lg-6">
-                                <div class="destination-img">
-                                    <img class="img-fluid rounded w-100" src="img/destination-6.jpg" alt="">
+                                <div class="destination-img h-100">
+                                    <img class="img-fluid rounded h-100 object-fit-cover" src="img/location/TuyenQuang/NaHang-LamBinh.jpg" alt="">
                                     <div class="destination-overlay p-4">
-                                        <a href="#" class="h4 text-white mb-2 mt-3">City<i
+                                        <a href="#" class="h4 text-white mb-2 mt-3">Na Hàng - Lâm Bình<i
                                                 class="fa fa-arrow-right ms-2"></i></a>
                                     </div>
                                     <!-- <div class="search-icon">
@@ -862,10 +865,10 @@
                     <div id="tab-4" class="tab-pane fade show p-0">
                         <div class="row g-4">
                             <div class="col-lg-6">
-                                <div class="destination-img">
-                                    <img class="img-fluid rounded w-100" src="img/destination-5.jpg" alt="">
+                                <div class="destination-img h-100">
+                                    <img class="img-fluid rounded h-100 object-fit-cover" src="img/location/DaNang/CauVang.webp" alt="">
                                     <div class="destination-overlay p-4">
-                                        <a href="#" class="h4 text-white mb-2 mt-3">OceanPark<i
+                                        <a href="#" class="h4 text-white mb-2 mt-3">Cầu Vàng<i
                                                 class="fa fa-arrow-right ms-2"></i></a>
                                     </div>
                                     <!-- <div class="search-icon">
@@ -875,10 +878,10 @@
                                 </div>
                             </div>
                             <div class="col-lg-6">
-                                <div class="destination-img">
-                                    <img class="img-fluid rounded w-100" src="img/destination-6.jpg" alt="">
+                                <div class="destination-img h-100">
+                                    <img class="img-fluid rounded h-100 object-fit-cover" src="img/location/DaNang/BaiBienMyKhe.webp" alt="">
                                     <div class="destination-overlay p-4">
-                                        <a href="#" class="h4 text-white mb-2 mt-3">City<i
+                                        <a href="#" class="h4 text-white mb-2 mt-3">Bãi biển Mỹ Khê<i
                                                 class="fa fa-arrow-right ms-2"></i></a>
                                     </div>
                                     <!-- <div class="search-icon">
@@ -892,10 +895,10 @@
                     <div id="tab-5" class="tab-pane fade show p-0">
                         <div class="row g-4">
                             <div class="col-lg-6">
-                                <div class="destination-img">
-                                    <img class="img-fluid rounded w-100" src="img/destination-5.jpg" alt="">
+                                <div class="destination-img h-100">
+                                    <img class="img-fluid rounded h-100 object-fit-cover" src="img/location/NhaTrang/VinWonder.jpg" alt="">
                                     <div class="destination-overlay p-4">
-                                        <a href="#" class="h4 text-white mb-2 mt-3">OceanPark<i
+                                        <a href="#" class="h4 text-white mb-2 mt-3">VinWonder<i
                                                 class="fa fa-arrow-right ms-2"></i></a>
                                     </div>
                                     <!-- <div class="search-icon">
@@ -905,10 +908,10 @@
                                 </div>
                             </div>
                             <div class="col-lg-6">
-                                <div class="destination-img">
-                                    <img class="img-fluid rounded w-100" src="img/destination-6.jpg" alt="">
+                                <div class="destination-img h-100">
+                                    <img class="img-fluid rounded h-100 object-fit-cover" src="img/location/NhaTrang/ThapBaPonagar.jpeg" alt="">
                                     <div class="destination-overlay p-4">
-                                        <a href="#" class="h4 text-white mb-2 mt-3">City<i
+                                        <a href="#" class="h4 text-white mb-2 mt-3">Tháp bà Pagonar<i
                                                 class="fa fa-arrow-right ms-2"></i></a>
                                     </div>
                                     <!-- <div class="search-icon">
@@ -922,10 +925,10 @@
                     <div id="tab-6" class="tab-pane fade show p-0">
                         <div class="row g-4">
                             <div class="col-lg-6">
-                                <div class="destination-img">
-                                    <img class="img-fluid rounded w-100" src="img/destination-5.jpg" alt="">
+                                <div class="destination-img h-100">
+                                    <img class="img-fluid rounded h-100 object-fit-cover" src="img/location/CanTho/ChoDemTayDo.jpg" alt="">
                                     <div class="destination-overlay p-4">
-                                        <a href="#" class="h4 text-white mb-2 mt-3">OceanPark<i
+                                        <a href="#" class="h4 text-white mb-2 mt-3">Chợ đêm Tây Đô<i
                                                 class="fa fa-arrow-right ms-2"></i></a>
                                     </div>
                                     <!-- <div class="search-icon">
@@ -935,10 +938,10 @@
                                 </div>
                             </div>
                             <div class="col-lg-6">
-                                <div class="destination-img">
-                                    <img class="img-fluid rounded w-100" src="img/destination-6.jpg" alt="">
+                                <div class="destination-img h-100">
+                                    <img class="img-fluid rounded h-100 object-fit-cover" src="img/location/CanTho/ChuaOng.jpg" alt="">
                                     <div class="destination-overlay p-4">
-                                        <a href="#" class="h4 text-white mb-2 mt-3">City<i
+                                        <a href="#" class="h4 text-white mb-2 mt-3">Chùa Ông<i
                                                 class="fa fa-arrow-right ms-2"></i></a>
                                     </div>
                                     <!-- <div class="search-icon">
@@ -985,8 +988,8 @@
                 <div id="NationalTab-1" class="tab-pane fade show p-0 active">
                     <div class="row g-4">
                         <div class="col-md-6 col-lg-4">
-                            <div class="national-item">
-                                <img src="img/explore-tour-1.jpg" class="img-fluid w-100 rounded" alt="Image">
+                            <div class="national-item h-100">
+                                <img src="img/explore-tour-1.jpg" class="img-fluid h-100 rounded object-fit-cover" alt="Image">
                                 <div class="national-content">
                                     <div class="national-info">
                                         <h5 class="text-white text-uppercase mb-2">Tour du lịch núi</h5>
@@ -1000,8 +1003,8 @@
                             </div>
                         </div>
                         <div class="col-md-6 col-lg-4">
-                            <div class="national-item">
-                                <img src="img/explore-tour-2.jpg" class="img-fluid w-100 rounded" alt="Image">
+                            <div class="national-item h-100">
+                                <img src="img/explore-tour-2.jpg" class="img-fluid h-100 rounded object-fit-cover" alt="Image">
                                 <div class="national-content">
                                     <div class="national-info">
                                         <h5 class="text-white text-uppercase mb-2">Tour du lịch mạo hiểm</h5>
@@ -1015,8 +1018,8 @@
                             </div>
                         </div>
                         <div class="col-md-6 col-lg-4">
-                            <div class="national-item">
-                                <img src="img/explore-tour-3.jpg" class="img-fluid w-100 rounded" alt="Image">
+                            <div class="national-item h-100">
+                                <img src="img/explore-tour-3.jpg" class="img-fluid w-100 h-100 rounded object-fit-cover" alt="Image">
                                 <div class="national-content">
                                     <div class="national-info">
                                         <h5 class="text-white text-uppercase mb-2">Tour du lịch sinh thái</h5>
@@ -1031,8 +1034,8 @@
                             </div>
                         </div>
                         <div class="col-md-6 col-lg-4">
-                            <div class="national-item">
-                                <img src="img/explore-tour-4.jpg" class="img-fluid w-100 rounded" alt="Image">
+                            <div class="national-item h-100">
+                                <img src="img/explore-tour-4.jpg" class="img-fluid h-100 rounded object-fit-cover" alt="Image">
                                 <div class="national-content">
                                     <div class="national-info">
                                         <h5 class="text-white text-uppercase mb-2">Tour du lịch văn hóa</h5>
@@ -1046,7 +1049,7 @@
                             </div>
                         </div>
                         <div class="col-md-6 col-lg-4">
-                            <div class="national-item">
+                            <div class="national-item h-100">
                                 <img src="img/explore-tour-5.jpg" class="img-fluid w-100 rounded" alt="Image">
                                 <div class="national-content">
                                     <div class="national-info">
@@ -1062,8 +1065,8 @@
                             </div>
                         </div>
                         <div class="col-md-6 col-lg-4">
-                            <div class="national-item">
-                                <img src="img/explore-tour-6.jpg" class="img-fluid w-100 rounded" alt="Image">
+                            <div class="national-item h-100">
+                                <img src="img/explore-tour-6.jpg" class="img-fluid h-100 rounded object-fit-cover" alt="Image">
                                 <div class="national-content">
                                     <div class="national-info">
                                         <h5 class="text-white text-uppercase mb-2">Tour du lịch biển</h5>
@@ -1081,7 +1084,7 @@
                 <div id="InternationalTab-2" class="tab-pane fade show p-0">
                     <div class="InternationalTour-carousel owl-carousel">
                         <div class="international-item">
-                            <img src="img/explore-tour-1.jpg" class="img-fluid w-100 rounded" alt="Image">
+                            <img src="img/explore-tour-1.jpg" class="img-fluid h-100 rounded object-fit-cover" alt="Image">
                             <div class="international-content">
                                 <div class="international-info">
                                     <h5 class="text-white text-uppercase mb-2">Australia</h5>
@@ -1097,7 +1100,7 @@
                             </div>
                         </div>
                         <div class="international-item">
-                            <img src="img/explore-tour-2.jpg" class="img-fluid w-100 rounded" alt="Image">
+                            <img src="img/explore-tour-2.jpg" class="img-fluid h-100 rounded object-fit-cover" alt="Image">
                             <div class="international-content">
                                 <div class="international-info">
                                     <h5 class="text-white text-uppercase mb-2">Germany</h5>
@@ -1171,11 +1174,11 @@
         <div class="container py-5">
             <div class="mx-auto text-center mt-2 mb-5" style="max-width: 900px;">
                 <h5 class="section-title px-3">CÁC TOUR HOT</h5>
-                <h4 class="position-absolute" style="left: 50%; transform: translateX(-50%);"><a href=""
-                        class="text-decoration-underline fw-bold">Xem thêm</a></h4>
+                <h4 class="position-absolute" style="left: 50%; transform: translateX(-50%);"><a href="foundtourlist.html"
+                        class="text-decoration-underline fw-bold" id="more-ht">Xem thêm</a></h4>
             </div>
-            <div class="packages-carousel owl-carousel">
-                <div class="packages-item rounded shadow-primary mb-3 me-3">
+            <div class="packages-carousel owl-carousel" id="hottours-caro">
+                <!-- <div class="packages-item rounded shadow-primary mb-3 me-3">
                     <div class="packages-img">
                         <img src="img/destination/DaNang.webp" class="rounded-top object-fit-cover h-100" alt="Image">
                     </div>
@@ -1262,7 +1265,7 @@
                             <p class="heading4 text-end text-primary">12.580.000 đ</p>
                         </div>
                     </div>
-                </div>
+                </div> -->
                 <!-- <div class="packages-item">
                     <div class="packages-img">
                         <img src="img/packages-1.jpg" class="img-fluid w-100 rounded-top" alt="Image">
@@ -1311,11 +1314,11 @@
         <div class="container py-5">
             <div class="mx-auto text-center mt-2 mb-5" style="max-width: 900px;">
                 <h5 class="section-title px-3">CÁC TOUR ƯU ĐÃI</h5>
-                <h4 class="position-absolute" style="left: 50%; transform: translateX(-50%);"><a href=""
-                        class="text-decoration-underline fw-bold">Xem thêm</a></h4>
+                <h4 class="position-absolute" style="left: 50%; transform: translateX(-50%);"><a href="foundtourlist.html"
+                        class="text-decoration-underline fw-bold" id="more-dt">Xem thêm</a></h4>
             </div>
-            <div class="packages-carousel owl-carousel">
-                <div class="packages-item rounded shadow-primary mb-3 me-3">
+            <div class="packages-carousel owl-carousel" id="discountedtours-caro">
+                <!-- <div class="packages-item rounded shadow-primary mb-3 me-3">
                     <div class="packages-img">
                         <img src="img/destination/DaNang.webp" class="rounded-top object-fit-cover h-100" alt="Image">
                         <div class="discount">Giảm 50%</div>
@@ -1406,7 +1409,7 @@
                             <p class="heading4 text-end text-primary">12.580.000 đ</p>
                         </div>
                     </div>
-                </div>
+                </div> -->
             </div>
         </div>
     </div>
@@ -1417,11 +1420,11 @@
         <div class="container py-5">
             <div class="mx-auto text-center mt-2 mb-5" style="max-width: 900px;">
                 <h5 class="section-title px-3">CÁC TOUR MỚI</h5>
-                <h4 class="position-absolute" style="left: 50%; transform: translateX(-50%);"><a href=""
-                        class="text-decoration-underline fw-bold">Xem thêm</a></h4>
+                <h4 class="position-absolute" style="left: 50%; transform: translateX(-50%);"><a href="foundtourlist.html"
+                        class="text-decoration-underline fw-bold" id="more-nt">Xem thêm</a></h4>
             </div>
-            <div class="packages-carousel owl-carousel">
-                <div class="packages-item rounded shadow-primary mb-3 me-3">
+            <div class="packages-carousel owl-carousel" id="newtours-caro">
+                <!-- <div class="packages-item rounded shadow-primary mb-3 me-3">
                     <div class="packages-img">
                         <img src="img/destination/DaNang.webp" class="rounded-top object-fit-cover h-100" alt="Image">
                     </div>
@@ -1508,7 +1511,7 @@
                             <p class="heading4 text-end text-primary">12.580.000 đ</p>
                         </div>
                     </div>
-                </div>
+                </div> -->
             </div>
         </div>
     </div>

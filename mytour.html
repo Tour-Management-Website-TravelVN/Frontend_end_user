@@ -35,6 +35,7 @@
 
     <script src="lib/lightbox/js/jquery-3.7.1.min.js"></script>
     <script type="module" src="js/main2.js"></script>
+    <script type="module" src="js/mytour/mytour.js"></script>
 </head>
 
 <body>
@@ -67,11 +68,11 @@
             </div>
             <div class="col-lg-4 text-end">
                 <div class="d-inline-flex align-items-center" style="height: 45px;">
-                    <a href="#" data-bs-toggle="modal" data-bs-target="#register" class="header-unauth d-none"><small
+                    <!-- <a href="#" data-bs-toggle="modal" data-bs-target="#register" class="header-unauth d-none"><small
                             class="me-3 text-light"><i class="fa fa-user me-2"></i>Đăng
                             ký</small></a>
-                    <!-- <div class="modal fade" id="register" aria-modal="true"> -->
-                    <div class="modal fade" id="register">
+                    <div class="modal fade" id="register" aria-modal="true"> -->
+                    <!--<div class="modal fade" id="register">
                         <div class="modal-dialog modal-lg modal-dialog-centered">
                             <div class="modal-content">
                                 <div class="modal-body">
@@ -138,7 +139,7 @@
                                                 <label for="password" class="fst-italic letter-spacing-1 mt-2 pt-1 ps-2 label-log">Mật khẩu</label><br/>
                                                 <input type="password" name="password" id="password" class="w-100 rounded-3 py-1"><br/><br/> -->
 
-                                                <div class="d-grid mt-3">
+                                                <!--<div class="d-grid mt-3">
                                                     <button type="button" class="btn btn-primary btn-block w-50 mx-auto"
                                                         id="btnRegister">Đăng ký</button>
                                                 </div>
@@ -158,9 +159,9 @@
                             data-bs-target="#login"><i class="fa fa-sign-in-alt me-2"></i>Đăng
                             nhập</small></a>
 
-                    <div class="modal fade" id="login">
+                    <div class="modal fade" id="login"> -->
                         <!-- <div class="modal fade" id="login" aria-modal="true"> -->
-                        <div class="modal-dialog modal-lg modal-dialog-centered">
+                        <!--<div class="modal-dialog modal-lg modal-dialog-centered">
                             <div class="modal-content">
                                 <div class="modal-body">
                                     <div class="row">
@@ -195,7 +196,7 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </div> -->
                     <div class="dropdown header-auth">
                         <a href="#" class="dropdown-toggle text-light" data-bs-toggle="dropdown"><small id="fullname"><i
                                     class="fa fa-home me-2"></i>Bảng điều khiển</small></a>
@@ -259,8 +260,8 @@
             <!-- Tab panes -->
             <div class="tab-content">
                 <div class="tab-pane container active" id="tab1">
-                    <div class="row">
-                        <div class="col-4 px-2">
+                    <div class="row" id="opwList">
+                        <!-- <div class="col-4 px-2">
                             <div class="card shadow-primary">
                                 <div class="packages-img">
                                     <img class="card-img-top object-fit-cover h-100" src="img/destination/DaNang.webp"
@@ -351,13 +352,13 @@
                                     <p class="heading4 text-end text-primary">12.580.000 đ</p>
                                 </div>
                             </div>
-                        </div>
+                        </div> -->
 
                     </div>
                 </div>
                 <div class="tab-pane container fade" id="tab2">
-                    <div class="row">
-                        <div class="col-4 px-2">
+                    <div class="row" id="dList">
+                        <!-- <div class="col-4 px-2">
                             <div class="card shadow-primary">
                                 <div class="packages-img">
                                     <img class="card-img-top object-fit-cover h-100" src="img/destination/DaNang.webp"
@@ -448,7 +449,7 @@
                                     <p class="heading4 text-end text-primary">12.580.000 đ</p>
                                 </div>
                             </div>
-                        </div>
+                        </div> -->
                     </div>
                 </div>
             </div>
@@ -458,7 +459,7 @@
     <!-- Tour List end -->
 
     <!-- Footer Start -->
-    <div class="container-fluid footer py-5 mx-auto">
+    <div class="container-fluid footer py-5 mx-auto increase-margin-top">
         <div class="container py-5">
             <div class="row g-5">
                 <div class="col-md-4 col-lg-4 col-xl-4">
@@ -580,14 +581,14 @@
     <script src="lib/owlcarousel/owl.carousel.min.js"></script>
     <script src="lib/lightbox/js/lightbox.min.js"></script>
     
-    <script>
+    <!-- <script>
         $.noConflict();
         jQuery(function(){
             $('.card').click(function(){
                 window.location.href = 'bookingdetail.html';
             })
         })
-    </script>
+    </script> -->
 
 
     <!-- Template Javascript -->
@@ -595,141 +596,141 @@
 
     <!--Register-->
     <script>
-        var header_auth = document.getElementById("header-auth");
+        // var header_auth = document.getElementById("header-auth");
 
-        document.getElementById('btnRegister').addEventListener('click',
-            function () {
-                let username = document.getElementById('floatingUsername').value;
-                let password = document.getElementById('floatingPassword').value;
+        // document.getElementById('btnRegister').addEventListener('click',
+        //     function () {
+        //         let username = document.getElementById('floatingUsername').value;
+        //         let password = document.getElementById('floatingPassword').value;
 
-                let fullname = document.getElementById('floatingFullName').value.trim().split(' ');
-                let temp = document.getElementById('floatingFullName').value.trim();
-                let lastname = fullname.pop();
-                let firstname = fullname.join(' ');
+        //         let fullname = document.getElementById('floatingFullName').value.trim().split(' ');
+        //         let temp = document.getElementById('floatingFullName').value.trim();
+        //         let lastname = fullname.pop();
+        //         let firstname = fullname.join(' ');
 
-                let dob = document.getElementById('floatingDob').value;
-                let gender = parseInt(document.querySelector('input[name=optradio]:checked').value);
+        //         let dob = document.getElementById('floatingDob').value;
+        //         let gender = parseInt(document.querySelector('input[name=optradio]:checked').value);
 
-                let c = { firstname: firstname, lastname: lastname, dob: dob, gender: gender };
+        //         let c = { firstname: firstname, lastname: lastname, dob: dob, gender: gender };
 
-                let email = document.getElementById('floatingEmail').value;
-                let status = "OFF";
+        //         let email = document.getElementById('floatingEmail').value;
+        //         let status = "OFF";
 
-                let useraccount = { username: username, password: password, c: c, status: status, email: email };
+        //         let useraccount = { username: username, password: password, c: c, status: status, email: email };
 
-                console.log(useraccount);
-                fetch('http://localhost:8080/register', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify(
-                        useraccount
-                    )
-                })
-                    .then(response => response.json())
-                    .then(data => {
-                        if (data.code == 0) {
-                            document.getElementById("register").addEventListener("hidden.bs.modal", function () {
-                                document.activeElement.blur(); // Bỏ focus khỏi phần tử đang focus
-                            });
+        //         console.log(useraccount);
+        //         fetch('http://localhost:8080/register', {
+        //             method: 'POST',
+        //             headers: {
+        //                 'Content-Type': 'application/json'
+        //             },
+        //             body: JSON.stringify(
+        //                 useraccount
+        //             )
+        //         })
+        //             .then(response => response.json())
+        //             .then(data => {
+        //                 if (data.code == 0) {
+        //                     document.getElementById("register").addEventListener("hidden.bs.modal", function () {
+        //                         document.activeElement.blur(); // Bỏ focus khỏi phần tử đang focus
+        //                     });
 
-                            let modal = bootstrap.Modal.getInstance(document.getElementById("register")); // Lấy instance của modal
-                            modal.hide(); // Ẩn modal
+        //                     let modal = bootstrap.Modal.getInstance(document.getElementById("register")); // Lấy instance của modal
+        //                     modal.hide(); // Ẩn modal
 
-                            document.querySelectorAll('.header-unauth').forEach(element => {
-                                element.classList.add("d-none");
-                            });
+        //                     document.querySelectorAll('.header-unauth').forEach(element => {
+        //                         element.classList.add("d-none");
+        //                     });
 
-                            header_auth.classList.remove("d-none");
+        //                     header_auth.classList.remove("d-none");
 
-                            document.getElementById('fullname').textContent = temp;
+        //                     document.getElementById('fullname').textContent = temp;
 
-                            localStorage.setItem("token", data.result.token);  // Lưu token vào localStorage
-                            // localStorage.setItem("fullname", fullname);  // Lưu thông tin người dùng vào localStorage
-                        }
-                        console.log("Data: ", data);
-                    })
-                    .catch((error) => {
-                        console.error('Error:', error);
-                    });
-            });
+        //                     localStorage.setItem("token", data.result.token);  // Lưu token vào localStorage
+        //                     // localStorage.setItem("fullname", fullname);  // Lưu thông tin người dùng vào localStorage
+        //                 }
+        //                 console.log("Data: ", data);
+        //             })
+        //             .catch((error) => {
+        //                 console.error('Error:', error);
+        //             });
+        //     });
 
-        document.getElementById('btnLogout').addEventListener('click', function () {
-            fetch('http://localhost:8080/auth/logout', {
-                method: 'POST',
-                credentials: 'include',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify(
-                    {}
-                    // { "token": localStorage.getItem("token") }
-                )
-            })
-                .then(response => response.json())
-                .then(data => {
-                    if (data.code == 0) {
-                        // localStorage.removeItem("token");
-                        localStorage.removeItem("fullname");
-                        header_auth.classList.add("d-none");
+        // document.getElementById('btnLogout').addEventListener('click', function () {
+        //     fetch('http://localhost:8080/auth/logout', {
+        //         method: 'POST',
+        //         credentials: 'include',
+        //         headers: {
+        //             'Content-Type': 'application/json'
+        //         },
+        //         body: JSON.stringify(
+        //             {}
+        //             // { "token": localStorage.getItem("token") }
+        //         )
+        //     })
+        //         .then(response => response.json())
+        //         .then(data => {
+        //             if (data.code == 0) {
+        //                 // localStorage.removeItem("token");
+        //                 localStorage.removeItem("fullname");
+        //                 header_auth.classList.add("d-none");
 
-                        document.querySelectorAll('.header-unauth').forEach(element => {
-                            element.classList.remove("d-none");
-                        });
+        //                 document.querySelectorAll('.header-unauth').forEach(element => {
+        //                     element.classList.remove("d-none");
+        //                 });
 
-                        document.querySelector("#header-auth").classList.add("d-none");
+        //                 document.querySelector("#header-auth").classList.add("d-none");
 
-                    }
-                    console.log("Data: ", data);
-                })
-                .catch((error) => {
-                    console.error('Error:', error);
-                });
-        });
+        //             }
+        //             console.log("Data: ", data);
+        //         })
+        //         .catch((error) => {
+        //             console.error('Error:', error);
+        //         });
+        // });
 
-        document.getElementById('btnLogin').addEventListener('click', function () {
-            let username = document.getElementById('floatingUsernameLogin').value;
-            let password = document.getElementById('floatingPasswordLogin').value;
+        // document.getElementById('btnLogin').addEventListener('click', function () {
+        //     let username = document.getElementById('floatingUsernameLogin').value;
+        //     let password = document.getElementById('floatingPasswordLogin').value;
 
-            fetch('http://localhost:8080/auth/token', {
-                method: 'POST',
-                credentials: 'include',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify(
-                    { "username": username, "password": password }
-                )
-            })
-                .then(response => response.json())
-                .then(data => {
-                    if (data.code == 0) {
-                        document.getElementById("login").addEventListener("hidden.bs.modal", function () {
-                            document.activeElement.blur(); // Bỏ focus khỏi phần tử đang focus
-                        });
+        //     fetch('http://localhost:8080/auth/token', {
+        //         method: 'POST',
+        //         credentials: 'include',
+        //         headers: {
+        //             'Content-Type': 'application/json'
+        //         },
+        //         body: JSON.stringify(
+        //             { "username": username, "password": password }
+        //         )
+        //     })
+        //         .then(response => response.json())
+        //         .then(data => {
+        //             if (data.code == 0) {
+        //                 document.getElementById("login").addEventListener("hidden.bs.modal", function () {
+        //                     document.activeElement.blur(); // Bỏ focus khỏi phần tử đang focus
+        //                 });
 
-                        let modal = bootstrap.Modal.getInstance(document.getElementById("login")); // Lấy instance của modal
-                        modal.hide(); // Ẩn modal                        
+        //                 let modal = bootstrap.Modal.getInstance(document.getElementById("login")); // Lấy instance của modal
+        //                 modal.hide(); // Ẩn modal                        
 
-                        document.querySelectorAll('.header-unauth').forEach(element => {
-                            element.classList.add("d-none");
-                        });
-                        header_auth.classList.remove("d-none");
+        //                 document.querySelectorAll('.header-unauth').forEach(element => {
+        //                     element.classList.add("d-none");
+        //                 });
+        //                 header_auth.classList.remove("d-none");
 
-                        document.getElementById('fullname').textContent = data.result.fullname;
+        //                 document.getElementById('fullname').textContent = data.result.fullname;
 
-                        // localStorage.setItem("token", data.result.token);  // Lưu token vào localStorage
-                        localStorage.setItem("fullname", data.result.fullname);  // Lưu thông tin người dùng vào localStorage
-                    }
-                    console.log("Status: ", data.status);
-                    console.log("Code: ", data.code);
-                    console.log("Data: ", data);
-                })
-                .catch((error) => {
-                    console.error('Error:', error);
-                });
-        });
+        //                 // localStorage.setItem("token", data.result.token);  // Lưu token vào localStorage
+        //                 localStorage.setItem("fullname", data.result.fullname);  // Lưu thông tin người dùng vào localStorage
+        //             }
+        //             console.log("Status: ", data.status);
+        //             console.log("Code: ", data.code);
+        //             console.log("Data: ", data);
+        //         })
+        //         .catch((error) => {
+        //             console.error('Error:', error);
+        //         });
+        // });
     </script>
 </body>
 

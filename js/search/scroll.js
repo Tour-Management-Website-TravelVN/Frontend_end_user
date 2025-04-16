@@ -1,69 +1,35 @@
-document.addEventListener('DOMContentLoaded', function () {
-    $('#btnFind').click(function () {
-        let keywords = $('#keywords').val();
-        let departure_date = $('#start_date').val();
-        let price = $('#price').val();
-        let data = {
-            "keywords": keywords,
-            "departure_date": departure_date,
-            "price": price,
-            "page": 0
+$(function () {
+    let currentPage = 0;
+    const pageSize = 20;
+
+    const regex = /\d/;
+    let maxRs = parseInt($('#rs').text().match(regex)[0]);
+
+    let isLoading = false;
+
+    window.addEventListener('scroll', () => {
+        if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight - 150) {
+            // Gần cuối trang (cách bottom 150px)
+            loadMoreData();
         }
-        localStorage.setItem("data", JSON.stringify(data));
+    });
 
+    function loadMoreData() {
+        if (isLoading) return;
 
-        data = JSON.parse(localStorage.getItem("data"));
-        // localStorage.removeItem("data");
-        console.log(data);
+        isLoading = true;
 
-        const baseUrl = 'http://localhost:8080/tourunit/foundtourlist';
-        const params = new URLSearchParams();
-        params.append('keywords', keywords);
-        params.append('departure_date', departure_date);
-        params.append('price', price);
-        params.append('page', 0);
+        let temp = JSON.parse(sessionStorage.getItem('tourstemp'));
+        console.log(temp);
+        currentPage++;
+        for(let i=currentPage*pageSize; i<(currentPage+1)*pageSize; i++){
+            displayTourCard(temp[i]);
+            if(i==maxRs-1)
+                return;
+        }
 
-        const apiUrlWithParams = `${baseUrl}?${params.toString()}`;
-
-        fetch(apiUrlWithParams, {
-            method: 'GET',
-            headers: {
-                'Accept': 'application/json'
-            }
-            //,
-            //body: JSON.stringify(data)
-        })
-            .then(response => response.json())
-            .then(data => {
-                console.log(data);
-                if (data.code == 0) {
-                    localStorage.setItem("foundtours", JSON.stringify(data));
-                    $('#card-list').html("");
-                    if (!window.location.pathname.includes("/foundtourlist.html"))
-                        window.location.href = "foundtourlist.html";
-                    let result = JSON.parse(localStorage.getItem("foundtours"));
-
-                    sessionStorage.setItem('tourstemp', JSON.stringify(result.result));
-
-                    $("#rs").text(result.message);
-                    let tours = result.result;
-
-                    let index = 0;
-                    for (let tour of tours) {
-                        console.log("Tour index:", index);
-                        displayTourCard(tour);
-                        index++;
-                        if (index == 20) break;
-                    }
-                    // tours.forEach(tour => {
-                    //     displayTourCard(tour)
-                    // });
-                }
-            })
-            .catch((error) => {
-                console.log('Error: ', error);
-            })
-    })
+        isLoading = false;
+    }
 
     function displayTourCard(tour) {
         let card = $('<div class="card shadow-primary mb-4" style="height: 280px;"></div>');
@@ -170,5 +136,3 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
 })
-
-

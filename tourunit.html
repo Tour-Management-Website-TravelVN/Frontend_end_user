@@ -42,7 +42,10 @@
 
     <script type="module" src="js/main2.js"></script>
     <script src="js/main3.js"></script>
-    <script src="js/display/foundtour.js"></script>
+    <script type="module" src="js/display/foundtour.js"></script>
+    <script type="module" src="js/display/tourcalendar.js"></script>
+    <script type="module" src="js/display/tourprograms.js"></script>
+    <script type="module" src="js/display/tourratings.js"></script>
 </head>
 
 <body>
@@ -412,14 +415,14 @@
                     </script>
 
                     <!-- Schedule Start-->
-                    <div class="mt-5 pt-5">
+                    <div class="mt-5 pt-5" id="target-section">
                         <h3 class="text-center text-primary text-uppercase fw-bold mt-3 mb-4">Lịch khởi hành</h3>
                         <div class="row">
-                            <div class="card-body shadow col-1 me-3 rounded">
+                            <div class="card-body shadow col-1 me-3 rounded" id="monthYearBox">
                                 <p class="text-primary text-center fw-bold fs-6">Chọn tháng</p>
-                                <div class="ps-0 mb-3">
+                                <!-- <div class="ps-0 mb-3">
                                     <input type="radio" class="btn-check" id="radio1" name="optradio" value="04/2025"
-                                        checked autocomplete="off">
+                                    checked autocomplete="off">
                                     <label for="radio1"
                                         class="btn btn-outline-primary py-2 w-100 optradio">04/2025</label>
                                 </div>
@@ -434,22 +437,13 @@
                                         autocomplete="off">
                                     <label for="radio3"
                                         class="btn btn-outline-primary py-2 w-100 optradio">06/2025</label>
-                                </div>
+                                </div> -->
                             </div>
-
-                            <script>
-                                jQuery(document).ready(function ($) {
-                                    $('.optradio').click(function () {
-                                        $('.optradio').removeClass('active');
-                                        $(this).addClass('active');
-                                    })
-                                })
-                            </script>
 
                             <div class="card-body col-9 shadow rounded">
                                 <!--Calendar Start-->
                                 <div class="face-before">
-                                    <div class="row pt-3 gap-3">
+                                    <!-- <div class="row pt-3 gap-3">
                                         <div class="text-primary text-center fs-5 fw-bold col">T2</div>
                                         <div class="text-primary text-center fs-5 fw-bold col">T3</div>
                                         <div class="text-primary text-center fs-5 fw-bold col">T4</div>
@@ -457,7 +451,7 @@
                                         <div class="text-primary text-center fs-5 fw-bold col">T6</div>
                                         <div class="text-primary text-center fs-5 fw-bold col">T7</div>
                                         <div class="text-primary text-center fs-5 fw-bold col">CN</div>
-                                    </div>
+                                    </div> -->
                                     <!-- <div class="row pt-3 gap-3 gap-3">
                                         <div class="text-light text-center fs-5 fw-bold col cell-day cell-day">
                                             31
@@ -609,7 +603,7 @@
                                         </div>
                                     </div> -->
 
-                                    <script>
+                                    <!-- <script>
                                         jQuery(document).ready(function ($) {
                                             $('.cell-day').hover(function () {
                                                 if ($(this).find('small').text() != "")
@@ -619,7 +613,7 @@
                                                     $(this).removeClass('border-cell-day');
                                             });
                                         });
-                                    </script>
+                                    </script> -->
 
                                 </div>
                                 <!-- Calendar End -->
@@ -691,7 +685,7 @@
                                     </div>
                                 </div>
 
-                                <script>
+                                <!-- <script>
                                     jQuery(function ($) {
                                         $('#back').css('cursor', 'pointer');
                                         $('.cell-day').click(function () {
@@ -701,11 +695,11 @@
                                             $('.face-after').toggleClass('d-none');
                                         });
                                         $('#back').click(function () {
-                                            $('.face-before').toggle();
+                                            $('.face-before').toggleClass('d-none');
                                             $('.face-after').toggleClass('d-none');
                                         })
                                     })
-                                </script>
+                                </script> -->
                             </div>
                         </div>
                     </div>
@@ -802,7 +796,7 @@
                         <h3 class="text-center text-primary text-uppercase fw-bold mt-3 mb-4">Chương trình
                             tour</h3>
                         <div class="accordion accordion-flush" id="accordionTourPrograms">
-                            <div class="accordion-item mb-1">
+                            <!-- <div class="accordion-item mb-1">
                                 <h2 class="accordion-header">
                                     <button class="accordion-button collapsed border" type="button"
                                         data-bs-toggle="collapse" data-bs-target="#arcOne" aria-expanded="false"
@@ -912,17 +906,17 @@
                                             Bà Nà Hills (Chi phí tự túc).</p>
                                     </div>
                                 </div>
-                            </div>
+                            </div> -->
                         </div>
                     </div>
                     <!-- Tour Programs Start -->
 
                     <!-- Ratings Start-->
                     <!-- Tour Programs Start -->
-                    <div class="mt-5 pt-5">
+                    <div class="mt-5 pt-5" id="ratings">
                         <h3 class="text-center text-primary text-uppercase fw-bold mt-3 mb-4">Đánh giá từ phía khách
                             hàng</h3>
-                        <div class="card-body shadow rounded px-4 py-4 mb-3">
+                        <!-- <div class="card-body shadow rounded px-4 py-4 mb-3">
                             <div class="d-flex justify-content-between align-items-center">
                                 <p class="text-primary h5 fw-bold">Kiều Đức Thịnh</p>
                                 <span class="badget bg-success text-white px-3 py-1 rounded-2 align-middle">10</span>
@@ -935,7 +929,7 @@
                                 <span class="badget bg-success text-white px-3 py-1 rounded-2 align-middle">10</span>
                             </div>
                             <p class="text-dark fs-6">Tour rất thú vị!</p>
-                        </div>
+                        </div> -->
                     </div>
                     <!-- Ratings End-->
                 </div>
@@ -959,6 +953,7 @@
                             </div>
                             <!--Phương tiện chưa set-->
                             <i class="bi bi-airplane-fill text-dark rotate-45 fs-5"></i>
+                            
                         </div>
                         <div class="d-flex">
                             <i class="bi bi-hourglass-split me-2 text-dark fs-5"></i>
@@ -981,7 +976,8 @@
                             <span class="text-danger fs-5 fw-bold" id="availableCapacity">Còn 12 chỗ</span>
                         </p>
                         <div class="d-flex gap-1 my-2 pb-2">
-                            <button class="btn btn-outline-danger py-2" style="width: 40%;">Ngày khác</button>
+                            <a href="#target-section" class="btn btn-outline-danger py-2" style="width: 40%;" id="btnOtherDays">Ngày
+                                khác</a>
                             <button class="btn btn-danger" id="btn-book" style="width: 60%;">Đặt ngay</button>
 
                             <script>
@@ -1021,6 +1017,13 @@
                                                 console.error('Error:', error);
                                             });
                                     });
+
+                                    $('#btnOtherDays').on('click', function () {
+                                        $('html, body').animate({
+                                            scrollTop: $('#target-section').offset().top
+                                        }, 100); // thời gian cuộn 100ms
+                                    });
+
                                 })
                             </script>
 

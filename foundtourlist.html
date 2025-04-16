@@ -39,6 +39,8 @@
     <script type="module" src="js/main2.js"></script>
     <script src="js/main3.js"></script>
     <script src="js/search/search-input.js"></script>
+    <script src="js/search/filter-input.js"></script>
+    <script src="js/search/scroll.js"></script>
 </head>
 
 <body>
@@ -290,46 +292,51 @@
                     <div class="card-body bg-light rounded-2 shadow px-2 filter-box">
                         <h4 class="text-center fw-bold">BỘ LỌC TÌM KIẾM</h4>
                         <label class="form-label text-dark fw-bold ms-1 mt-3 mb-1">Điểm đi:</label>
-                        <select class="form-select">
-                            <option>Hà Nội</option>
-                            <option>Hải Phòng</option>
-                            <option>Đà Nẵng</option>
-                            <option>Nha Trang</option>
+                        <select class="form-select" id="departurePlace">
+                            <option value="" selected></option>
+                            <option value="Hà Nội">Hà Nội</option>
+                            <option value="Hải Phòng">Hải Phòng</option>
+                            <option value="Đà Nẵng">Đà Nẵng</option>
+                            <option value="Nha Trang">Nha Trang</option>
                         </select>
                         <label class="form-label text-dark fw-bold ms-1 mt-3 mb-0">Điểm đến:</label>
-                        <select class="form-select">
-                            <option>Hà Nội</option>
-                            <option>Hải Phòng</option>
-                            <option>Đà Nẵng</option>
-                            <option>Nha Trang</option>
+                        <select class="form-select" id="placeToVisit">
+                            <option selected></option>
+                            <option value="Hà Nội">Hà Nội</option>
+                            <option value="Hải Phòng">Hải Phòng</option>
+                            <option value="Đà Nẵng">Đà Nẵng</option>
+                            <option value="Nha Trang">Nha Trang</option>
                         </select>
                         <label class="form-label text-dark fw-bold ms-1 mt-3 mb-0">Loại tour:</label>
-                        <select class="form-select">
-                            <option>Hà Nội</option>
-                            <option>Hải Phòng</option>
-                            <option>Đà Nẵng</option>
-                            <option>Nha Trang</option>
+                        <select class="form-select" id="category">
+                            <option value="" selected></option>
+                            <option value="Du lịch núi">Du lịch núi</option>
+                            <option value="Du lịch mạo hiểm">Du lịch mạo hiểm</option>
+                            <option value="Du lịch sinh thái">Du lịch sinh thái</option>
+                            <option value="Du lịch văn hóa">Du lịch văn hóa</option>
+                            <option value="Du lịch ẩm thực">Du lịch ẩm thực</option>
+                            <option value="Du lịch biển">Du lịch biển</option>
                         </select>
                         <label class="form-label text-dark fw-bold ms-1 mt-3 mb-0">Phương tiện</label>
                         <div class="row mt-1">
                             <div class="col-6">
-                                <input type="checkbox" class="btn-check" id="btn-check-1" autocomplete="off">
+                                <input name="vehicle" type="checkbox" class="btn-check" id="btn-check-1" value="Ô tô" autocomplete="off">
                                 <label class="btn btn-outline-primary w-100" for="btn-check-1">Ô tô</label>
                             </div>
                             <div class="col-6">
-                                <input type="checkbox" class="btn-check" id="btn-check-2" autocomplete="off">
+                                <input name="vehicle" type="checkbox" class="btn-check" id="btn-check-2" value="Máy bay" autocomplete="off">
                                 <label class="btn btn-outline-primary w-100" for="btn-check-2">Máy bay</label>
                             </div>
                             <div class="col-6">
-                                <input type="checkbox" class="btn-check" id="btn-check-3" autocomplete="off">
+                                <input name="vehicle" type="checkbox" class="btn-check" id="btn-check-3" value="Tàu hỏa" autocomplete="off">
                                 <label class="btn btn-outline-primary w-100 mt-2" for="btn-check-3">Tàu hỏa</label>
                             </div>
                             <div class="col-6">
-                                <input type="checkbox" class="btn-check" id="btn-check-4" autocomplete="off">
+                                <input name="vehicle" type="checkbox" class="btn-check" id="btn-check-4" value="Thuyền" autocomplete="off">
                                 <label class="btn btn-outline-primary w-100 mt-2" for="btn-check-4">Thuyền</label>
                             </div>
                         </div>
-                        <button class="btn btn-primary text-center w-100 h-50 mt-3 py-2">Áp dụng</button>
+                        <button class="btn btn-primary text-center w-100 h-50 mt-3 py-2" id="btnApply">Áp dụng</button>
                         <!-- <input type="checkbox" class="btn-check" id="toggle-btn" autocomplete="off">
                         <label class="btn btn-primary" for="toggle-btn">Chọn</label>
 
@@ -765,46 +772,61 @@
         //         });
         // });
         jQuery(function () {
-            data = JSON.parse(localStorage.getItem("data"));
-            // localStorage.removeItem("data");
-            console.log(data);
+            // data = JSON.parse(localStorage.getItem("data"));
+            // // localStorage.removeItem("data");
+            // console.log(data);
 
-            const baseUrl = 'http://localhost:8080/tourunit/foundtourlist';
-            const params = new URLSearchParams();
-            params.append('keywords', data.keywords);
-            params.append('departure_date', data.departure_date);
-            params.append('price', data.price);
-            params.append('page', 0);
+            // const baseUrl = 'http://localhost:8080/tourunit/foundtourlist';
+            // const params = new URLSearchParams();
+            // params.append('keywords', data.keywords);
+            // params.append('departure_date', data.departure_date);
+            // params.append('price', data.price);
+            // params.append('page', 0);
 
-            const apiUrlWithParams = `${baseUrl}?${params.toString()}`;
+            // const apiUrlWithParams = `${baseUrl}?${params.toString()}`;
 
-            fetch(apiUrlWithParams, {
-                method: 'GET',
-                headers: {
-                    'Accept': 'application/json'
-                }
-                //,
-                // body: JSON.stringify(data)
-            })
-                .then(response => response.json())
-                .then(data => {
-                    console.log(data);
-                    if (data.code == 0) {
-                        localStorage.setItem("foundtours", JSON.stringify(data));
-                        $('#card-list').html("");
+            // fetch(apiUrlWithParams, {
+            //     method: 'GET',
+            //     headers: {
+            //         'Accept': 'application/json'
+            //     }
+            //     //,
+            //     // body: JSON.stringify(data)
+            // })
+            //     .then(response => response.json())
+            //     .then(data => {
+            //         console.log(data);
+            //         if (data.code == 0) {
+            //             localStorage.setItem("foundtours", JSON.stringify(data));
+            //             $('#card-list').html("");
 
-                        result = JSON.parse(localStorage.getItem("foundtours"));
+            //             let result = JSON.parse(localStorage.getItem("foundtours"));
 
-                        $("#rs").text(result.message);
-                        tours = result.result;
-                        tours.forEach(tour => {
-                            displayTourCard(tour)
-                        });
-                    }
-                })
-                .catch((error) => {
-                    console.log('Error: ', error);
-                })
+            //             $("#rs").text(result.message);
+            //             tours = result.result;
+            //             tours.forEach(tour => {
+            //                 displayTourCard(tour)
+            //             });
+            //         }
+            //     })
+            //     .catch((error) => {
+            //         console.log('Error: ', error);
+            //     })
+
+            let result = JSON.parse(localStorage.getItem("foundtours"));
+
+            $("#rs").text(result.message);
+            tours = result.result;
+
+            let index = 0;
+            for(let tour of tours){
+                displayTourCard(tour);
+                index++;
+                if(index == 20) break;
+            }
+            // tours.forEach(tour => {
+            //     displayTourCard(tour)
+            // });
 
             function displayTourCard(tour) {
                 let card = $('<div class="card shadow-primary mb-4" style="height: 280px;"></div>');
@@ -817,8 +839,8 @@
 
 
                 let placesToVisitSub = tour.tour.placesToVisit;
-                if (placesToVisitSub.length > 50)
-                    placesToVisitSub = placesToVisitSub.substring(0, 50) + "...";
+                if (placesToVisitSub.length > 40)
+                    placesToVisitSub = placesToVisitSub.substring(0, 40) + "...";
 
                 let price = formatNumberWithDots(Math.round((tour.discount.discountUnit == "%") ?
                     tour.adultTourPrice * (1 - tour.discount.discountValue / 100)
@@ -835,7 +857,7 @@
                                         <span class="d-block text-primary bg-white rounded-2 tag-img px-3 py-2">${tour.tour.category.categoryName}</span>
                                     </div>
                                     <div class="card-content my-2 mx-3 w-100">
-                                        <h5 class="text-primary fw-bold text-justify py-0 my-0">${tourName}</h5>
+                                        <h5 class="text-primary fw-bold text-justify py-0 my-0 tour-title-lite">${tourName}</h5>
                                         <div class="d-flex justify-content-between py-0 my-2">
                                             <div class="d-flex">
                                                 <i class="bi bi-ticket-fill text-primary me-2"></i>
@@ -887,7 +909,6 @@
                 //     detailBox.style.display = 'block';
                 // });
                 $('#card-list').append(card);
-
                 // tourList.appendChild(card);
             }
 

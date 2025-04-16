@@ -114,35 +114,35 @@
     });
 
 
-    // packages carousel
-    $(".packages-carousel").owlCarousel({
-        autoplay: true,
-        smartSpeed: 1000,
-        center: false,
-        dots: false,
-        loop: true,
-        margin: 25,
-        nav : true,
-        navText : [
-            '<i class="bi bi-arrow-left"></i>',
-            '<i class="bi bi-arrow-right"></i>'
-        ],
-        responsiveClass: true,
-        responsive: {
-            0:{
-                items:1
-            },
-            768:{
-                items:2
-            },
-            992:{
-                items:2
-            },
-            1200:{
-                items:3
-            }
-        }
-    });
+    // // packages carousel
+    // $(".packages-carousel").owlCarousel({
+    //     autoplay: true,
+    //     smartSpeed: 1000,
+    //     center: false,
+    //     dots: false,
+    //     loop: true,
+    //     margin: 25,
+    //     nav : true,
+    //     navText : [
+    //         '<i class="bi bi-arrow-left"></i>',
+    //         '<i class="bi bi-arrow-right"></i>'
+    //     ],
+    //     responsiveClass: true,
+    //     responsive: {
+    //         0:{
+    //             items:1
+    //         },
+    //         768:{
+    //             items:2
+    //         },
+    //         992:{
+    //             items:2
+    //         },
+    //         1200:{
+    //             items:3
+    //         }
+    //     }
+    // });
 
 
     // testimonial carousel
@@ -185,7 +185,7 @@
     }
     });
     $('.back-to-top').click(function () {
-        $('html, body').animate({scrollTop: 0}, 1500, 'easeInOutExpo');
+        $('html, body').animate({scrollTop: 0}, 200, 'easeInOutExpo');
         return false;
     }); 
 

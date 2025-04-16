@@ -40,6 +40,10 @@
 
     <script src="lib/lightbox/js/jquery-3.7.1.min.js"></script>
     <script type="module" src="js/main2.js"></script>
+    <script type="module" src="js/mytour/booking-detail.js"></script>
+    <script type="module" src="js/display/tourprograms.js"></script>
+    <script src="js/mytour/cancel-booking.js"></script>
+    <script src="js/mytour/rating-tour.js"></script>
 </head>
 
 <body>
@@ -252,12 +256,12 @@
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb fw-bold">
                     <li class="breadcrumb-item"><a href="#"><i class="bi bi-house-door-fill me-2"></i>Trang chủ</a></li>
-                    <li class="breadcrumb-item"><a href="#">Tour đã đi</a></li>
-                    <li class="breadcrumb-item active" aria-current="page">Tour Đà Nẵng 4N3Đ: HCM - Đà Nẵng
+                    <li class="breadcrumb-item"><a href="mytour.html">Tour của bạn</a></li>
+                    <li class="breadcrumb-item active tourname" aria-current="page">Tour Đà Nẵng 4N3Đ: HCM - Đà Nẵng
                         - Hội An - Huế - Quảng Bình - Động Phong Nha</li>
                 </ol>
             </nav>
-            <h3 class="fw-bold text-primary">Tour Đà Nẵng 4N3Đ: HCM - Đà Nẵng
+            <h3 class="fw-bold text-primary tourname">Tour Đà Nẵng 4N3Đ: HCM - Đà Nẵng
                 - Hội An - Huế - Quảng Bình - Động Phong Nha</h3>
         </div>
     </div>
@@ -270,7 +274,7 @@
                 <div class="col-8">
                     <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel"
                         data-bs-interval="3000">
-                        <!-- <div class="carousel-indicators">
+                        <!-- <div class="carousel-indicators" id="carousel-btn">
                             <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0"
                                 class="active" aria-current="true" aria-label="Slide 1"></button>
                             <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1"
@@ -280,8 +284,8 @@
                             <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="3"
                                 aria-label="Slide 4"></button>
                         </div> -->
-                        <div class="carousel-inner">
-                            <div class="carousel-item active w-100" style="height: 70vh;">
+                        <div class="carousel-inner" id="carousel-list">
+                            <!-- <div class="carousel-item active w-100" style="height: 70vh;">
                                 <img src="img/destination/DaNang.webp" class="object-fit-cover w-100 h-100" alt="...">
                             </div>
                             <div class="carousel-item w-100" style="height: 70vh;">
@@ -292,8 +296,8 @@
                             </div>
                             <div class="carousel-item w-100" style="height: 70vh;">
                                 <img src="img/destination/HaNoi.webp" class="object-fit-cover w-100 h-100" alt="...">
-                            </div>
-                            <div class="tour-offer bg-info fw-bold fs-5">Giảm 50%</div>
+                            </div> -->
+                            <!-- <div class="tour-offer bg-info fw-bold fs-5" id="discount">Giảm 50%</div> -->
                         </div>
                         <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"
                             data-bs-slide="prev">
@@ -308,8 +312,9 @@
                     </div>
 
                     <!-- Danh sách Thumbnail -->
-                    <div class="mt-3 mb-5 d-flex gap-3 sm-img-carousel owl-carousel" style="height: 80px;">
-                        <div class="h-100" style="width: 150px;">
+                    <div class="mt-3 mb-5 d-flex gap-3 sm-img-carousel owl-carousel" style="height: 80px;"
+                        id="carousel-thumbnail">
+                        <!-- <div class="h-100" style="width: 150px;">
                             <img src="img/destination/DaNang.webp"
                                 class="thumbnail-img object-fit-cover w-100 h-100 active choose"
                                 data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0">
@@ -325,10 +330,10 @@
                         <div class="h-100" style="width: 150px;">
                             <img src="img/destination/HaNoi.webp" class="thumbnail-img object-fit-cover w-100 h-100"
                                 data-bs-target="#carouselExampleIndicators" data-bs-slide-to="3">
-                        </div>
+                        </div> -->
                     </div>
 
-                    <script>
+                    <!-- <script>
                         $.noConflict();
                         jQuery(function () {
                             let owl = $(".owl-carousel");
@@ -404,7 +409,7 @@
                                 owl.trigger("play.owl.autoplay", [3000]); // Tiếp tục với tốc độ 3 giây
                             });
                         });
-                    </script>
+                    </script> -->
 
                     <!-- Schedule Start-->
                     <div class="mt-5 pt-5">
@@ -436,8 +441,8 @@
                                                         <p><small>(Từ 10 tuổi trở lên)</small></p>
                                                     </td>
                                                     <td class="text-end text-danger fw-bold tag-price">
-                                                        12.580.000 đ
-                                                        <p class="text-primary"><small>x 1</small></p>
+                                                        <span class="adultTourPrice">12.580.000 đ</span>
+                                                        <p class="text-primary"><small id="aQ">x 1</small></p>
                                                     </td>
 
                                                 </tr>
@@ -447,18 +452,18 @@
                                                         <p><small>(Từ 5 đến 9 tuổi)</small></p>
                                                     </td>
                                                     <td class="text-end text-danger fw-bold tag-price">
-                                                        8.580.000 đ
-                                                        <p class="text-primary"><small>x 0</small></p>
+                                                        <span id="childTourPrice">8.580.000 đ</span>
+                                                        <p class="text-primary"><small id="cQ">x 0</small></p>
                                                     </td>
                                                 </tr>
                                                 <tr>
                                                     <td class="text-dark">
-                                                        <span class="fw-bold">Người lớn</span>
+                                                        <span class="fw-bold">Trẻ nhỏ</span>
                                                         <p><small>(Từ 2 đến 4 tuổi)</small></p>
                                                     </td>
                                                     <td class="text-end text-danger fw-bold tag-price">
-                                                        6.580.000 đ
-                                                        <p class="text-primary"><small>x 0</small></p>
+                                                        <span id="toddlerTourPrice">6.580.000 đ</span>
+                                                        <p class="text-primary"><small id="tQ">x 0</small></p>
                                                     </td>
                                                 </tr>
                                             </table>
@@ -475,8 +480,8 @@
                                                         <p><small>(Dưới 2 tuổi)</small></p>
                                                     </td>
                                                     <td class="text-end text-danger fw-bold tag-price">
-                                                        0 đ
-                                                        <p class="text-primary"><small>x 0</small></p>
+                                                        <span id="babyTourPrice">0 đ</span>
+                                                        <p class="text-primary"><small id="bQ">x 0</small></p>
                                                     </td>
                                                 </tr>
                                                 <tr>
@@ -484,8 +489,8 @@
                                                         <span class="fw-bold">Phụ thu phòng đơn</span>
                                                     </td>
                                                     <td class="text-end text-danger fw-bold tag-price">
-                                                        1.000.000 đ
-                                                        <p class="text-primary"><small>x 0</small></p>
+                                                        <span id="privateRoomPrice">1.000.000 đ</span>
+                                                        <p class="text-primary"><small id="pQ">x 0</small></p>
                                                     </td>
                                                 </tr>
                                             </table>
@@ -521,17 +526,17 @@
                             <div class="col d-flex flex-column align-items-center">
                                 <i class="bi bi-people-fill text-primary fa-5x pb-0"></i>
                                 <span class="text-primary fs-4 fw-bold decrease-margin-lg-15">Đối tượng thích hợp</span>
-                                <span class="text-dark fs-4 fw-bold">Thanh niên</span>
+                                <span class="text-dark fs-4 fw-bold text-center" id="targetAudience">Thanh niên</span>
                             </div>
                             <div class="col d-flex flex-column align-items-center">
                                 <i class="bi bi-flower1 text-primary fa-5x pb-0"></i>
                                 <span class="text-primary fs-4 fw-bold decrease-margin-lg-15">Ẩm thực</span>
-                                <span class="text-dark fs-4 fw-bold">Gỏi cá Nam Ô</span>
+                                <span class="text-dark fs-4 fw-bold text-center" id="cuisine">Gỏi cá Nam Ô</span>
                             </div>
                             <div class="col d-flex flex-column align-items-center">
                                 <i class="bi bi-clock-fill text-primary fa-5x pb-0"></i>
                                 <span class="text-primary fs-4 fw-bold decrease-margin-lg-15">Thời gian lý tưởng</span>
-                                <span class="text-dark fs-4 fw-bold">Quanh năm</span>
+                                <span class="text-dark fs-4 fw-bold text-center" id="idealTime">Quanh năm</span>
                             </div>
                         </div>
                     </div>
@@ -542,7 +547,7 @@
                         <h3 class="text-center text-primary text-uppercase fw-bold mt-3 mb-4">Trải nghiệm thú vị trong
                             tour</h3>
                         <div class="shadow card-body rounded">
-                            <div class="text-dark text-break text-justify p-1">
+                            <div class="text-dark text-break text-justify p-1" id="description">
                                 <p>- Kinh thành Huế: Khám phá Đại Nội Huế, nghe chuyện triều đại nhà Nguyễn.</p>
                                 <p>- Hội An về đêm: Dạo phố cổ, ngắm đèn lồng rực rỡ, thưởng thức ẩm thực đặc sắc.</p>
                                 <p>- Cầu Hiền Lương - Sông Bến Hải: Chứng tích lịch sử, biểu tượng chia cắt Bắc - Nam.
@@ -578,7 +583,7 @@
                         <!-- Tab panes -->
                         <div class="tab-content">
                             <div class="tab-pane container shadow card-body rounded active" id="tab1">
-                                <div class="text-dark text-break text-justify p-1">
+                                <div class="text-dark text-break text-justify p-1" id="inclusions">
                                     <p><b>Vận Chuyển:</b></p>
                                     <p>- Vé máy bay khứ hồi theo đoàn, hành lý gồm 07kg xách tay + 10kg ký gửi.</p>
                                     <p>- Xe du lịch hiện đại từ 16 đến 45 chỗ, máy lạnh, tivi, ghế bật.</p>
@@ -594,20 +599,21 @@
                                 </div>
                             </div>
                             <div class="tab-pane container shadow card-body rounded fade" id="tab2">
-                                <div class="text-dark text-break text-justify p-1">
+                                <div class="text-dark text-break text-justify p-1" id="exclusions">
                                     <p>- Tiền TIP cho HDV + Tài xế địa phương.</p>
                                     <p>- Chi phí cá nhân ngoài chương trình: giặt ủi, điện thoại, minibar…</p>
                                     <p>- Tự túc 1 bữa trưa bữa tối.</p>
                                     <p>- Vé Cáp Treo Bà Nà Hills (có Buffet trưa) giá tham khảo từ 1.250.000/khách.</p>
                                 </div>
                             </div>
+                            <!--Ở đây-->
                             <div class="tab-pane container shadow card-body rounded fade" id="tab3">
                                 <div class="text-dark text-break text-justify p-1">
                                     <p>Kiều Đức Thịnh</p>
                                 </div>
                             </div>
                             <div class="tab-pane container shadow card-body rounded fade" id="tab4">
-                                <div class="text-dark text-break text-justify p-1">
+                                <div class="text-dark text-break text-justify p-1" id="note">
                                     <p>Ưu tiên các địa điểm có cảnh quan thiên nhiên đẹp và hoang sơ</p>
                                 </div>
                             </div>
@@ -619,127 +625,22 @@
                     <div class="mt-5 pt-5">
                         <h3 class="text-center text-primary text-uppercase fw-bold mt-3 mb-4">Chương trình
                             tour</h3>
-                        <div class="accordion accordion-flush" id="accordionTourPrograms">
-                            <div class="accordion-item mb-1">
-                                <h2 class="accordion-header">
-                                    <button class="accordion-button collapsed border" type="button"
-                                        data-bs-toggle="collapse" data-bs-target="#arcOne" aria-expanded="false"
-                                        aria-controls="arcOne">
-                                        <div>
-                                            <span class="d-block text-primary fw-bold">Ngày 1: HCM - Huế - Đà
-                                                Nẵng</span>
-                                            <br><span class="text-dark fw-normal"><i
-                                                    class="fa-solid fa-utensils me-2"></i>3 bữa ăn (sáng, trưa,
-                                                chiều)</span>
-                                        </div>
-                                    </button>
-                                </h2>
-                                <div id="arcOne" class="accordion-collapse collapse"
-                                    data-bs-parent="#accordionTourPrograms">
-                                    <div class="accordion-body bg-white border shadow text-justify text-dark">
-                                        <p>Sáng nhân viên đón khách tại sân bay Tân Sơn Nhất và hỗ trợ làm thủ tục
-                                            chuyến
-                                            bay đi Huế.</p>
-                                        <p>Đến Huế, xe và HDV địa phương đưa quý khách đến nhà hàng dùng bữa sáng, sau
-                                            đó
-                                            khởi hành tham quan:</p>
-                                        <p>Đại Nội (Kinh Thành Huế) - Gắn liền cùng triều đại nhà Nguyễn với Ngọ Môn,
-                                            điện
-                                            Thái Hoà, Tử Cấm Thành, Thế Miếu, Hiển Lâm Các, Cửu Đỉnh – Đây cũng là một
-                                            trong
-                                            những di sản của Việt Nam được UNESCO công nhận là Di sản văn hóa thế giới.
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="accordion-item mb-1">
-                                <h2 class="accordion-header">
-                                    <button class="accordion-button collapsed border" type="button"
-                                        data-bs-toggle="collapse" data-bs-target="#arcTwo" aria-expanded="true"
-                                        aria-controls="arcTwo">
-                                        <div>
-                                            <span class="d-block text-primary fw-bold">Ngày 2: Huế - Quảng Bình</span>
-                                            <br><span class="text-dark fw-normal"><i
-                                                    class="fa-solid fa-utensils me-2"></i>3 bữa ăn (sáng, trưa,
-                                                chiều)</span>
-                                        </div>
-                                    </button>
-                                </h2>
-                                <div id="arcTwo" class="accordion-collapse collapse"
-                                    data-bs-parent="#accordionTourPrograms">
-                                    <div class="accordion-body bg-white border shadow text-justify text-dark">
-                                        <p>Đoàn dùng bữa sáng sau đó khởi hành tham quan:</p>
-                                        <p>Viếng thăm Thánh Địa La Vang - Là một trong những địa điểm hành hương quan
-                                            trọng
-                                            không chỉ riêng đồng bào Công giáo, mà còn của cả người không Công giáo và
-                                            khách
-                                            du lịch quốc tế.</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="accordion-item mb-1">
-                                <h2 class="accordion-header">
-                                    <button class="accordion-button collapsed border" type="button"
-                                        data-bs-toggle="collapse" data-bs-target="#arcThree" aria-expanded="false"
-                                        aria-controls="arcThree">
-                                        <div>
-                                            <span class="d-block text-primary fw-bold">Ngày 3: Huế - Đà Nẵng - Hội
-                                                An</span>
-                                            <br><span class="text-dark fw-normal"><i
-                                                    class="fa-solid fa-utensils me-2"></i>3 bữa ăn (sáng, trưa,
-                                                chiều)</span>
-                                        </div>
-                                    </button>
-                                </h2>
-                                <div id="arcThree" class="accordion-collapse collapse"
-                                    data-bs-parent="#accordionTourPrograms">
-                                    <div class="accordion-body bg-white border shadow text-justify text-dark">
-                                        <p>Quý khách dùng điểm tâm sáng tại khách sạn, trả phòng. Đoàn khởi hành về Đà
-                                            Nẵng:</p>
-                                        <p>Bán Đảo Sơn Trà - Quà tặng thiên nhiên cho Đà Nẵng, nổi bật với bãi biển
-                                            trong
-                                            và rừng xanh mát, là điểm tham quan yên bình và xinh đẹp.</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="accordion-item mb-1">
-                                <h2 class="accordion-header">
-                                    <button class="accordion-button collapsed border" type="button"
-                                        data-bs-toggle="collapse" data-bs-target="#arcFour" aria-expanded="false"
-                                        aria-controls="arcFour">
-                                        <div>
-                                            <span class="d-block text-primary fw-bold">Ngày 4: Đà Nẵng - HCM</span>
-                                            <br><span class="text-dark fw-normal"><i
-                                                    class="fa-solid fa-utensils me-2"></i>3 bữa ăn (sáng, trưa,
-                                                chiều)</span>
-                                        </div>
-                                    </button>
-                                </h2>
-                                <div id="arcFour" class="accordion-collapse collapse"
-                                    data-bs-parent="#accordionTourPrograms">
-                                    <div class="accordion-body border shadow text-justify text-dark">
-                                        <p>Đoàn dùng điểm tâm sáng tại khách sạn, Quý khách tự do tắm biển Mỹ Khê hoặc
-                                            sử
-                                            dụng các tiện ích tại khách sạn. Đoàn trả phòng, Khởi hành tham quan:</p>
-                                        <p>Đoàn khởi hành khám phá Bà Nà Hills - Xe đưa đoàn đến chân núi Bà Nà, quý
-                                            khách
-                                            lên cáp treo chinh phục Đỉnh Núi Chúa (1.487m). Trải nghiệm cảm giác bồng
-                                            bềnh
-                                            giữa mây trời, tận hưởng không khí trong lành và khám phá khu du lịch đẳng
-                                            cấp
-                                            Bà Nà Hills (Chi phí tự túc).</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                        <div class="accordion accordion-flush" id="accordionTourPrograms"></div>
                     </div>
                     <!-- Tour Programs End -->
 
+                    <!--Ở đây-->
                     <!-- Companion Customers Start-->
                     <div class="mt-5 pt-5">
                         <h3 class="text-center text-primary text-uppercase fw-bold mt-3 mb-4">Khách hàng đi cùng</h3>
-                        <div class="row">
-                            <div class="col pe-1">
+                        <div class="row gap-1" id="companions">
+                            <!-- <div class="card-body rounded-1 text-primary fs-5 fw-bold border border-primary mb-2 col-5">
+                                Kiều Đức Thịnh
+                            </div>
+                            <div class="card-body rounded-1 text-primary fs-5 fw-bold border border-primary mb-2 col-5">
+                                Kiều Đức Thịnh
+                            </div> -->
+                            <!-- <div class="col pe-1">
                                 <div class="card-body rounded-1 text-primary fs-5 fw-bold border border-primary mb-2">
                                     Kiều Đức Thịnh
                                 </div>
@@ -766,7 +667,7 @@
                                 <div class="card-body rounded-1 text-primary fs-5 fw-bold border border-primary mb-2">
                                     Kiều Đức Thịnh
                                 </div>
-                            </div>
+                            </div> -->
                         </div>
                     </div>
                     <!-- Companion Customers End-->
@@ -776,41 +677,55 @@
                 <div class="col-4">
                     <div class="card-body bg-white rounded shadow px-3">
                         <span class="text-primary h3 fw-bold pt-2 pb-1 d-block">Tổng tiền thanh toán:</span>
-                        <p class="text-danger h1 fw-bold letter-spacing-2 ps-2" style="letter-spacing: 1px;">
+                        <p class="text-danger h1 fw-bold letter-spacing-2 ps-2" style="letter-spacing: 1px;"
+                            id="totalAmount">
                             12.580.000
                             đ</p>
                         <div class="d-flex mb-0 pt-2 pb-1">
                             <i class="bi bi-ticket-fill text-primary me-2 mt-1"></i>
-                            <p class="heading4 text-primary fw-bold mb-2">T001-00001-4N3Đ-170305</p>
+                            <p class="heading4 text-primary fw-bold mb-2" id="tourUnitId">T001-00001-4N3Đ-170305</p>
                         </div>
                         <div class="d-flex mb-0 pt-2 pb-1">
                             <i class="bi bi-ticket-perforated-fill text-primary me-2 pt-1"></i>
-                            <p class="heading4 text-primary fw-bold">9zjXVNuvkG</p>
+                            <p class="heading4 text-primary fw-bold" id="bookingid">9zjXVNuvkG</p>
                         </div>
                         <div class="d-flex justify-content-between pb-2 mb-1">
-                            <p class="fs-5 text-dark mb-1"><i class="bi bi-clock-fill me-2"></i>4N3Đ</p>
+                            <div class="d-flex">
+                                <i class="bi bi-clock-fill me-2 text-dark fs-5"></i>
+                                <p class="fs-5 text-dark mb-1" id="duration">4N3Đ</p>
+                            </div>
+                            <!--Phương tiện chưa set-->
                             <i class="bi bi-airplane-fill text-dark rotate-45 fs-5"></i>
                         </div>
-                        <p class="fs-5 text-dark mb-2 pb-2"><i class="bi bi-hourglass-split me-2"></i>27/03/2025 -
-                            31/03/2025</p>
-                        <p class="fs-5 mb-2 heading6 text-dark pt-0 pb-2 mb-2"><i
-                                class="bi bi-geo-alt-fill me-2 pb-2 mb-2"></i><span class="text-dark">TP. Hồ Chí
-                                Minh</span></p>
-                        <p class="fs-5 mb-2 heading6 text-dark pt-0 pb-2 mb-2"><i class="bi bi-flag-fill me-2"></i><span
-                                class="text-dark">TP. Đà Nẵng</span></p>
+                        <div class="d-flex">
+                            <i class="bi bi-hourglass-split me-2 text-dark fs-5"></i>
+                            <p class="fs-5 text-dark mb-2 pb-2" id="de-re-date">27/03/2025 -
+                                31/03/2025</p>
+                        </div>
+                        <div class="d-flex">
+                            <i class="bi bi-geo-alt-fill me-2 pb-2 mb-2 text-dark fs-5"></i>
+                            <p class="fs-5 mb-2 heading6 text-dark pt-0 pb-2 mb-2" id="departurePlace"><span
+                                    class="text-dark">TP. Hồ Chí
+                                    Minh</span></p>
+                        </div>
+                        <div class="d-flex">
+                            <i class="bi bi-flag-fill me-2 text-dark fs-5"></i>
+                            <p class="fs-5 mb-2 heading6 text-dark pt-0 pb-2 mb-2" id="placesToVisit"><span
+                                    class="text-dark">TP. Đà Nẵng</span></p>
+                        </div>
                         <p class="mb-2 heading6 text-dark pt-0 pb-2 mb-2"><i class="bi bi-amd me-2 text-primary"></i>
-                            <span class="text-primary fs-5 fw-bold">Trạng thái: Đã đi</span>
+                            <span class="text-primary fs-5 fw-bold">Trạng thái: <span id="status">Đã đi</span></span>
                         </p>
-                        <button class="btn btn-outline-danger py-2 w-100 d-none" data-bs-toggle="modal"
-                            data-bs-target="#cancleTour">Hủy tour</button>
+                        <button class="btn btn-outline-danger py-2 w-100" data-bs-toggle="modal"
+                            data-bs-target="#cancelTour" id="btnCancelTour">Hủy tour</button>
                         <!-- Modal -->
-                        <div class="modal fade" id="cancleTour" data-bs-backdrop="static" data-bs-keyboard="false"
+                        <div class="modal fade" id="cancelTour" data-bs-backdrop="static" data-bs-keyboard="false"
                             tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
                             <div class="modal-dialog modal-xl">
                                 <div class="modal-content">
                                     <div class="modal-header">
                                         <h5 class="modal-title fw-bold text-primary" id="staticBackdropLabel">Quý khách
-                                            có chắc chắn muốn hủy tour &lt;tên tour&gt;?</h5>
+                                            có chắc chắn muốn hủy tour <span class="tourname">tên tour</span>?</h>
                                         <button type="button" class="btn-close" data-bs-dismiss="modal"
                                             aria-label="Close"></button>
                                     </div>
@@ -844,16 +759,35 @@
                                         <div class="d-flex justify-content-center gap-2">
                                             <button type="button" class="btn btn-outline-primary"
                                                 data-bs-dismiss="modal" style="width: 30%;">Hủy</button>
-                                            <button type="button" class="btn btn-outline-danger" style="width: 30%;">Xác
+                                            <button type="button" class="btn btn-outline-danger" style="width: 30%;" id="btnContinue" disabled>Xác
                                                 nhận</button>
                                         </div>
+
+                                        <!-- Script xử lý -->
+                                        <script>
+                                            document.getElementById('agree').addEventListener('change', function () {
+                                                document.getElementById('btnContinue').disabled = !this.checked;
+                                            });  
+                                        </script>
+
                                     </div>
                                 </div>
                             </div>
                         </div>
 
+                        <div class="toast-container position-fixed top-0 end-0 p-3" style="z-index: 1000;">
+                            <div id="liveToast2" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+                                <div class="d-flex">
+                                    <div class="toast-body text-dark" id="toastPwd2">
+                                        Hãy kiểm tra lại thông tin nhập vào.
+                                    </div>
+                                    <button type="button" class="btn-close me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+                                </div>
+                            </div>
+                        </div>
+
                         <button class="btn btn-outline-danger py-2 w-100" data-bs-toggle="modal"
-                            data-bs-target="#ratingTour">Đánh giá</button>
+                            data-bs-target="#ratingTour" id="btnRating">Đánh giá</button>
                         <!-- Modal -->
                         <div class="modal fade" id="ratingTour" data-bs-backdrop="static" data-bs-keyboard="false"
                             tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
@@ -867,7 +801,8 @@
                                     </div>
                                     <div class="modal-body">
                                         <div class="d-flex justify-content-between">
-                                            <label for="" class="text-primary fw-bold">Bạn cảm thấy chuyến đi này có thú vị không?</label>
+                                            <label for="" class="text-primary fw-bold">Bạn cảm thấy chuyến đi này có thú
+                                                vị không?</label>
                                             <label for="ratingRange" class="form-label">Điểm: <span id="ratingValue"
                                                     class="fw-bold me-5">5</span></label><span id="emoji">😐</span>
                                         </div>
@@ -906,7 +841,7 @@
                                             <button type="button" class="btn btn-outline-primary"
                                                 data-bs-dismiss="modal" style="width: 30%;">Hủy</button>
                                             <button type="button" class="btn btn-outline-success"
-                                                style="width: 30%;">Gửi</button>
+                                                style="width: 30%;" id="btnSend">Gửi</button>
                                         </div>
                                     </div>
                                 </div>
@@ -920,12 +855,12 @@
                             <h2 class="accordion-header">
                                 <button class="accordion-button collapsed text-white bg-primary fw-bold fs-5 rounded-0"
                                     type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne"
-                                    aria-expanded="false" aria-controls="flush-collapseOne">
+                                    aria-expanded="false" aria-controls="flush-collapseOne" id="categoryName">
                                     Tour gia đình
                                 </button>
                             </h2>
                             <div id="flush-collapseOne" class="accordion-collapse collapse">
-                                <div class="accordion-body text-justify text-primary fs-6 shadow">
+                                <div class="accordion-body text-justify text-primary fs-6 shadow" id="ca-description">
                                     Bạn đang tìm kiếm một chuyến đi lý tưởng để cả gia đình cùng thư giãn, vui chơi và
                                     khám phá? Hãy tham gia ngay Tour Gia Đình - hành trình trọn vẹn dành cho mọi thành
                                     viên, từ ông bà, cha mẹ đến các bé nhỏ!
@@ -936,12 +871,12 @@
                             <h2 class="accordion-header">
                                 <button class="accordion-button collapsed text-white bg-primary fw-bold rounded-0 fs-5"
                                     type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo"
-                                    aria-expanded="false" aria-controls="flush-collapseTwo">
+                                    aria-expanded="false" aria-controls="flush-collapseTwo" id="festivalName">
                                     Lễ hội pháo hoa
                                 </button>
                             </h2>
                             <div id="flush-collapseTwo" class="accordion-collapse collapse">
-                                <div class="accordion-body text-justify text-primary fs-6 shadow">
+                                <div class="accordion-body text-justify text-primary fs-6 shadow" id="fes-description">
                                     Trải nghiệm đại tiệc ánh sáng hoành tráng nhất Việt Nam! Lễ hội Pháo hoa Quốc tế Đà
                                     Nẵng (DIFF) là sự kiện thường niên, nơi những màn trình diễn pháo hoa mãn nhãn từ
                                     các đội thi hàng đầu thế giới thắp sáng bầu trời thành phố biển xinh đẹp.

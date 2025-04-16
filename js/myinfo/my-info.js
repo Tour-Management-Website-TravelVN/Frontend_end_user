@@ -18,6 +18,8 @@ $(function () {
                 let account = data.result;
                 let customer = account.c;
 
+                $('#c-fullName').val($('.customer-info-unique').eq(0).text());
+
                 $('#email').text(account.email);
                 $('#c-email').val(account.email);
 
@@ -30,7 +32,7 @@ $(function () {
                 $('#gender').text(customer.gender ? 'Nữ' : 'Nam');
                 customer.gender ? $('#female').prop('checked', true) : $('#male').prop('checked', true);
 
-                $('#nationality').text(customer.nationality == null ? nullString : customer.nationality);
+                $('#nationality').text((customer.nationality == null || customer.nationality == "") ? nullString : customer.nationality);
                 if (customer.nationality != null) {
                     let options = $('#select-natio').children();
                     options.prop('selected', 'false');
@@ -41,10 +43,10 @@ $(function () {
                     // console.log($('#select-natio').val());
                 }
 
-                $('.address').text(customer.address == null ? nullString : customer.address);
-                $('.c-address').val(customer.address);
+                $('.address').text((customer.address == null || customer.address == "") ? nullString : customer.address);
+                $('#c-address').val(customer.address);
 
-                $('#phonenumber').text(customer.phoneNumber == null ? nullString : customer.phoneNumber);
+                $('#phonenumber').text((customer.phoneNumber == null || customer.phoneNumber == "") ? nullString : customer.phoneNumber);
                 $('#c-phone').val(customer.phoneNumber);
 
                 $('#ci').text(displayText(customer.citizenId));
@@ -59,7 +61,7 @@ $(function () {
         })
 
     function displayText(param) {
-        let rs = (param == null) ? nullString : param;
+        let rs = (param == null || param == "") ? nullString : param;
         return rs;
     }
 
@@ -69,11 +71,12 @@ $(function () {
     //     $(this).siblings().toggleClass('d-none');
     // })
 
-    $("#btnChange, #btnUpdate, #btnCancel").click(function(){
+    $("#btnChange, #btnCancel").click(function(){
         $(this).toggleClass('d-none');
         $(this).siblings().toggleClass('d-none');
         $('.customer-info').toggleClass('d-none');
         $('.customer-info').next().toggleClass('d-none');
+        $('.customer-info-unique').toggleClass('d-none');
 
     });
     // $("#btnUpdate").click(function(){

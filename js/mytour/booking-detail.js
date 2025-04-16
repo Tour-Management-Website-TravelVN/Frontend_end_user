@@ -1,12 +1,13 @@
-import{convertNewlineToBr} from "../utils/utils.js"
+import { buildUrl, formatDate, formatNumberWithDots, splitString, convertNewlineToBr } from "../utils/utils.js"
 
-jQuery(function () {
-    // $('.face-after').removeClass('d-none');
+$(function () {
 
-    let foundtour = JSON.parse(localStorage.getItem("foundtour"));
+    let booking = JSON.parse(sessionStorage.getItem('bookingChoiced'));
+
+    let foundtour = booking.tourUnit;
     let category = foundtour.tour.category;
     let tour = foundtour.tour;
-    
+
     let tourName = tour.tourName;
     if (tourName.length > 150)
         tourName = tourName.substring(0, 140) + "...";
@@ -16,9 +17,6 @@ jQuery(function () {
     // if (placesToVisitSub.length > 50)
     //     placesToVisitSub = placesToVisitSub.substring(0, 50) + "...";
 
-    if(sessionStorage.getItem("tourChoiced")){
-        foundtour = JSON.parse(sessionStorage.getItem("tourChoiced"));
-    }
     let discount = foundtour.discount;
 
     let adultTourPrice = getPrice(foundtour.adultTourPrice);
@@ -42,16 +40,16 @@ jQuery(function () {
         let carousel_item = $('<div class="carousel-item w-100" style="height: 70vh;"></div>');
 
         carousel_item.html(`
-                <img src="${img.url}" class="object-fit-cover w-100 h-100" alt="...">
-            `);
+                    <img src="${img.url}" class="object-fit-cover w-100 h-100" alt="...">
+                `);
 
         $('#carousel-list').append(carousel_item);
 
         let thumbnail_item = $('<div class="h-100" style="width: 150px;"></div>');
         thumbnail_item.html(`
-            <img src="${img.url}" class="thumbnail-img object-fit-cover w-100 h-100 ${activeClass}"
-                                data-bs-target="#carouselExampleIndicators" data-bs-slide-to="${index}">
-            `);
+                <img src="${img.url}" class="thumbnail-img object-fit-cover w-100 h-100 ${activeClass}"
+                                    data-bs-target="#carouselExampleIndicators" data-bs-slide-to="${index}">
+                `);
         $('#carousel-thumbnail').append(thumbnail_item);
 
         // let btncarou = $(`<button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="${index}"
@@ -70,8 +68,6 @@ jQuery(function () {
     let discount_tag = $('<div class="tour-offer bg-info fw-bold fs-5"></div>');
     discount_tag.text(discount.discountName);
     $('#carousel-list').append(discount_tag);
-
-    console.log("DISCOUNT: ", discount.discountName);
 
     // //Calendar
 
@@ -201,6 +197,12 @@ jQuery(function () {
     $('#babyTourPrice').text(foundtour.babyTourPrice + " đ");
     $('#privateRoomPrice').text(privateRoom + " đ");
 
+    $('#aQ').text('x ' + booking.adultNumber);
+    $('#cQ').text('x ' + booking.childNumber);
+    $('#tQ').text('x ' + booking.toddlerNumber);
+    $('#bQ').text('x ' + booking.babyNumber);
+    $('#pQ').text('x ' + booking.privateRoomNumber);
+
     //Additional Info
     $('#targetAudience').text(tour.targetAudience);
     $('#cuisine').text(tour.cuisine);
@@ -209,14 +211,74 @@ jQuery(function () {
     $('#description').html(convertNewlineToBr(tour.description));
 
     $('#inclusions').html(convertNewlineToBr(tour.inclusions));
-        $('#exclusions').html(convertNewlineToBr(tour.exclusions));
-    
+    $('#exclusions').html(convertNewlineToBr(tour.exclusions));
+
+    $('#note').html(convertNewlineToBr(booking.note));
+
+    //Companion Customer
+    let companionCustomerSet = booking.companionCustomerSet;
+
+    companionCustomerSet.forEach(item => {
+        $('#companions').append(`
+            <div class="card-body rounded-1 text-primary fs-5 fw-bold border border-primary mb-2 col-5">
+                ${item.fullName}
+            </div>
+            `)
+    })
 
     //Tour-Program => Viết API vào
 
     //Ratings => Viết API vào
 
     //Right Side
+    $('#totalAmount').text(formatNumberWithDots(booking.totalAmount) + ' đ');
+    $('#bookingid').text(booking.bookingId);
+
+    let classColor = 'text-dark';
+    let status = 'Undefined';
+    if (booking.status == 'O') {
+        $('#btnCancelTour').addClass('d-none');
+        $('#btnRating').addClass('d-none');
+        classColor = 'text-info';
+        status = 'Đang đi';
+    } else if (booking.status == 'P') {
+        $('#btnRating').addClass('d-none');
+        classColor = 'text-success';
+        status = 'Chuẩn bị đi';
+    } else if (booking.status == 'W') {
+        $('#btnCancelTour').addClass('d-none');
+        $('#btnRating').addClass('d-none');
+        classColor = 'text-danger';
+        status = 'Chờ hủy';
+    } else if (booking.status == 'D') {
+        $('#btnCancelTour').addClass('d-none');
+        classColor = 'text-primary';
+        status = 'Đã đi';
+
+        //fetch nữa
+        fetch(buildUrl("http://localhost:8080/rating/rating-tour/check", { tourUnitId: foundtour.tourUnitId }), {
+            method: "GET",
+            credentials: 'include',
+            headers: {
+                'Accept': 'application/json'
+            }
+        })
+            .then(response => response.json())
+            .then(data => {
+                console.log(data);
+                if (data.code == 0) {
+                    if(!data.result)
+                        $('#btnRating').addClass('d-none');
+                }
+            })
+            .catch(error => {
+                console.log("ERROR: ", error);
+            })
+        // $('#btnRating').addClass('d-none');
+    }
+
+    $('#status').text(status).addClass(classColor);
+
     $('#tourUnitId').text(foundtour.tourUnitId);
     $('#duration').text(tour.duration);
     $('#departurePlace').text(tour.departurePlace);
@@ -270,7 +332,7 @@ jQuery(function () {
         const month = parts[1];
         const day = parts[2];
 
-        return `${day}/${month}/${year}`;
+        return `${ day } / ${ month } / ${ year }`;
     }
 
     setTimeout(function () {

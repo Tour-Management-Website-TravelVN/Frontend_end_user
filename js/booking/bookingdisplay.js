@@ -1,9 +1,9 @@
+import{getPrice} from "../utils/utils.js"
 jQuery(function () {
     let foundtour = JSON.parse(localStorage.getItem("foundtour"));
     let category = foundtour.tour.category;
     let tour = foundtour.tour;
-    let discount = foundtour.discount;
-
+    
     let tourName = tour.tourName;
     if (tourName.length > 120)
         tourName = tourName.substring(0, 120) + "...";
@@ -13,9 +13,13 @@ jQuery(function () {
     if (placesToVisitSub.length > 40)
         placesToVisitSub = placesToVisitSub.substring(0, 40) + "...";
 
-    let adultTourPrice = getPrice(foundtour.adultTourPrice);
-    let toddlerTourPrice = getPrice(foundtour.toddlerTourPrice);
-    let childTourPrice = getPrice(foundtour.childTourPrice);
+    foundtour = JSON.parse(sessionStorage.getItem("tourChoiced"));
+
+    let adultTourPrice = getPrice(foundtour.adultTourPrice, foundtour.discount);
+    let toddlerTourPrice = getPrice(foundtour.toddlerTourPrice, foundtour.discount);
+
+    let childTourPrice = getPrice(foundtour.childTourPrice, foundtour.discount);
+    let discount = foundtour.discount;
 
     let privateRoom = formatNumberWithDots(Math.round(foundtour.privateRoomPrice))
 
@@ -122,12 +126,12 @@ jQuery(function () {
         return number.toLocaleString('vi-VN');
     }
 
-    function getPrice(price) {
-        return formatNumberWithDots(Math.round((discount.discountUnit == "%") ?
-            price * (1 - discount.discountValue / 100)
-            :
-            price - discount.discountValue))
-    }
+    // function getPrice(price) {
+    //     return formatNumberWithDots(Math.round((discount.discountUnit == "%") ?
+    //         price * (1 - discount.discountValue / 100)
+    //         :
+    //         price - discount.discountValue))
+    // }
 
     function formatDate(isoDate) {
         // Kiểm tra định dạng đầu vào

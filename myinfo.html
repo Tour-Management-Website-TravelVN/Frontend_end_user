@@ -37,6 +37,8 @@
     <script src="js/main3.js"></script>
     <script type="module" src="js/main2.js"></script>
     <script type="module" src="js/myinfo/my-info.js"></script>
+    <script type="module" src="js/myinfo/change-pwd.js"></script>
+    <script type="module" src="js/myinfo/update-info.js"></script>
 </head>
 
 <body>
@@ -77,11 +79,11 @@
 
             <div class="col-lg-4 text-end">
                 <div class="d-inline-flex align-items-center" style="height: 45px;">
-                    <!-- <a href="#" data-bs-toggle="modal" data-bs-target="#register" class="header-unauth d-none"><small
+                    <a href="#" data-bs-toggle="modal" data-bs-target="#register" class="header-unauth d-none"><small
                             class="me-3 text-light"><i class="fa fa-user me-2"></i>Đăng
-                            ký</small></a> -->
+                            ký</small></a>
                     <!-- <div class="modal fade" id="register" aria-modal="true"> -->
-                    <!-- <div class="modal fade" id="register">
+                    <div class="modal fade" id="register">
                         <div class="modal-dialog modal-lg modal-dialog-centered">
                             <div class="modal-content">
                                 <div class="modal-body">
@@ -132,9 +134,9 @@
                                                     <input type="password" class="form-control" id="floatingPassword"
                                                         placeholder="Nguyễn Văn A">
                                                     <label for="floatingPassword">Mật khẩu</label>
-                                                </div> -->
+                                                </div>
 
-                    <!-- <label for="fullname" class="fst-italic letter-spacing-1 label-log">Họ và tên</label><br/>
+                                                <!-- <label for="fullname" class="fst-italic letter-spacing-1 label-log">Họ và tên</label><br/>
                                                 <input type="text" name="fullname" id="fullname" class="w-100 rounded-3 py-2 ps-3 bg-light border-0"><br/>
                                                 <label for="email" class="fst-italic letter-spacing-1 mt-2 pt-1 label-log">Email</label><br/>
                                                 <input type="email" name="email" id="email" class="w-100 rounded-3 py-1 ps-2 border-0 bg-dark"><br/>
@@ -148,7 +150,7 @@
                                                 <label for="password" class="fst-italic letter-spacing-1 mt-2 pt-1 ps-2 label-log">Mật khẩu</label><br/>
                                                 <input type="password" name="password" id="password" class="w-100 rounded-3 py-1"><br/><br/> -->
 
-                    <!-- <div class="d-grid mt-3">
+                                                <div class="d-grid mt-3">
                                                     <button type="button" class="btn btn-primary btn-block w-50 mx-auto"
                                                         id="btnRegister">Đăng ký</button>
                                                 </div>
@@ -168,9 +170,9 @@
                             data-bs-target="#login"><i class="fa fa-sign-in-alt me-2"></i>Đăng
                             nhập</small></a>
 
-                    <div class="modal fade" id="login"> -->
-                    <!-- <div class="modal fade" id="login" aria-modal="true"> -->
-                    <!-- <div class="modal-dialog modal-lg modal-dialog-centered">
+                    <div class="modal fade" id="login">
+                        <!-- <div class="modal fade" id="login" aria-modal="true"> -->
+                        <div class="modal-dialog modal-lg modal-dialog-centered">
                             <div class="modal-content">
                                 <div class="modal-body">
                                     <div class="row">
@@ -205,7 +207,7 @@
                                 </div>
                             </div>
                         </div>
-                    </div> -->
+                    </div>
                     <div class="dropdown header-auth">
                         <a href="#" class="dropdown-toggle text-light" data-bs-toggle="dropdown"><small id="fullname"><i
                                     class="fa fa-home me-2"></i>Bảng điều khiển</small></a>
@@ -288,76 +290,69 @@
     <!-- Info start -->
     <div class="container-fluid increase-margin-top">
         <div class="container" id="myinfo-form">
-            <h1 class="text-center text-primary fw-bold mb-2 mt-5">Kiều Đức Thịnh</h1>
-            <div class="row gap-0">
+            <h1 class="text-center text-primary fw-bold mb-2 mt-5 customer-info-unique">Kiều Đức Thịnh</h1>
+            <form class="row gap-0" id="updateInfoForm">
                 <div class="col-lg-6 col-12">
 
-                    <form action="" class="needs-validated">
-                        <table class="table table-borderless text-primary fw-bold">
-                            <colgroup>
-                                <col style="width: 30%;">
-                                <col style="width: 70%;">
-                            </colgroup>
-                            <tr>
-                                <td class="align-middle heading5">Tên đăng nhập:</td>
-                                <td class="align-middle heading4">
-                                    <span class="customer-info" id="username">kdthinh04</span>
-                                    <div class="d-none c-update">
-                                        <input type="text" id="c-username" class="form-control" placeholder="kdthinh04"
-                                            readonly>
-                                    </div>
+                    <table class="table table-borderless text-primary fw-bold">
+                        <colgroup>
+                            <col style="width: 30%;">
+                            <col style="width: 70%;">
+                        </colgroup>
+                        <tr>
+                            <td class="align-middle heading5">Tên đăng nhập:</td>
+                            <td class="align-middle heading4">
+                                <span class="customer-info" id="username">kdthinh04</span>
+                                <div class="d-none c-update">
+                                    <input type="text" id="c-username" class="form-control" placeholder="kdthinh04"
+                                        readonly>
+                                </div>
 
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="align-middle heading5">Ngày sinh:</td>
-                                <td class="align-middle heading4">
-                                    <span class="customer-info" id="dob">23/12/2004</span>
-                                    <div class="d-none c-update">
-                                        <input type="date" id="c-dob" class="form-control" placeholder="01/01/2025"
-                                            required>
-                                        <div class="valid-feedback fs-6 fw-normal">Valid.</div>
-                                        <div class="invalid-feedback fs-6 fw-normal">Please fill out this field.</div>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="align-middle heading5">Giới tính:</td>
-                                <td class="align-middle heading4"><span id="gender" class="customer-info">Nam</span>
-                                    <div class="c-update d-none">
-                                        <input type="radio" name="gender" id="male" class="form-check-input" checked>
-                                        <label class="form-check-label text-primary me-3" for="male">Nam</label>
-                                        <input type="radio" name="gender" id="female" class="form-check-input">
-                                        <label class="form-check-label text-primary" for="female">Nữ</label>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="align-middle heading5">Quốc tịch:</td>
-                                <td class="align-middle heading4">
-                                    <span class="customer-info" id="nationality">Việt Nam</span>
-                                    <div class="c-update d-none">
-                                        <select class="form-select text-primary fs-5" id="select-natio"
-                                            aria-label="Default select example">
-                                            <option value="Việt Nam" selected>Việt Nam</option>
-                                            <option value="Nhật Bản">Nhật Bản</option>
-                                            <option value="Hàn Quốc">Hàn Quốc</option>
-                                            <option value="Đức">Đức</option>
-                                        </select>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr class="d-lg-none d-xl-none">
-                                <td class="align-middle heading5">Địa chỉ:</td>
-                                <td class="align-middle heading4">
-                                    <span class="customer-info address">298 Bắc Từ Liêm, Hà Nội</span>
-                                    <div class="c-update d-none">
-                                        <textarea class="form-control c-address" rows="3"></textarea>
-                                    </div>
-                                </td>
-                            </tr>
-                        </table>
-                    </form>
+                            </td>
+                        </tr>
+                        <tr class="d-none customer-info-unique">
+                            <td class="align-middle heading5">Họ và tên:</td>
+                            <td class="align-middle heading4">
+                                <div class="c-update">
+                                    <input type="text" id="c-fullName" class="form-control" placeholder="" required>
+                                    <div class="invalid-feedback fs-6 fw-normal">Please fill out this field.</div>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="align-middle heading5">Giới tính:</td>
+                            <td class="align-middle heading4"><span id="gender" class="customer-info">Nam</span>
+                                <div class="c-update d-none">
+                                    <input type="radio" name="gender" id="male" class="form-check-input" value="0"
+                                        checked>
+                                    <label class="form-check-label text-primary me-3" for="male">Nam</label>
+                                    <input type="radio" name="gender" id="female" class="form-check-input" value="1">
+                                    <label class="form-check-label text-primary" for="female">Nữ</label>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="align-middle heading5">Ngày sinh:</td>
+                            <td class="align-middle heading4">
+                                <span class="customer-info" id="dob">23/12/2004</span>
+                                <div class="d-none c-update">
+                                    <input type="date" id="c-dob" class="form-control" placeholder="01/01/2025"
+                                        required>
+                                    <div class="invalid-feedback fs-6 fw-normal">Please fill out this field.</div>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr class="">
+                            <td class="align-middle heading5">Địa chỉ:</td>
+                            <td class="align-middle heading4">
+                                <span class="customer-info address">298 Bắc Từ Liêm, Hà Nội</span>
+                                <div class="c-update d-none">
+                                    <textarea class="form-control" id="c-address" rows="3"></textarea>
+                                    <div class="invalid-feedback fs-6 fw-normal">Please fill out this field.</div>
+                                </div>
+                            </td>
+                        </tr>
+                    </table>
                 </div>
                 <div class="col-lg-6 col-12 decrease-margin-15">
                     <table cellspacing="5px" class="table table-borderless text-primary fw-bold">
@@ -374,7 +369,6 @@
                                 <div class="c-update d-none">
                                     <input type="text" id="c-email" class="form-control" placeholder="@gmail.com"
                                         required>
-                                    <div class="valid-feedback fs-6 fw-normal">Valid.</div>
                                     <div class="invalid-feedback fs-6 fw-normal">Please fill out this field.</div>
                                 </div>
                             </td>
@@ -387,7 +381,6 @@
                                 </span>
                                 <div class="c-update d-none">
                                     <input type="text" id="c-phone" class="form-control" placeholder="">
-                                    <div class="valid-feedback fs-6 fw-normal">Valid.</div>
                                     <div class="invalid-feedback fs-6 fw-normal">Please fill out this field.</div>
                                 </div>
                             </td>
@@ -400,7 +393,6 @@
                                 </span>
                                 <div class="c-update d-none">
                                     <input type="text" id="c-ci" class="form-control" placeholder="">
-                                    <div class="valid-feedback fs-6 fw-normal">Valid.</div>
                                     <div class="invalid-feedback fs-6 fw-normal">Please fill out this field.</div>
                                 </div>
                             </td>
@@ -413,14 +405,28 @@
                                 </span>
                                 <div class="c-update d-none">
                                     <input type="text" id="c-passport" class="form-control" placeholder="">
-                                    <div class="valid-feedback fs-6 fw-normal">Valid.</div>
                                     <div class="invalid-feedback fs-6 fw-normal">Please fill out this field.</div>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="align-middle heading5">Quốc tịch:</td>
+                            <td class="align-middle heading4">
+                                <span class="customer-info" id="nationality">Việt Nam</span>
+                                <div class="c-update d-none">
+                                    <select class="form-select text-primary fs-5" id="select-natio"
+                                        aria-label="Default select example" id="c-nationality">
+                                        <option value="Việt Nam" selected>Việt Nam</option>
+                                        <option value="Nhật Bản">Nhật Bản</option>
+                                        <option value="Hàn Quốc">Hàn Quốc</option>
+                                        <option value="Đức">Đức</option>
+                                    </select>
                                 </div>
                             </td>
                         </tr>
                     </table>
                 </div>
-                <div class="col-12 d-none d-lg-block d-xl-block">
+                <!-- <div class="col-12 d-none d-lg-block d-xl-block">
                     <table class="table table-borderless text-primary decrease-margin-lg-15">
                         <colgroup>
                             <col style="width: 12%;">
@@ -436,8 +442,8 @@
                             </td>
                         </tr>
                     </table>
-                </div>
-            </div>
+                </div> -->
+            </form>
             <!-- <div class="row">
                 <div class="col-3 text-primary gap-5">
                     <p class="heading5 fw-bold">Tên đăng nhập:</p>
@@ -462,32 +468,29 @@
                 <!-- Modal -->
                 <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false"
                     tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-                    <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered">
                         <div class="modal-content">
 
                             <div class="modal-body px-4 py-4">
                                 <p class="text-primary fw-bold h3 text-center mb-3">Đổi mật khẩu</p>
                                 <!-- .needs-validated .was-validated -->
-                                <form action="" class="needs-validated">
+                                <form class="needs-validated" id="changePwdForm">
                                     <div class="form-floating mb-3">
-                                        <input type="password" class="form-control text-dark" id="oldPwd"
+                                        <input type="password" class="form-control text-dark" id="oldPwd" required
                                             placeholder="">
                                         <label for="oldPwd">Mật khẩu cũ</label>
-                                        <div class="valid-feedback"></div>
                                         <div class="invalid-feedback">Please fill out this field.</div>
                                     </div>
                                     <div class="form-floating mb-3">
-                                        <input type="password" class="form-control text-dark" id="newPwd"
+                                        <input type="password" class="form-control text-dark" id="newPwd" required
                                             placeholder="">
                                         <label for="newPwd">Mật khẩu mới</label>
-                                        <div class="valid-feedback"></div>
                                         <div class="invalid-feedback">Please fill out this field.</div>
                                     </div>
                                     <div class="form-floating mb-3">
-                                        <input type="password" class="form-control text-dark" id="verifyPwd"
+                                        <input type="password" class="form-control text-dark" id="verifyPwd" required
                                             placeholder="">
                                         <label for="verifyPwd">Xác nhận mật khẩu mới</label>
-                                        <div class="valid-feedback"></div>
                                         <div class="invalid-feedback">Please fill out this field.</div>
                                     </div>
                                 </form>
@@ -495,11 +498,23 @@
                                     <button type="button" class="btn btn-outline-danger" style="width: 30%;"
                                         data-bs-dismiss="modal">Hủy</button>
                                     <button type="button" class="btn btn-outline-primary" style="width: 30%;"
-                                        data-bs-dismiss="modal">Đổi mật khẩu</button>
+                                        id="btnSubmitChange">Đổi mật khẩu</button>
+                                </div>
+                                <div class="toast-container position-fixed top-0 end-0 p-3" style="z-index: 1000;">
+                                    <div id="liveToast" class="toast" role="alert" aria-live="assertive"
+                                        aria-atomic="true">
+                                        <div class="d-flex">
+                                            <div class="toast-body text-dark" id="toastPwd">
+                                                Hãy kiểm tra lại thông tin nhập vào.
+                                            </div>
+                                            <button type="button" class="btn-close me-2 m-auto" data-bs-dismiss="toast"
+                                                aria-label="Close"></button>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
-
                         </div>
+                        <!-- <div class="modal-footer sticky-bottom bg-white"></div> -->
                     </div>
                 </div>
 
@@ -509,6 +524,17 @@
                     style="width: 150px; height: 50px;" id="btnCancel">Hủy</button>
                 <button type="button" class="btn btn-success rounded-pill px-2 m-2 d-none"
                     style="width: 150px; height: 50px;" id="btnUpdate">Cập nhật</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="toast-container position-fixed top-0 end-0 p-3" style="z-index: 1000;">
+        <div id="liveToast2" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+            <div class="d-flex">
+                <div class="toast-body text-dark" id="toastPwd2">
+                    Hãy kiểm tra lại thông tin nhập vào.
+                </div>
+                <button type="button" class="btn-close me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
             </div>
         </div>
     </div>

@@ -351,6 +351,22 @@ carousel-item-70 {
   max-width: 400px;
 }
 
+.toast:not(.show) {
+  pointer-events: none !important;
+}
+
+.tour-title {
+  min-height: 4em;
+  white-space: normal;
+  word-break: break-word;
+}
+
+.tour-title-lite {
+  min-height: 3.5em;
+  white-space: normal;
+  word-break: break-word;
+}
+
 @media(max-width: 768px) {
   #note-tourguide {
     font-size: 16px;
