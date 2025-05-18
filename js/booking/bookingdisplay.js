@@ -149,8 +149,9 @@ jQuery(function () {
     }
 
     function getPriceToCal(price) {
+        console.log(discount);
         if (!discount) return Math.round(price); // không có discount thì giữ nguyên giá
-
+        console.log("XUONG DAY");
         return Math.round((discount.discountUnit == "%") ?
             price * (1 - discount.discountValue / 100)
             :
