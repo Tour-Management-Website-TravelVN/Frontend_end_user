@@ -356,13 +356,19 @@ carousel-item-70 {
 }
 
 .tour-title {
-  min-height: 4em;
+  min-height: 4.5em;
   white-space: normal;
   word-break: break-word;
 }
 
 .tour-title-lite {
   min-height: 3.5em;
+  white-space: normal;
+  word-break: break-word;
+}
+
+.tour-title-3 {
+  min-height: 3em;
   white-space: normal;
   word-break: break-word;
 }
