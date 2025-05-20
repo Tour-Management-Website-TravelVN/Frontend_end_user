@@ -392,8 +392,27 @@ carousel-item-70 {
   height: 280px;
 }
 
-@media(max-width: 1400px) {
-    .heading-price {
+.owl-sm-thumb-height {
+  height: 100px;
+}
+
+.owl-thumb {
+  height: 200px;
+}
+
+.rfs-calendar {
+  font-size: 20px;
+}
+
+.rfs-add-info {
+  font-size: 24px;
+}
+
+/* .w-tab{
+  min-width: 300px;
+} */
+@media(max-width: 1395px) {
+  .heading-price {
     font-size: 24px;
     font-weight: bold;
   }
@@ -405,6 +424,10 @@ carousel-item-70 {
   .img-lg-width {
     min-width: 100%;
     max-width: 100%;
+  }
+
+  .rfs-add-info {
+    font-size: 20px;
   }
 }
 
@@ -474,6 +497,17 @@ carousel-item-70 {
     height: 150px;
   }
 
+  .rfs-add-info {
+    font-size: 14px;
+  }
+
+  .owl-sm-thumb-height {
+    height: 300px;
+  }
+
+  .owl-thumb {
+    height: 250px;
+  }
 }
 
 @media(max-width: 576px) {
@@ -505,6 +539,18 @@ carousel-item-70 {
   .img-lg-width {
     min-width: 100%;
     height: 200px;
+  }
+
+  .owl-sm-thumb-height {
+    height: 300px;
+  }
+
+  .owl-thumb {
+    height: 250px;
+  }
+
+  .rfs-calendar {
+    font-size: 14px;
   }
 }
 
